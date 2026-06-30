@@ -1,1 +1,22 @@
-
+[
+{
+"title":"Luxury Streetwear",
+"prompt":"Create a luxury streetwear brand inspired by Fear of God and Represent."
+},
+{
+"title":"Logo Design",
+"prompt":"Design a premium minimal logo for a fashion brand."
+},
+{
+"title":"Instagram Caption",
+"prompt":"Write an Instagram caption for a luxury clothing drop."
+},
+{
+"title":"Product Photography",
+"prompt":"Create an ultra realistic studio product photography prompt."
+},
+{
+"title":"Website Design",
+"prompt":"Design a modern fashion ecommerce landing page."
+}
+]
