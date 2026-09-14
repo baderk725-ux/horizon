@@ -37,14 +37,28 @@ export default async function AdminProtectedLayout(props: {
     );
   }
 
+  const navLinks = [
+    { href: "/admin", label: t("nav.dashboard") },
+    { href: "/admin/categories", label: t("nav.categories") },
+  ];
+
   return (
     <div className="min-h-screen bg-paper-muted">
       <header className="flex h-16 items-center justify-between border-b border-brand-200 bg-brand-950 px-6 text-paper">
-        <Link href="/admin" className="font-display text-lg">
-          NOVEL — {t("dashboard")}
-        </Link>
+        <div className="flex items-center gap-8">
+          <Link href="/admin" className="font-display text-lg">
+            NOVEL
+          </Link>
+          <nav className="hidden items-center gap-6 text-sm sm:flex">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="text-brand-200 hover:text-paper">
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
         <div className="flex items-center gap-4 text-sm">
-          <span className="text-brand-300">
+          <span className="hidden text-brand-300 sm:inline">
             {t("signedInAs")} {current.profile?.full_name ?? current.email}
           </span>
           <SignOutButton className="hover:text-accent-400" />

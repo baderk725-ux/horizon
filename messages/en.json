@@ -75,6 +75,38 @@
     "forbiddenBody": "This account isn't an administrator on NOVEL Household. Sign in with an admin account, or go back to the store.",
     "backToStore": "Back to the store",
     "signedInAs": "Signed in as",
-    "staffRole": "Staff role"
+    "staffRole": "Staff role",
+    "nav": {
+      "dashboard": "Dashboard",
+      "categories": "Categories",
+      "products": "Products"
+    }
+  },
+  "adminCategories": {
+    "title": "Categories",
+    "newCategory": "New category",
+    "editCategory": "Edit category",
+    "nameEn": "Name (English)",
+    "nameAr": "Name (Arabic)",
+    "slug": "Slug",
+    "parent": "Parent category",
+    "noParent": "— Top level —",
+    "sortOrder": "Sort order",
+    "create": "Create category",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this category? This cannot be undone.",
+    "edit": "Edit",
+    "empty": "No categories yet. Create the first one below.",
+    "subcategoryOf": "Subcategory of {parent}",
+    "not_authorized": "You don't have permission to manage categories.",
+    "invalid_input": "Please check the highlighted fields.",
+    "slug_format": "Use lowercase letters, numbers and hyphens only (e.g. kitchenware).",
+    "slug_taken": "This slug is already used by another category.",
+    "cannot_be_own_parent": "A category can't be its own parent.",
+    "category_in_use": "This category has products or subcategories — move or delete those first.",
+    "save_failed": "Couldn't save the category. Please try again.",
+    "delete_failed": "Couldn't delete the category. Please try again."
   }
 }
