@@ -219,7 +219,8 @@
       "discounts": "Discounts",
       "customers": "Customers",
       "inventory": "Inventory",
-      "returns": "Returns"
+      "returns": "Returns",
+      "notifications": "Notifications"
     }
   },
   "adminCategories": {
@@ -585,5 +586,12 @@
       "not_received": "Never received the order",
       "other": "Other"
     }
+  },
+  "adminNotifications": {
+    "title": "Notifications",
+    "hint": "New orders, low/out-of-stock alerts, and return requests.",
+    "empty": "No notifications yet.",
+    "markRead": "Mark read",
+    "markAllRead": "Mark all as read"
   }
 }

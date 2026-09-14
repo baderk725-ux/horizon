@@ -219,7 +219,8 @@
       "discounts": "الخصومات",
       "customers": "العملاء",
       "inventory": "المخزون",
-      "returns": "المرتجعات"
+      "returns": "المرتجعات",
+      "notifications": "الإشعارات"
     }
   },
   "adminCategories": {
@@ -585,5 +586,12 @@
       "not_received": "لم يصل الطلب",
       "other": "أخرى"
     }
+  },
+  "adminNotifications": {
+    "title": "الإشعارات",
+    "hint": "الطلبات الجديدة، تنبيهات المخزون المنخفض/نفاد المخزون، وطلبات الإرجاع.",
+    "empty": "لا توجد إشعارات بعد.",
+    "markRead": "تعليم كمقروء",
+    "markAllRead": "تعليم الكل كمقروء"
   }
 }

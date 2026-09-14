@@ -3,6 +3,7 @@ import { redirect } from "@/i18n/navigation";
 import { getCurrentUser, isAdmin } from "@/lib/data/auth";
 import { Link } from "@/i18n/navigation";
 import { SignOutButton } from "@/components/auth/sign-out-button";
+import { getUnreadNotificationCount } from "@/lib/data/admin/notifications";
 
 export default async function AdminProtectedLayout(props: {
   children: React.ReactNode;
@@ -50,6 +51,8 @@ export default async function AdminProtectedLayout(props: {
     { href: "/admin/shipping", label: t("nav.shipping") },
   ];
 
+  const unreadCount = await getUnreadNotificationCount();
+
   return (
     <div className="min-h-screen bg-paper-muted">
       <header className="flex h-16 items-center justify-between border-b border-brand-200 bg-brand-950 px-6 text-paper">
@@ -66,6 +69,14 @@ export default async function AdminProtectedLayout(props: {
           </nav>
         </div>
         <div className="flex items-center gap-4 text-sm">
+          <Link href="/admin/notifications" className="relative text-brand-200 hover:text-paper" aria-label={t("nav.notifications")}>
+            {t("nav.notifications")}
+            {unreadCount > 0 && (
+              <span className="ms-1.5 inline-flex h-5 min-w-5 items-center justify-center rounded-(--radius-pill) bg-accent-500 px-1.5 text-xs font-medium text-brand-950">
+                {unreadCount > 9 ? "9+" : unreadCount}
+              </span>
+            )}
+          </Link>
           <span className="hidden text-brand-300 sm:inline">
             {t("signedInAs")} {current.profile?.full_name ?? current.email}
           </span>
