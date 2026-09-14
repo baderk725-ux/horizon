@@ -246,7 +246,8 @@
       "suppliers": "Suppliers",
       "purchaseOrders": "Purchase Orders",
       "finance": "Finance",
-      "payroll": "Payroll"
+      "payroll": "Payroll",
+      "reports": "Reports"
     }
   },
   "adminCategories": {
@@ -884,5 +885,25 @@
     "not_authorized": "You don't have permission to manage payroll.",
     "invalid_input": "Please check the highlighted fields.",
     "save_failed": "Couldn't save. Please try again."
+  },
+  "adminReports": {
+    "title": "Reports",
+    "hint": "Sales, top products, and operational metrics for a date range — all read from real orders, returns, expenses, and inventory data.",
+    "from": "From",
+    "to": "To",
+    "apply": "Apply",
+    "totalRevenue": "Total revenue",
+    "totalOrders": "Total orders",
+    "newCustomers": "New customers",
+    "returnsCount": "Returns filed",
+    "expensesInRange": "Expenses in range",
+    "lowStockNow": "Low stock now",
+    "outOfStockNow": "Out of stock now",
+    "salesByDay": "Sales by day",
+    "orders": "Orders",
+    "revenue": "Revenue",
+    "topProducts": "Top products",
+    "unitsSold": "Units sold",
+    "noData": "No data for this range."
   }
 }
