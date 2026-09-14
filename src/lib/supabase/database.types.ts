@@ -1798,6 +1798,22 @@ export type Database = {
     }
     Functions: {
       admin_has: { Args: { area: string }; Returns: boolean }
+      create_order: {
+        Args: {
+          p_area_id: string
+          p_coupon_code: string
+          p_customer_id: string
+          p_full_address: string
+          p_governorate_id: string
+          p_guest_email: string
+          p_guest_name: string
+          p_guest_phone: string
+          p_items: Json
+          p_notes: string
+          p_order_type: string
+        }
+        Returns: Json
+      }
       is_admin: { Args: never; Returns: boolean }
       is_wholesale: { Args: never; Returns: boolean }
       log_activity: {
