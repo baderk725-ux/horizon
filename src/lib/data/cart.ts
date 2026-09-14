@@ -24,16 +24,12 @@ export type CartSummary = {
 const EMPTY_CART: CartSummary = { cartId: null, lines: [], itemCount: 0, subtotal: 0 };
 
 /**
- * Cart contents for display, priced live from `products_storefront` (never
- * from anything stored on the cart_items row — cart_items only ever stores
- * product_id/variant_id/quantity). This is retail pricing; wholesale cart
- * pricing is deferred (see CLAUDE.md / commit notes) until the dedicated
- * B2B phase.
+ * Priced live from `products_storefront` (never from anything stored on
+ * the cart_items row — those only ever store product_id/variant_id/
+ * quantity). Shared by getCart() (display, active carts only) and
+ * getCartByCartId() (checkout retries, any status — see there for why).
  */
-export async function getCart(): Promise<CartSummary> {
-  const cartId = await resolveActiveCartId();
-  if (!cartId) return EMPTY_CART;
-
+async function loadCartLines(cartId: string): Promise<Omit<CartSummary, "cartId">> {
   const supabase = await createClient();
   const { data: items, error } = await supabase
     .from("cart_items")
@@ -43,7 +39,7 @@ export async function getCart(): Promise<CartSummary> {
 
   if (error) throw error;
   if (!items || items.length === 0) {
-    return { cartId, lines: [], itemCount: 0, subtotal: 0 };
+    return { lines: [], itemCount: 0, subtotal: 0 };
   }
 
   const productIds = items.map((i) => i.product_id);
@@ -89,6 +85,25 @@ export async function getCart(): Promise<CartSummary> {
 
   const subtotal = lines.reduce((sum, l) => sum + l.lineTotal, 0);
   const itemCount = lines.reduce((sum, l) => sum + l.quantity, 0);
+  return { lines, itemCount, subtotal };
+}
 
-  return { cartId, lines, itemCount, subtotal };
+/** Cart contents for display (header badge, /cart page) — active carts only. */
+export async function getCart(): Promise<CartSummary> {
+  const cartId = await resolveActiveCartId();
+  if (!cartId) return EMPTY_CART;
+  return { cartId, ...(await loadCartLines(cartId)) };
+}
+
+/**
+ * Checkout-only: reads a specific cart's items regardless of status
+ * (active or already converted). Needed because a retried submission
+ * (double-click, or a client retry after a request that actually
+ * succeeded) arrives *after* the first attempt already marked the cart
+ * converted — getCart()'s "active only" filter would otherwise make the
+ * retry look like an empty cart before it ever reaches create_order()'s
+ * own idempotency check.
+ */
+export async function getCartByCartId(cartId: string): Promise<CartSummary> {
+  return { cartId, ...(await loadCartLines(cartId)) };
 }

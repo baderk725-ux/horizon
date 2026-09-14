@@ -697,6 +697,7 @@ export type Database = {
           coupon_applied: boolean
           coupon_code: string | null
           created_at: string
+          created_by_admin_id: string | null
           customer_id: string | null
           delivered_at: string | null
           delivery_fee: number
@@ -707,9 +708,12 @@ export type Database = {
           guest_name: string | null
           guest_phone: string
           id: string
+          idempotency_key: string | null
           internal_notes: string | null
+          manual_customer_id: string | null
           notes: string | null
           order_number: string
+          order_source: string
           order_type: Database["public"]["Enums"]["order_type"]
           status: Database["public"]["Enums"]["order_status"]
           stock_deducted: boolean
@@ -725,6 +729,7 @@ export type Database = {
           coupon_applied?: boolean
           coupon_code?: string | null
           created_at?: string
+          created_by_admin_id?: string | null
           customer_id?: string | null
           delivered_at?: string | null
           delivery_fee?: number
@@ -735,9 +740,12 @@ export type Database = {
           guest_name?: string | null
           guest_phone: string
           id?: string
+          idempotency_key?: string | null
           internal_notes?: string | null
+          manual_customer_id?: string | null
           notes?: string | null
           order_number: string
+          order_source?: string
           order_type?: Database["public"]["Enums"]["order_type"]
           status?: Database["public"]["Enums"]["order_status"]
           stock_deducted?: boolean
@@ -753,6 +761,7 @@ export type Database = {
           coupon_applied?: boolean
           coupon_code?: string | null
           created_at?: string
+          created_by_admin_id?: string | null
           customer_id?: string | null
           delivered_at?: string | null
           delivery_fee?: number
@@ -763,9 +772,12 @@ export type Database = {
           guest_name?: string | null
           guest_phone?: string
           id?: string
+          idempotency_key?: string | null
           internal_notes?: string | null
+          manual_customer_id?: string | null
           notes?: string | null
           order_number?: string
+          order_source?: string
           order_type?: Database["public"]["Enums"]["order_type"]
           status?: Database["public"]["Enums"]["order_status"]
           stock_deducted?: boolean
@@ -783,6 +795,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "orders_created_by_admin_id_fkey"
+            columns: ["created_by_admin_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "orders_customer_id_fkey"
             columns: ["customer_id"]
             isOneToOne: false
@@ -794,6 +813,13 @@ export type Database = {
             columns: ["governorate_id"]
             isOneToOne: false
             referencedRelation: "governorates"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "orders_manual_customer_id_fkey"
+            columns: ["manual_customer_id"]
+            isOneToOne: false
+            referencedRelation: "manual_customers"
             referencedColumns: ["id"]
           },
         ]
@@ -1808,8 +1834,12 @@ export type Database = {
           p_guest_email: string
           p_guest_name: string
           p_guest_phone: string
+          p_idempotency_key?: string
+          p_internal_notes?: string
           p_items: Json
+          p_manual_customer_id?: string
           p_notes: string
+          p_order_source?: string
           p_order_type: string
         }
         Returns: Json

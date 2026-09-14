@@ -30,7 +30,15 @@ export default async function AdminOrdersPage(props: {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-display-sm text-brand-900">{t("title")}</h1>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <h1 className="font-display text-display-sm text-brand-900">{t("title")}</h1>
+        <Link
+          href="/admin/orders/new"
+          className="rounded-(--radius-button) bg-brand-900 px-5 py-2.5 text-sm font-medium uppercase tracking-wide text-paper hover:bg-brand-800"
+        >
+          {t("newManualOrder")}
+        </Link>
+      </div>
 
       <div className="flex flex-wrap gap-2">
         {tabs.map((tab) => {

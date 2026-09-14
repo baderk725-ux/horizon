@@ -39,6 +39,41 @@ export async function resolveActiveCartId(): Promise<string | null> {
 }
 
 /**
+ * Checkout-only variant of resolveActiveCartId: matches by ownership
+ * (user_id or the guest cookie) regardless of the cart's status. A cart
+ * that a prior submission already converted still needs to resolve here
+ * so a retried checkout request can reach create_order()'s own
+ * idempotency check instead of looking like an empty cart.
+ */
+export async function resolveCartIdForCheckout(): Promise<string | null> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    const { data } = await supabase
+      .from("carts")
+      .select("id")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    return data?.id ?? null;
+  }
+
+  const guestCartId = await readGuestCartId();
+  if (!guestCartId) return null;
+
+  const { data } = await supabase
+    .from("carts")
+    .select("id")
+    .eq("id", guestCartId)
+    .maybeSingle();
+  return data?.id ?? null;
+}
+
+/**
  * Get-or-create — only callable from a Server Action (writes the guest
  * cookie when a new guest cart is created). Also merges a guest cart into
  * the user's cart the first time a signed-in user is resolved after having

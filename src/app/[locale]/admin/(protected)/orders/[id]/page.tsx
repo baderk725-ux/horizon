@@ -25,6 +25,12 @@ export default async function AdminOrderDetailPage(props: {
         <div>
           <h1 className="font-display text-display-sm text-brand-900">{order.order_number}</h1>
           <p className="mt-1 text-sm text-brand-500">{dateFormatter.format(new Date(order.created_at))}</p>
+          {order.order_source === "manual" && (
+            <p className="mt-1 text-xs text-brand-500">
+              {t("source")}: {t("sourceManual")}
+              {order.createdByAdmin?.full_name && ` · ${t("createdBy")} ${order.createdByAdmin.full_name}`}
+            </p>
+          )}
         </div>
         <OrderStatusBadge status={order.status} label={t(`status.${order.status}`)} />
       </div>

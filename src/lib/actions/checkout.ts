@@ -5,7 +5,8 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "@/i18n/navigation";
 import { checkoutSchema } from "@/lib/validation/checkout";
 import { getCurrentUser } from "@/lib/data/auth";
-import { getCart } from "@/lib/data/cart";
+import { getCartByCartId } from "@/lib/data/cart";
+import { resolveCartIdForCheckout } from "@/lib/cart/resolve";
 import type { Database } from "@/lib/supabase/database.types";
 
 export type CheckoutActionState = {
@@ -44,7 +45,16 @@ export async function submitOrderAction(
     return { error: "invalid_input", fieldErrors };
   }
 
-  const cart = await getCart();
+  // Status-agnostic: a retry after the cart was already converted by a
+  // prior successful (from the DB's perspective) submission must still
+  // resolve to the same cart, so its id can reach create_order() as the
+  // idempotency key below — getCart() (active-only) would otherwise make
+  // a retry look like an empty cart.
+  const cartId = await resolveCartIdForCheckout();
+  if (!cartId) {
+    return { error: "empty_cart" };
+  }
+  const cart = await getCartByCartId(cartId);
   if (cart.lines.length === 0) {
     return { error: "empty_cart" };
   }
@@ -56,6 +66,12 @@ export async function submitOrderAction(
     product_id: line.productId,
     quantity: line.quantity,
   }));
+
+  // The cart's own id is already unique-per-checkout-attempt and stable
+  // across retries of the same submission (double-click, browser retry
+  // after a timed-out-but-actually-successful request) — no separate
+  // client-generated token needed.
+  const idempotencyKey = `cart:${cartId}`;
 
   const rpcArgs = {
     p_order_type: "retail",
@@ -69,6 +85,7 @@ export async function submitOrderAction(
     p_notes: parsed.data.notes || null,
     p_coupon_code: null,
     p_items: items,
+    p_idempotency_key: idempotencyKey,
   } as unknown as Database["public"]["Functions"]["create_order"]["Args"];
 
   const { data, error } = await supabase.rpc("create_order", rpcArgs);
@@ -90,12 +107,9 @@ export async function submitOrderAction(
   // The cart's job is done — retire it. cart_items are left as a
   // historical record (converted, not deleted); the next visit resolves
   // a fresh active cart since this one no longer matches status='active'.
-  if (cart.cartId) {
-    await supabase
-      .from("carts")
-      .update({ status: "converted" })
-      .eq("id", cart.cartId);
-  }
+  // Idempotent itself: a retry marking an already-converted cart converted
+  // again is a harmless no-op.
+  await supabase.from("carts").update({ status: "converted" }).eq("id", cartId);
 
   const locale = await getLocale();
   const params = new URLSearchParams({

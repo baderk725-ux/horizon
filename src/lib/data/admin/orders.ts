@@ -26,7 +26,7 @@ export async function getAdminOrders(params: {
 
   let query = supabase
     .from("orders")
-    .select("*, customer:profiles(full_name, email)", { count: "exact" })
+    .select("*, customer:profiles!orders_customer_id_fkey(full_name, email)", { count: "exact" })
     .order("created_at", { ascending: false });
 
   if (params.status) query = query.eq("status", params.status);
@@ -52,6 +52,7 @@ export type AdminOrderDetail = AdminOrderRow & {
   customer: { full_name: string | null; email: string | null; phone: string | null } | null;
   governorate: { name_en: string; name_ar: string } | null;
   area: { name_en: string; name_ar: string; delivery_fee: number } | null;
+  createdByAdmin: { full_name: string | null } | null;
   items: AdminOrderItemRow[];
   timeline: {
     id: string;
@@ -68,7 +69,7 @@ export async function getAdminOrderById(id: string): Promise<AdminOrderDetail | 
   const { data: order } = await supabase
     .from("orders")
     .select(
-      "*, customer:profiles(full_name, email, phone), governorate:governorates(name_en, name_ar), area:delivery_areas(name_en, name_ar, delivery_fee)",
+      "*, customer:profiles!orders_customer_id_fkey(full_name, email, phone), governorate:governorates(name_en, name_ar), area:delivery_areas(name_en, name_ar, delivery_fee), createdByAdmin:profiles!orders_created_by_admin_id_fkey(full_name)",
     )
     .eq("id", id)
     .maybeSingle();
@@ -94,6 +95,7 @@ export async function getAdminOrderById(id: string): Promise<AdminOrderDetail | 
       customer: AdminOrderDetail["customer"];
       governorate: AdminOrderDetail["governorate"];
       area: AdminOrderDetail["area"];
+      createdByAdmin: AdminOrderDetail["createdByAdmin"];
     }),
     items: items ?? [],
     timeline: (activity ?? []).map((entry) => ({
