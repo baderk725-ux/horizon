@@ -243,7 +243,8 @@
       "settings": "Settings",
       "wholesale": "Wholesale",
       "bundles": "Bundles",
-      "suppliers": "Suppliers"
+      "suppliers": "Suppliers",
+      "purchaseOrders": "Purchase Orders"
     }
   },
   "adminCategories": {
@@ -779,5 +780,49 @@
     "save_failed": "Couldn't save the supplier. Please try again.",
     "delete_failed": "Couldn't delete the supplier. Please try again.",
     "supplier_in_use": "This supplier has purchase orders and can't be deleted."
+  },
+  "adminPurchaseOrders": {
+    "title": "Purchase Orders",
+    "hint": "Restock orders placed with suppliers. Marking one received adds its items to stock automatically.",
+    "all": "All",
+    "empty": "No purchase orders yet.",
+    "newPurchaseOrder": "New purchase order",
+    "newPurchaseOrderHint": "Start as a draft — add items and a supplier, then place the order when ready.",
+    "poNumber": "PO number",
+    "supplier": "Supplier",
+    "noSupplier": "— No supplier —",
+    "items": "Items",
+    "created": "Created",
+    "notes": "Notes",
+    "addProduct": "Add product",
+    "cost": "Cost",
+    "unitCost": "Unit cost",
+    "lineTotal": "Line total",
+    "totalCost": "Total cost",
+    "remove": "Remove",
+    "createDraft": "Save draft",
+    "save": "Save",
+    "saving": "Saving…",
+    "status": {
+      "label": "Status",
+      "draft": "Draft",
+      "ordered": "Ordered",
+      "received": "Received",
+      "cancelled": "Cancelled"
+    },
+    "actions": {
+      "ordered": "Place order",
+      "received": "Mark received",
+      "cancelled": "Cancel"
+    },
+    "confirmTransition": "Change this purchase order's status to {status}?",
+    "not_authorized": "You don't have permission to manage purchase orders.",
+    "invalid_input": "Please check the highlighted fields — a purchase order needs at least one item.",
+    "at_least_one_item": "Add at least one item.",
+    "not_editable": "This purchase order can only be edited while it's still a draft.",
+    "invalid_transition": "That status change isn't allowed from the purchase order's current state.",
+    "stale_or_unauthorized": "This purchase order's status changed since you loaded the page — refresh and try again.",
+    "update_failed": "Couldn't update the purchase order. Please try again.",
+    "save_failed": "Couldn't save the purchase order. Please try again."
   }
 }
