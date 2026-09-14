@@ -244,7 +244,8 @@
       "wholesale": "Wholesale",
       "bundles": "Bundles",
       "suppliers": "Suppliers",
-      "purchaseOrders": "Purchase Orders"
+      "purchaseOrders": "Purchase Orders",
+      "finance": "Finance"
     }
   },
   "adminCategories": {
@@ -824,5 +825,33 @@
     "stale_or_unauthorized": "This purchase order's status changed since you loaded the page — refresh and try again.",
     "update_failed": "Couldn't update the purchase order. Please try again.",
     "save_failed": "Couldn't save the purchase order. Please try again."
+  },
+  "adminFinance": {
+    "title": "Finance",
+    "hint": "Revenue from real orders and recorded expenses for a date range. This is not a full profit figure — cost of goods sold isn't tracked per order yet.",
+    "from": "From",
+    "to": "To",
+    "apply": "Apply",
+    "revenue": "Revenue",
+    "orderCount": "{count, plural, =0 {No orders} one {# order} other {# orders}}",
+    "expensesTotal": "Expenses",
+    "revenueMinusExpenses": "Revenue − expenses",
+    "netNote": "Excludes cost of goods sold — not a full profit figure.",
+    "byCategory": "Expenses by category",
+    "expenses": "Expenses",
+    "category": "Category",
+    "description": "Description",
+    "amount": "Amount",
+    "date": "Date",
+    "actions": "Actions",
+    "addExpense": "Add expense",
+    "noExpenses": "No expenses in this range.",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this expense? This can't be undone.",
+    "saving": "Saving…",
+    "not_authorized": "You don't have permission to manage finance records.",
+    "invalid_input": "Please check the highlighted fields.",
+    "save_failed": "Couldn't save the expense. Please try again.",
+    "delete_failed": "Couldn't delete the expense. Please try again."
   }
 }
