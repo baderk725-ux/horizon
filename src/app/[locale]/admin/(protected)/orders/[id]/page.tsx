@@ -4,6 +4,9 @@ import { getAdminOrderById } from "@/lib/data/admin/orders";
 import { OrderStatusBadge } from "@/components/admin/order-status-badge";
 import { OrderStatusActions } from "@/components/admin/order-status-actions";
 import { OrderInternalNotes } from "@/components/admin/order-internal-notes";
+import { PaymentStatusBadge } from "@/components/admin/payment-status-badge";
+import { PaymentStatusActions } from "@/components/admin/payment-status-actions";
+import type { PaymentStatus } from "@/lib/payments/status";
 
 export default async function AdminOrderDetailPage(props: {
   params: Promise<{ id: string }>;
@@ -13,6 +16,7 @@ export default async function AdminOrderDetailPage(props: {
   if (!order) notFound();
 
   const t = await getTranslations("adminOrders");
+  const tp = await getTranslations("adminPayments");
   const locale = await getLocale();
   const dateFormatter = new Intl.DateTimeFormat(locale === "ar" ? "ar-JO" : "en-JO", {
     dateStyle: "medium",
@@ -36,6 +40,37 @@ export default async function AdminOrderDetailPage(props: {
       </div>
 
       <OrderStatusActions orderId={order.id} currentStatus={order.status} />
+
+      {order.payment && (
+        <section className="rounded-(--radius-card) border border-brand-200 bg-paper p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h2 className="font-display text-lg text-brand-900">{tp("title")}</h2>
+            <PaymentStatusBadge
+              status={order.payment.status as PaymentStatus}
+              label={tp(`status.${order.payment.status}`)}
+            />
+          </div>
+          <dl className="mt-3 space-y-1 text-sm">
+            <div className="flex justify-between">
+              <dt className="text-brand-500">{tp("method")}</dt>
+              <dd className="text-brand-900">{tp(`method.${order.payment.method}`)}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="text-brand-500">{tp("amount")}</dt>
+              <dd className="text-brand-900">
+                {order.payment.amount.toFixed(2)} {t("currency")}
+              </dd>
+            </div>
+          </dl>
+          <div className="mt-4">
+            <PaymentStatusActions
+              paymentId={order.payment.id}
+              orderId={order.id}
+              currentStatus={order.payment.status as PaymentStatus}
+            />
+          </div>
+        </section>
+      )}
 
       <div className="grid gap-6 sm:grid-cols-2">
         <section className="rounded-(--radius-card) border border-brand-200 bg-paper p-6">

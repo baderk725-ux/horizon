@@ -824,6 +824,72 @@ export type Database = {
           },
         ]
       }
+      payments: {
+        Row: {
+          amount: number
+          cancelled_at: string | null
+          confirmed_by_admin_id: string | null
+          created_at: string
+          failed_at: string | null
+          id: string
+          method: string
+          notes: string | null
+          order_id: string
+          paid_at: string | null
+          provider_reference: string | null
+          refunded_at: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          amount: number
+          cancelled_at?: string | null
+          confirmed_by_admin_id?: string | null
+          created_at?: string
+          failed_at?: string | null
+          id?: string
+          method?: string
+          notes?: string | null
+          order_id: string
+          paid_at?: string | null
+          provider_reference?: string | null
+          refunded_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          cancelled_at?: string | null
+          confirmed_by_admin_id?: string | null
+          created_at?: string
+          failed_at?: string | null
+          id?: string
+          method?: string
+          notes?: string | null
+          order_id?: string
+          paid_at?: string | null
+          provider_reference?: string | null
+          refunded_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_confirmed_by_admin_id_fkey"
+            columns: ["confirmed_by_admin_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "payments_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: true
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       product_images: {
         Row: {
           created_at: string

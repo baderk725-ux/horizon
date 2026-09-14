@@ -54,6 +54,7 @@ export type AdminOrderDetail = AdminOrderRow & {
   area: { name_en: string; name_ar: string; delivery_fee: number } | null;
   createdByAdmin: { full_name: string | null } | null;
   items: AdminOrderItemRow[];
+  payment: Database["public"]["Tables"]["payments"]["Row"] | null;
   timeline: {
     id: string;
     action: string;
@@ -76,7 +77,7 @@ export async function getAdminOrderById(id: string): Promise<AdminOrderDetail | 
 
   if (!order) return null;
 
-  const [{ data: items }, { data: activity }] = await Promise.all([
+  const [{ data: items }, { data: activity }, { data: payment }] = await Promise.all([
     supabase
       .from("order_items")
       .select("*")
@@ -88,6 +89,7 @@ export async function getAdminOrderById(id: string): Promise<AdminOrderDetail | 
       .eq("entity_type", "order")
       .eq("entity_id", id)
       .order("created_at", { ascending: false }),
+    supabase.from("payments").select("*").eq("order_id", id).maybeSingle(),
   ]);
 
   return {
@@ -98,6 +100,7 @@ export async function getAdminOrderById(id: string): Promise<AdminOrderDetail | 
       createdByAdmin: AdminOrderDetail["createdByAdmin"];
     }),
     items: items ?? [],
+    payment: payment ?? null,
     timeline: (activity ?? []).map((entry) => ({
       id: entry.id,
       action: entry.action,
