@@ -39,6 +39,7 @@ export default async function AdminProtectedLayout(props: {
 
   const navLinks = [
     { href: "/admin", label: t("nav.dashboard") },
+    { href: "/admin/orders", label: t("nav.orders") },
     { href: "/admin/products", label: t("nav.products") },
     { href: "/admin/categories", label: t("nav.categories") },
   ];

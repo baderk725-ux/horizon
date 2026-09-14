@@ -159,6 +159,7 @@
     "staffRole": "صلاحية الموظف",
     "nav": {
       "dashboard": "لوحة التحكم",
+      "orders": "الطلبات",
       "categories": "الفئات",
       "products": "المنتجات"
     }
@@ -245,5 +246,63 @@
     "file_too_large": "يجب أن يكون حجم الصورة أقل من 5 ميجابايت.",
     "invalid_file_type": "يُسمح فقط بصور JPEG أو PNG أو WebP أو AVIF.",
     "upload_failed": "تعذّر رفع الصورة. يرجى المحاولة مرة أخرى."
+  },
+  "adminOrders": {
+    "title": "الطلبات",
+    "allOrders": "الكل",
+    "search": "ابحثي برقم الطلب أو الاسم أو الهاتف…",
+    "resultCount": "{count, plural, =0 {لا توجد طلبات} one {طلب واحد} two {طلبان} few {# طلبات} many {# طلبًا} other {# طلب}}",
+    "empty": "لا توجد طلبات بعد.",
+    "orderNumber": "الطلب",
+    "customer": "العميل",
+    "total": "الإجمالي",
+    "date": "التاريخ",
+    "currency": "د.أ",
+    "name": "الاسم",
+    "phone": "الهاتف",
+    "email": "البريد الإلكتروني",
+    "delivery": "التوصيل",
+    "governorate": "المحافظة",
+    "area": "المنطقة",
+    "address": "العنوان",
+    "trackingNumber": "رقم التتبع",
+    "items": "المنتجات",
+    "product": "المنتج",
+    "quantity": "الكمية",
+    "unitPrice": "سعر الوحدة",
+    "lineTotal": "المجموع",
+    "subtotal": "المجموع الفرعي",
+    "deliveryFee": "رسوم التوصيل",
+    "discount": "الخصم",
+    "customerNotes": "ملاحظات العميل",
+    "internalNotes": "ملاحظات داخلية (للموظفين فقط)",
+    "save": "حفظ",
+    "saving": "جارٍ الحفظ…",
+    "saved": "تم الحفظ",
+    "timeline": "سجل النشاط",
+    "noActivity": "لا يوجد نشاط مسجّل بعد.",
+    "system": "النظام",
+    "confirmTransition": "تغيير حالة الطلب إلى {status}؟",
+    "status": {
+      "label": "الحالة",
+      "pending": "قيد الانتظار",
+      "confirmed": "مؤكد",
+      "processing": "قيد التجهيز",
+      "shipped": "تم الشحن",
+      "delivered": "تم التسليم",
+      "cancelled": "ملغى",
+      "returned": "مرتجع"
+    },
+    "actions": {
+      "confirmed": "تأكيد الطلب",
+      "processing": "بدء التجهيز",
+      "shipped": "تحديد كمشحون",
+      "delivered": "تحديد كمُسلَّم",
+      "cancelled": "إلغاء الطلب"
+    },
+    "not_authorized": "لا تملكين صلاحية إدارة الطلبات.",
+    "invalid_transition": "هذا التغيير في الحالة غير مسموح من الحالة الحالية للطلب.",
+    "stale_or_unauthorized": "تغيّرت حالة هذا الطلب منذ تحميل الصفحة — يرجى التحديث والمحاولة مرة أخرى.",
+    "update_failed": "تعذّر تحديث الطلب. يرجى المحاولة مرة أخرى."
   }
 }

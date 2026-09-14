@@ -159,6 +159,7 @@
     "staffRole": "Staff role",
     "nav": {
       "dashboard": "Dashboard",
+      "orders": "Orders",
       "categories": "Categories",
       "products": "Products"
     }
@@ -245,5 +246,63 @@
     "file_too_large": "Image must be smaller than 5 MB.",
     "invalid_file_type": "Only JPEG, PNG, WebP or AVIF images are allowed.",
     "upload_failed": "Couldn't upload the image. Please try again."
+  },
+  "adminOrders": {
+    "title": "Orders",
+    "allOrders": "All",
+    "search": "Search order #, name, phone…",
+    "resultCount": "{count, plural, =0 {No orders} one {# order} other {# orders}}",
+    "empty": "No orders yet.",
+    "orderNumber": "Order",
+    "customer": "Customer",
+    "total": "Total",
+    "date": "Date",
+    "currency": "JOD",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "delivery": "Delivery",
+    "governorate": "Governorate",
+    "area": "Area",
+    "address": "Address",
+    "trackingNumber": "Tracking number",
+    "items": "Items",
+    "product": "Product",
+    "quantity": "Qty",
+    "unitPrice": "Unit price",
+    "lineTotal": "Line total",
+    "subtotal": "Subtotal",
+    "deliveryFee": "Delivery fee",
+    "discount": "Discount",
+    "customerNotes": "Customer notes",
+    "internalNotes": "Internal notes (staff only)",
+    "save": "Save",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "timeline": "Activity timeline",
+    "noActivity": "No activity recorded yet.",
+    "system": "System",
+    "confirmTransition": "Change this order's status to {status}?",
+    "status": {
+      "label": "Status",
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "returned": "Returned"
+    },
+    "actions": {
+      "confirmed": "Confirm order",
+      "processing": "Start processing",
+      "shipped": "Mark shipped",
+      "delivered": "Mark delivered",
+      "cancelled": "Cancel order"
+    },
+    "not_authorized": "You don't have permission to manage orders.",
+    "invalid_transition": "That status change isn't allowed from the order's current state.",
+    "stale_or_unauthorized": "This order's status changed since you loaded the page — refresh and try again.",
+    "update_failed": "Couldn't update the order. Please try again."
   }
 }
