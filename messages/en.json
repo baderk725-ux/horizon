@@ -161,7 +161,8 @@
       "dashboard": "Dashboard",
       "orders": "Orders",
       "categories": "Categories",
-      "products": "Products"
+      "products": "Products",
+      "shipping": "Shipping"
     }
   },
   "adminCategories": {
@@ -326,6 +327,42 @@
     "governorate_required": "Please select a governorate.",
     "area_required": "Please select the area.",
     "empty_cart": "Add at least one product.",
-    "items_required": "Add at least one product."
+    "items_required": "Add at least one product.",
+    "optional": "Optional"
+  },
+  "adminShipping": {
+    "title": "Shipping zones",
+    "hint": "Governorates and delivery areas used at checkout. Only active, configured areas are selectable by customers.",
+    "nameEn": "Name (English)",
+    "nameAr": "Name (Arabic)",
+    "governorate": "Governorate",
+    "deliveryFee": "Delivery fee (JOD)",
+    "freeDeliveryThreshold": "Free delivery above (JOD)",
+    "isActive": "Active",
+    "isConfigured": "Configured",
+    "isConfiguredHint": "Only active + configured areas are offered at checkout — an area missing either is silently unavailable to customers rather than causing checkout errors.",
+    "currency": "JOD",
+    "free": "Free",
+    "inactive": "Inactive",
+    "notConfigured": "Not configured",
+    "addArea": "Add area",
+    "noAreas": "No delivery areas in this governorate yet.",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "save": "Save",
+    "create": "Add area",
+    "saving": "Saving…",
+    "deleteAreaConfirm": "Delete this delivery area? This cannot be undone.",
+    "addGovernorate": "Add governorate",
+    "addGovernorateHint": "For expanding beyond Jordan in the future.",
+    "not_authorized": "You don't have permission to manage shipping zones.",
+    "invalid_input": "Please check the highlighted fields.",
+    "governorate_required": "Please select a governorate.",
+    "save_failed": "Couldn't save. Please try again.",
+    "delete_failed": "Couldn't delete. Please try again.",
+    "area_in_use": "This area has real orders and can't be deleted — deactivate it instead.",
+    "governorate_in_use": "This governorate is referenced by real orders and can't be deleted.",
+    "governorate_has_areas": "Delete or move this governorate's delivery areas first."
   }
 }
