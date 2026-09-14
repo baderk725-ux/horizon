@@ -241,7 +241,8 @@
       "notifications": "Notifications",
       "staff": "Staff",
       "settings": "Settings",
-      "wholesale": "Wholesale"
+      "wholesale": "Wholesale",
+      "bundles": "Bundles"
     }
   },
   "adminCategories": {
@@ -713,5 +714,43 @@
     "stale_or_unauthorized": "This application's status changed since you loaded the page — refresh and try again.",
     "update_failed": "Couldn't update the application. Please try again.",
     "save_failed": "Couldn't save. Please try again."
+  },
+  "adminBundles": {
+    "pageTitle": "Bundles",
+    "hint": "Fixed product sets sold at a combined price. Note: bundles are not yet purchasable as a single cart item — customers currently buy the individual products separately. This page manages the catalog/pricing definition only.",
+    "title": "Bundles",
+    "newBundle": "New bundle",
+    "cancel": "Cancel",
+    "empty": "No bundles yet.",
+    "name": "Name",
+    "nameEn": "Name (English)",
+    "nameAr": "Name (Arabic)",
+    "descriptionEn": "Description (English)",
+    "descriptionAr": "Description (Arabic)",
+    "bundlePrice": "Bundle price",
+    "sumOfComponents": "Sum of individual prices",
+    "productsCount": "Products",
+    "addProductToBundle": "Add a product to this bundle",
+    "remove": "Remove",
+    "isActive": "Active",
+    "status": "Status",
+    "actions": "Actions",
+    "active": "Active",
+    "inactive": "Inactive",
+    "edit": "Edit",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "delete": "Delete",
+    "save": "Save",
+    "saving": "Saving…",
+    "create": "Create",
+    "loading": "Loading…",
+    "deleteConfirm": "Delete bundle \"{name}\"? This can't be undone.",
+    "not_authorized": "You don't have permission to manage bundles.",
+    "invalid_input": "Please check the highlighted fields — a bundle needs at least two products.",
+    "at_least_two_products": "A bundle needs at least two products.",
+    "save_failed": "Couldn't save the bundle. Please try again.",
+    "delete_failed": "Couldn't delete the bundle. Please try again.",
+    "bundle_in_use": "This bundle has past orders and can't be deleted — deactivate it instead."
   }
 }
