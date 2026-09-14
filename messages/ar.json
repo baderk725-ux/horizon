@@ -200,7 +200,24 @@
     "invalid_input": "يرجى اختيار سبب.",
     "order_not_eligible_for_return": "هذا الطلب غير مؤهل للإرجاع.",
     "return_already_open": "يوجد طلب إرجاع مفتوح بالفعل لهذا الطلب.",
-    "save_failed": "تعذّر إرسال طلب الإرجاع. حاول مرة أخرى."
+    "save_failed": "تعذّر إرسال طلب الإرجاع. حاول مرة أخرى.",
+    "fullName": "الاسم الكامل",
+    "companyName": "اسم الشركة",
+    "selectGovernorate": "اختر المحافظة",
+    "commercialRegistrationNumber": "رقم السجل التجاري",
+    "commercialDocument": "وثيقة السجل التجاري",
+    "wholesaleNotes": "ملاحظات (اختياري)",
+    "submitApplication": "إرسال الطلب",
+    "wholesaleTitle": "حساب الجملة",
+    "wholesaleHint": "قدّم طلبًا لحساب جملة للوصول إلى أسعار الجملة على المنتجات المؤهلة.",
+    "wholesalePending": "طلب حساب الجملة الخاص بك قيد المراجعة. سنُعلمك عند اتخاذ القرار.",
+    "wholesaleApproved": "حساب الجملة الخاص بك مفعّل — تُطبَّق أسعار الجملة حيثما توفرت.",
+    "wholesaleRejectedNotice": "لم تتم الموافقة على طلبك السابق. يمكنك تقديم طلب جديد أدناه.",
+    "document_required": "يرجى إرفاق وثيقة السجل التجاري.",
+    "file_too_large": "الملف كبير جدًا (10 ميغابايت كحد أقصى).",
+    "invalid_file_type": "يرجى إرفاق ملف PDF أو JPG أو PNG أو WEBP.",
+    "application_already_open": "لديك بالفعل طلب قيد المراجعة أو حساب جملة مفعّل.",
+    "upload_failed": "تعذّر رفع الوثيقة. حاول مرة أخرى."
   },
   "admin": {
     "signIn": "دخول لوحة التحكم",
@@ -223,7 +240,8 @@
       "returns": "المرتجعات",
       "notifications": "الإشعارات",
       "staff": "الموظفون",
-      "settings": "الإعدادات"
+      "settings": "الإعدادات",
+      "wholesale": "الجملة"
     }
   },
   "adminCategories": {
@@ -642,5 +660,58 @@
     "not_authorized": "ليس لديك صلاحية لإدارة الإعدادات.",
     "invalid_input": "يرجى مراجعة الحقول المحددة.",
     "save_failed": "تعذّر حفظ الإعدادات. حاول مرة أخرى."
+  },
+  "adminWholesale": {
+    "title": "طلبات الجملة",
+    "hint": "راجع طلبات حسابات الجملة (B2B). الموافقة تمنح صلاحية أسعار الجملة فورًا.",
+    "allApplications": "الكل",
+    "empty": "لا توجد طلبات.",
+    "company": "الشركة",
+    "contact": "التواصل",
+    "submitted": "تاريخ التقديم",
+    "reviewed": "تاريخ المراجعة",
+    "status": {
+      "label": "الحالة",
+      "pending": "قيد الانتظار",
+      "approved": "موافق عليه",
+      "rejected": "مرفوض"
+    },
+    "approve": "موافقة",
+    "reject": "رفض",
+    "confirmReject": "رفض طلب الجملة هذا؟",
+    "applicationDetails": "تفاصيل الطلب",
+    "contactName": "اسم جهة الاتصال",
+    "phone": "الهاتف",
+    "email": "البريد الإلكتروني",
+    "address": "العنوان",
+    "commercialRegistrationNumber": "رقم السجل التجاري",
+    "commercialDocument": "الوثيقة التجارية",
+    "viewDocument": "عرض الوثيقة",
+    "wholesaleNotes": "ملاحظات",
+    "viewLedger": "عرض الرسوم والمدفوعات",
+    "charges": "الرسوم",
+    "payments": "المدفوعات",
+    "chargeDescription": "الوصف",
+    "amount": "المبلغ",
+    "dueDate": "تاريخ الاستحقاق",
+    "addCharge": "إضافة رسم",
+    "noCharges": "لا توجد رسوم بعد.",
+    "chargeStatus": {
+      "pending": "قيد الانتظار",
+      "paid": "مدفوع"
+    },
+    "appliesToCharge": "يُطبَّق على الرسم",
+    "unallocated": "— غير مخصص —",
+    "method": "الطريقة",
+    "paymentDate": "التاريخ",
+    "recordPayment": "تسجيل دفعة",
+    "noPayments": "لا توجد مدفوعات بعد.",
+    "saving": "جارٍ الحفظ…",
+    "not_authorized": "ليس لديك صلاحية لإدارة حسابات الجملة.",
+    "invalid_input": "يرجى مراجعة الحقول المحددة.",
+    "invalid_transition": "هذا القرار غير مسموح من الحالة الحالية للطلب.",
+    "stale_or_unauthorized": "تغيّرت حالة هذا الطلب منذ تحميل الصفحة — أعد التحميل وحاول مجددًا.",
+    "update_failed": "تعذّر تحديث الطلب. حاول مرة أخرى.",
+    "save_failed": "تعذّر الحفظ. حاول مرة أخرى."
   }
 }

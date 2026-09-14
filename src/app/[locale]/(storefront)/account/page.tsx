@@ -57,6 +57,15 @@ export default async function AccountPage(props: {
         {t("myOrders")}
       </Link>
 
+      {role === "customer" && (
+        <Link
+          href="/account/wholesale"
+          className="mt-4 block text-sm font-medium uppercase tracking-wider text-brand-700 underline hover:text-brand-900"
+        >
+          {t("wholesaleTitle")}
+        </Link>
+      )}
+
       <SignOutButton className="mt-4 block text-sm font-medium uppercase tracking-wider text-brand-700 underline hover:text-brand-900" />
     </Container>
   );

@@ -200,7 +200,24 @@
     "invalid_input": "Please choose a reason.",
     "order_not_eligible_for_return": "This order isn't eligible for a return.",
     "return_already_open": "A return request is already open for this order.",
-    "save_failed": "Couldn't submit your return request. Please try again."
+    "save_failed": "Couldn't submit your return request. Please try again.",
+    "fullName": "Full name",
+    "companyName": "Company name",
+    "selectGovernorate": "Select a governorate",
+    "commercialRegistrationNumber": "Commercial registration number",
+    "commercialDocument": "Commercial registration document",
+    "wholesaleNotes": "Notes (optional)",
+    "submitApplication": "Submit application",
+    "wholesaleTitle": "Wholesale account",
+    "wholesaleHint": "Apply for a wholesale account to access wholesale pricing on eligible products.",
+    "wholesalePending": "Your wholesale application is under review. We'll notify you once it's decided.",
+    "wholesaleApproved": "Your wholesale account is active — wholesale pricing applies where available.",
+    "wholesaleRejectedNotice": "Your previous application wasn't approved. You can submit a new one below.",
+    "document_required": "Please attach your commercial registration document.",
+    "file_too_large": "The file is too large (10MB max).",
+    "invalid_file_type": "Please attach a PDF, JPG, PNG, or WEBP file.",
+    "application_already_open": "You already have an application under review or an active wholesale account.",
+    "upload_failed": "Couldn't upload the document. Please try again."
   },
   "admin": {
     "signIn": "Admin sign in",
@@ -223,7 +240,8 @@
       "returns": "Returns",
       "notifications": "Notifications",
       "staff": "Staff",
-      "settings": "Settings"
+      "settings": "Settings",
+      "wholesale": "Wholesale"
     }
   },
   "adminCategories": {
@@ -642,5 +660,58 @@
     "not_authorized": "You don't have permission to manage settings.",
     "invalid_input": "Please check the highlighted fields.",
     "save_failed": "Couldn't save settings. Please try again."
+  },
+  "adminWholesale": {
+    "title": "Wholesale Applications",
+    "hint": "Review B2B wholesale account requests. Approving grants wholesale pricing access immediately.",
+    "allApplications": "All",
+    "empty": "No applications.",
+    "company": "Company",
+    "contact": "Contact",
+    "submitted": "Submitted",
+    "reviewed": "Reviewed",
+    "status": {
+      "label": "Status",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "approve": "Approve",
+    "reject": "Reject",
+    "confirmReject": "Reject this wholesale application?",
+    "applicationDetails": "Application details",
+    "contactName": "Contact name",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "commercialRegistrationNumber": "Commercial registration number",
+    "commercialDocument": "Commercial document",
+    "viewDocument": "View document",
+    "wholesaleNotes": "Notes",
+    "viewLedger": "View charges & payments",
+    "charges": "Charges",
+    "payments": "Payments",
+    "chargeDescription": "Description",
+    "amount": "Amount",
+    "dueDate": "Due date",
+    "addCharge": "Add charge",
+    "noCharges": "No charges yet.",
+    "chargeStatus": {
+      "pending": "Pending",
+      "paid": "Paid"
+    },
+    "appliesToCharge": "Applies to charge",
+    "unallocated": "— Unallocated —",
+    "method": "Method",
+    "paymentDate": "Date",
+    "recordPayment": "Record payment",
+    "noPayments": "No payments yet.",
+    "saving": "Saving…",
+    "not_authorized": "You don't have permission to manage wholesale accounts.",
+    "invalid_input": "Please check the highlighted fields.",
+    "invalid_transition": "That decision isn't allowed from the application's current state.",
+    "stale_or_unauthorized": "This application's status changed since you loaded the page — refresh and try again.",
+    "update_failed": "Couldn't update the application. Please try again.",
+    "save_failed": "Couldn't save. Please try again."
   }
 }
