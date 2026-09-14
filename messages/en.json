@@ -245,7 +245,8 @@
       "bundles": "Bundles",
       "suppliers": "Suppliers",
       "purchaseOrders": "Purchase Orders",
-      "finance": "Finance"
+      "finance": "Finance",
+      "payroll": "Payroll"
     }
   },
   "adminCategories": {
@@ -853,5 +854,35 @@
     "invalid_input": "Please check the highlighted fields.",
     "save_failed": "Couldn't save the expense. Please try again.",
     "delete_failed": "Couldn't delete the expense. Please try again."
+  },
+  "adminPayroll": {
+    "title": "Payroll",
+    "hint": "Staff salary records and payment history. This is simple record-keeping, not automated tax/deduction processing.",
+    "name": "Name",
+    "role": "Role",
+    "monthlySalary": "Monthly salary",
+    "actions": "Actions",
+    "setSalary": "Set salary",
+    "editSalary": "Edit",
+    "paymentHistory": "Payment history",
+    "period": "Period",
+    "periodPlaceholder": "e.g. 2026-09",
+    "amount": "Amount",
+    "paymentDate": "Payment date",
+    "notes": "Notes",
+    "recordPayment": "Record payment",
+    "noPayments": "No payments recorded yet.",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "roles": {
+      "super_admin": "Super Admin",
+      "manager": "Manager",
+      "sales": "Sales",
+      "warehouse": "Warehouse"
+    },
+    "not_authorized": "You don't have permission to manage payroll.",
+    "invalid_input": "Please check the highlighted fields.",
+    "save_failed": "Couldn't save. Please try again."
   }
 }

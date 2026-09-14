@@ -893,6 +893,54 @@ export type Database = {
           },
         ]
       }
+      payroll_payments: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          notes: string | null
+          payment_date: string
+          period: string
+          profile_id: string
+          recorded_by: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          payment_date?: string
+          period: string
+          profile_id: string
+          recorded_by?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          notes?: string | null
+          payment_date?: string
+          period?: string
+          profile_id?: string
+          recorded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payroll_payments_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "payroll_payments_recorded_by_fkey"
+            columns: ["recorded_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       product_images: {
         Row: {
           created_at: string
@@ -1451,6 +1499,35 @@ export type Database = {
           value_en?: string | null
         }
         Relationships: []
+      }
+      staff_salaries: {
+        Row: {
+          monthly_salary: number
+          notes: string | null
+          profile_id: string
+          updated_at: string
+        }
+        Insert: {
+          monthly_salary: number
+          notes?: string | null
+          profile_id: string
+          updated_at?: string
+        }
+        Update: {
+          monthly_salary?: number
+          notes?: string | null
+          profile_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "staff_salaries_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       store_settings: {
         Row: {

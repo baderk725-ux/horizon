@@ -245,7 +245,8 @@
       "bundles": "الباقات",
       "suppliers": "الموردون",
       "purchaseOrders": "أوامر الشراء",
-      "finance": "المالية"
+      "finance": "المالية",
+      "payroll": "الرواتب"
     }
   },
   "adminCategories": {
@@ -853,5 +854,35 @@
     "invalid_input": "يرجى مراجعة الحقول المحددة.",
     "save_failed": "تعذّر حفظ المصروف. حاول مرة أخرى.",
     "delete_failed": "تعذّر حذف المصروف. حاول مرة أخرى."
+  },
+  "adminPayroll": {
+    "title": "الرواتب",
+    "hint": "سجلات رواتب الموظفين وتاريخ المدفوعات. هذا مجرد سجل بسيط، وليس معالجة ضرائب/استقطاعات تلقائية.",
+    "name": "الاسم",
+    "role": "الدور",
+    "monthlySalary": "الراتب الشهري",
+    "actions": "إجراءات",
+    "setSalary": "تحديد الراتب",
+    "editSalary": "تعديل",
+    "paymentHistory": "سجل المدفوعات",
+    "period": "الفترة",
+    "periodPlaceholder": "مثال: 2026-09",
+    "amount": "المبلغ",
+    "paymentDate": "تاريخ الدفع",
+    "notes": "ملاحظات",
+    "recordPayment": "تسجيل دفعة",
+    "noPayments": "لا توجد مدفوعات مسجّلة بعد.",
+    "save": "حفظ",
+    "saving": "جارٍ الحفظ…",
+    "cancel": "إلغاء",
+    "roles": {
+      "super_admin": "مدير عام",
+      "manager": "مدير",
+      "sales": "مبيعات",
+      "warehouse": "مستودع"
+    },
+    "not_authorized": "ليس لديك صلاحية لإدارة الرواتب.",
+    "invalid_input": "يرجى مراجعة الحقول المحددة.",
+    "save_failed": "تعذّر الحفظ. حاول مرة أخرى."
   }
 }
