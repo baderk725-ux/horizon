@@ -1,9 +1,22 @@
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import type { ProductCard as ProductCardType } from "@/lib/data/storefront";
 
-export function ProductCard({ product }: { product: ProductCardType }) {
+/** Minimal shape ProductCard needs — satisfied structurally by both the
+ * homepage's ProductCard type and the shop's ShopProduct type, so neither
+ * data-layer module has to import the other's full row shape. */
+export type ProductCardData = {
+  id: string;
+  slug: string;
+  name_en: string;
+  name_ar: string;
+  retail_price: number;
+  original_price: number | null;
+  stock_quantity: number;
+  images: { url: string; sort_order: number }[];
+};
+
+export function ProductCard({ product }: { product: ProductCardData }) {
   const t = useTranslations("product");
   const locale = useLocale();
   const name = locale === "ar" ? product.name_ar : product.name_en;

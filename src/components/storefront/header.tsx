@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/container";
 import { LocaleSwitcher } from "@/components/storefront/locale-switcher";
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import type { getCurrentUser } from "@/lib/data/auth";
+import { getCart } from "@/lib/data/cart";
 
 export async function Header({
   current,
@@ -13,6 +14,7 @@ export async function Header({
   const t = await getTranslations("nav");
   const b = await getTranslations("brand");
   const locale = await getLocale();
+  const cart = await getCart();
 
   const links = [
     { href: "/shop", label: t("shop") },
@@ -61,11 +63,13 @@ export async function Header({
               {t("account")}
             </Link>
           )}
-          <Link href="/wishlist" aria-label={t("wishlist")} className="hover:text-accent-600">
-            {t("wishlist")}
-          </Link>
-          <Link href="/cart" aria-label={t("cart")} className="hover:text-accent-600">
+          <Link href="/cart" aria-label={t("cart")} className="relative hover:text-accent-600">
             {t("cart")}
+            {cart.itemCount > 0 && (
+              <span className="absolute -end-3 -top-2 flex h-4 min-w-4 items-center justify-center rounded-(--radius-pill) bg-accent-500 px-1 text-[10px] font-medium text-paper">
+                {cart.itemCount}
+              </span>
+            )}
           </Link>
         </div>
       </Container>

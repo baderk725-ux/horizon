@@ -28,9 +28,49 @@
   },
   "product": {
     "addToCart": "أضف إلى السلة",
+    "adding": "جارٍ الإضافة…",
     "outOfStock": "نفدت الكمية",
     "lowStock": "كمية محدودة",
-    "currency": "د.أ"
+    "currency": "د.أ",
+    "invalid_quantity": "يرجى اختيار كمية صحيحة.",
+    "product_unavailable": "هذا المنتج لم يعد متوفرًا.",
+    "out_of_stock": "عذرًا، هذه كل الكمية المتوفرة لدينا.",
+    "save_failed": "تعذّر تحديث السلة. يرجى المحاولة مرة أخرى.",
+    "material": "الخامة",
+    "color": "اللون",
+    "dimensions": "الأبعاد",
+    "packageContents": "محتويات العبوة",
+    "reviews": "التقييمات",
+    "relatedProducts": "قد يعجبك أيضًا"
+  },
+  "shop": {
+    "title": "المتجر",
+    "metaDescription": "تصفّحي مجموعة نوڤل هاوسهولد الكاملة — قطع منزلية مميزة ومدروسة بعناية.",
+    "allCategories": "الكل",
+    "search": "بحث…",
+    "sortNewest": "الأحدث",
+    "sortPriceAsc": "السعر: من الأقل للأعلى",
+    "sortPriceDesc": "السعر: من الأعلى للأقل",
+    "resultCount": "{count, plural, =0 {لا توجد منتجات} one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجًا} other {# منتج}}",
+    "noResults": "لا توجد منتجات مطابقة لهذه الفلاتر.",
+    "pagination": "الصفحات"
+  },
+  "cart": {
+    "title": "سلة التسوق",
+    "empty": "سلتك فارغة.",
+    "continueShopping": "متابعة التسوق",
+    "currency": "د.أ",
+    "each": "للقطعة",
+    "subtotal": "المجموع الفرعي",
+    "shippingCalculatedAtCheckout": "يتم احتساب التوصيل وأي خصم عند إتمام الطلب.",
+    "checkout": "إتمام الطلب",
+    "decrease": "إنقاص الكمية",
+    "increase": "زيادة الكمية",
+    "remove": "إزالة",
+    "invalid_quantity": "يرجى اختيار كمية صحيحة.",
+    "not_found": "هذا المنتج لم يعد في سلتك.",
+    "out_of_stock": "الكمية المتوفرة محدودة فقط.",
+    "save_failed": "تعذّر تحديث السلة. يرجى المحاولة مرة أخرى."
   },
   "footer": {
     "rights": "جميع الحقوق محفوظة"

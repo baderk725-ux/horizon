@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { signInSchema, signUpSchema } from "@/lib/validation/auth";
+import { ensureActiveCart } from "@/lib/cart/resolve";
 
 export type AuthActionState = {
   error: string | null;
@@ -27,6 +28,11 @@ export async function signInAction(
   if (error) {
     return { error: error.code === "invalid_credentials" ? "invalid_credentials" : "sign_in_failed" };
   }
+
+  // Claim/merge any guest cart into the now-authenticated user's cart
+  // immediately, so the cart page reflects it without needing another
+  // write action first.
+  await ensureActiveCart();
 
   return { error: null };
 }

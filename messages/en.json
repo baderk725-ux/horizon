@@ -28,9 +28,49 @@
   },
   "product": {
     "addToCart": "Add to cart",
+    "adding": "Adding…",
     "outOfStock": "Out of stock",
     "lowStock": "Low stock",
-    "currency": "JOD"
+    "currency": "JOD",
+    "invalid_quantity": "Please choose a valid quantity.",
+    "product_unavailable": "This product is no longer available.",
+    "out_of_stock": "Sorry, that's all we have in stock.",
+    "save_failed": "Couldn't update your cart. Please try again.",
+    "material": "Material",
+    "color": "Color",
+    "dimensions": "Dimensions",
+    "packageContents": "What's in the box",
+    "reviews": "Reviews",
+    "relatedProducts": "You may also like"
+  },
+  "shop": {
+    "title": "Shop",
+    "metaDescription": "Browse the full NOVEL Household collection — premium, considered pieces for the home.",
+    "allCategories": "All",
+    "search": "Search…",
+    "sortNewest": "Newest",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low",
+    "resultCount": "{count, plural, =0 {No products} one {# product} other {# products}}",
+    "noResults": "No products match these filters.",
+    "pagination": "Pagination"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty.",
+    "continueShopping": "Continue shopping",
+    "currency": "JOD",
+    "each": "each",
+    "subtotal": "Subtotal",
+    "shippingCalculatedAtCheckout": "Shipping and any discount are calculated at checkout.",
+    "checkout": "Checkout",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "remove": "Remove",
+    "invalid_quantity": "Please choose a valid quantity.",
+    "not_found": "This item is no longer in your cart.",
+    "out_of_stock": "Only a limited quantity is available.",
+    "save_failed": "Couldn't update your cart. Please try again."
   },
   "footer": {
     "rights": "All rights reserved"
