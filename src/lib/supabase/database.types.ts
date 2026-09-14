@@ -1595,6 +1595,27 @@ export type Database = {
         }
         Relationships: []
       }
+      theme_settings: {
+        Row: {
+          accent_color: string
+          id: boolean
+          primary_color: string
+          updated_at: string
+        }
+        Insert: {
+          accent_color?: string
+          id?: boolean
+          primary_color?: string
+          updated_at?: string
+        }
+        Update: {
+          accent_color?: string
+          id?: boolean
+          primary_color?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       wholesale_applications: {
         Row: {
           address: string

@@ -4,6 +4,8 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { getThemeSettings } from "@/lib/data/theme";
+import { buildBrandScale, buildAccentScale } from "@/lib/theme/palette";
 import "../globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -59,6 +61,14 @@ export default async function LocaleLayout(props: {
   setRequestLocale(locale);
   const dir = locale === "ar" ? "rtl" : "ltr";
 
+  const theme = await getThemeSettings();
+  const brandScale = buildBrandScale(theme.primary_color);
+  const accentScale = buildAccentScale(theme.accent_color);
+  const themeVars = [
+    ...Object.entries(brandScale).map(([step, hex]) => `--color-brand-${step}:${hex}`),
+    ...Object.entries(accentScale).map(([step, hex]) => `--color-accent-${step}:${hex}`),
+  ].join(";");
+
   return (
     <html
       lang={locale}
@@ -66,6 +76,13 @@ export default async function LocaleLayout(props: {
       className={`${cormorant.variable} ${jost.variable} ${cairo.variable}`}
       data-scroll-behavior="smooth"
     >
+      <head>
+        {/* Runtime theme override — the admin-editable primary/accent colors
+            from theme_settings, derived into the full token scale. Sits
+            after globals.css's @theme block so it wins on specificity
+            without needing !important. */}
+        <style dangerouslySetInnerHTML={{ __html: `:root{${themeVars}}` }} />
+      </head>
       <body>
         <NextIntlClientProvider>{props.children}</NextIntlClientProvider>
       </body>

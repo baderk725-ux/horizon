@@ -263,7 +263,8 @@
       "reports": "Reports",
       "analytics": "Analytics",
       "reviews": "Reviews",
-      "content": "Content"
+      "content": "Content",
+      "theme": "Theme"
     }
   },
   "adminCategories": {
@@ -1002,5 +1003,18 @@
       "trust_ship_desc": "Trust badge — shipping description (unused)",
       "trust_ship_title": "Trust badge — shipping title (unused)"
     }
+  },
+  "adminTheme": {
+    "title": "Theme",
+    "hint": "Pick a primary and accent color for the storefront and admin panel. The full color scale is generated automatically to keep text readable.",
+    "primaryColor": "Primary color",
+    "accentColor": "Accent color",
+    "preview": "Preview",
+    "saving": "Saving...",
+    "save": "Save",
+    "not_authorized": "You are not authorized to do this.",
+    "invalid_input": "Please pick a valid color.",
+    "contrast_too_low": "This primary color is too light — text would not stay readable. Please pick a darker shade.",
+    "save_failed": "Could not save. Please try again."
   }
 }
