@@ -242,7 +242,8 @@
       "staff": "Staff",
       "settings": "Settings",
       "wholesale": "Wholesale",
-      "bundles": "Bundles"
+      "bundles": "Bundles",
+      "suppliers": "Suppliers"
     }
   },
   "adminCategories": {
@@ -752,5 +753,31 @@
     "save_failed": "Couldn't save the bundle. Please try again.",
     "delete_failed": "Couldn't delete the bundle. Please try again.",
     "bundle_in_use": "This bundle has past orders and can't be deleted — deactivate it instead."
+  },
+  "adminSuppliers": {
+    "pageTitle": "Suppliers",
+    "hint": "Manage the suppliers you purchase inventory from.",
+    "title": "Suppliers",
+    "newSupplier": "New supplier",
+    "cancel": "Cancel",
+    "empty": "No suppliers yet.",
+    "name": "Name",
+    "contactPerson": "Contact person",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "notes": "Notes",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "saving": "Saving…",
+    "create": "Create",
+    "deleteConfirm": "Delete supplier \"{name}\"? This can't be undone.",
+    "not_authorized": "You don't have permission to manage suppliers.",
+    "invalid_input": "Please check the highlighted fields.",
+    "save_failed": "Couldn't save the supplier. Please try again.",
+    "delete_failed": "Couldn't delete the supplier. Please try again.",
+    "supplier_in_use": "This supplier has purchase orders and can't be deleted."
   }
 }
