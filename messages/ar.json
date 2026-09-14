@@ -1,0 +1,38 @@
+{
+  "brand": {
+    "name": "نوڤل هاوسهولد",
+    "tagline": "أدوات منزلية"
+  },
+  "nav": {
+    "shop": "المتجر",
+    "categories": "الفئات",
+    "collections": "المجموعات",
+    "about": "من نحن",
+    "contact": "تواصل معنا",
+    "search": "بحث",
+    "cart": "السلة",
+    "account": "حسابي",
+    "wishlist": "المفضلة"
+  },
+  "home": {
+    "heroTitle": "قطع منزلية تدوم",
+    "heroSubtitle": "تصاميم مختارة بعناية لمنزل عصري وهادئ",
+    "shopNow": "تسوّقي الآن",
+    "featured": "منتجات مختارة",
+    "newArrivals": "وصل حديثًا",
+    "shopByCategory": "تسوّقي حسب الفئة",
+    "collections": "مجموعاتنا",
+    "emptyProducts": "لا توجد منتجات منشورة بعد",
+    "emptyCategories": "لا توجد فئات بعد",
+    "emptyCollections": "لا توجد مجموعات بعد"
+  },
+  "product": {
+    "addToCart": "أضف إلى السلة",
+    "outOfStock": "نفدت الكمية",
+    "lowStock": "كمية محدودة",
+    "currency": "د.أ"
+  },
+  "footer": {
+    "rights": "جميع الحقوق محفوظة"
+  }
+}

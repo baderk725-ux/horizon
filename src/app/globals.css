@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/*
+  Design tokens derived from the NOVEL logo: warm taupe/mushroom-brown field
+  (#8B7561) with an ivory/white logotype. This taupe becomes the brand's
+  deep neutral (ink), and a warm ivory becomes the paper/background —
+  giving the quiet, editorial, premium-household feel of the mark instead
+  of a generic e-commerce palette.
+*/
+@theme {
+  /* Brand neutrals — warm taupe/espresso scale sampled from the logo field */
+  --color-brand-50: #faf7f3;
+  --color-brand-100: #f2ebe2;
+  --color-brand-200: #e4d6c6;
+  --color-brand-300: #d0bba3;
+  --color-brand-400: #b59980;
+  --color-brand-500: #9c8069;
+  --color-brand-600: #8b7561; /* logo field color */
+  --color-brand-700: #6f5c4c;
+  --color-brand-800: #574a3e;
+  --color-brand-900: #3c332b;
+  --color-brand-950: #241e19;
+
+  /* Paper / ivory background, warmer than pure white */
+  --color-paper: #faf8f5;
+  --color-paper-muted: #f3efe8;
+
+  /* Muted brass accent — used sparingly for dividers, badges, focus */
+  --color-accent-400: #c7a874;
+  --color-accent-500: #b08d57;
+  --color-accent-600: #93733f;
+
+  /* Semantic */
+  --color-ink: var(--color-brand-900);
+  --color-ink-muted: var(--color-brand-700);
+  --color-border-subtle: var(--color-brand-200);
+  --color-danger: #a3402f;
+  --color-success: #4c6b4f;
+
+  /* Typography */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", "Noto Naskh Arabic", serif;
+  --font-sans: var(--font-jost), var(--font-cairo), "Jost", "Cairo", sans-serif;
+  --font-arabic: var(--font-cairo), "Cairo", sans-serif;
+
+  /* Type scale */
+  --text-display-xl: 3.5rem;
+  --text-display-lg: 2.75rem;
+  --text-display-md: 2.125rem;
+  --text-display-sm: 1.625rem;
+
+  /* Spacing rhythm (4px base) */
+  --spacing-section: 5rem;
+  --spacing-section-sm: 3rem;
+
+  /* Radius */
+  --radius-card: 0.25rem;
+  --radius-button: 0.125rem;
+  --radius-pill: 999px;
+
+  /* Shadows — soft, low-contrast, never harsh */
+  --shadow-card: 0 1px 2px rgba(36, 30, 25, 0.04), 0 8px 24px -12px rgba(36, 30, 25, 0.12);
+  --shadow-card-hover: 0 4px 8px rgba(36, 30, 25, 0.06), 0 16px 32px -12px rgba(36, 30, 25, 0.18);
+
+  /* Container */
+  --container-max: 1440px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+
+::selection {
+  background: var(--color-brand-300);
+  color: var(--color-brand-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

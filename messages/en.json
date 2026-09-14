@@ -1,0 +1,38 @@
+{
+  "brand": {
+    "name": "NOVEL Household",
+    "tagline": "Home Essentials"
+  },
+  "nav": {
+    "shop": "Shop",
+    "categories": "Categories",
+    "collections": "Collections",
+    "about": "About",
+    "contact": "Contact",
+    "search": "Search",
+    "cart": "Cart",
+    "account": "Account",
+    "wishlist": "Wishlist"
+  },
+  "home": {
+    "heroTitle": "Pieces made to last",
+    "heroSubtitle": "Curated home essentials for a calmer, modern home",
+    "shopNow": "Shop now",
+    "featured": "Featured products",
+    "newArrivals": "New arrivals",
+    "shopByCategory": "Shop by category",
+    "collections": "Our collections",
+    "emptyProducts": "No products published yet",
+    "emptyCategories": "No categories yet",
+    "emptyCollections": "No collections yet"
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "outOfStock": "Out of stock",
+    "lowStock": "Low stock",
+    "currency": "JOD"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}
