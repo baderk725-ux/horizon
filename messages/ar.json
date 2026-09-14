@@ -160,7 +160,46 @@
       "customer": "عميلة",
       "wholesale_customer": "عميلة جملة",
       "admin": "مسؤول"
-    }
+    },
+    "myOrders": "طلباتي",
+    "noOrdersYet": "لم تقم بأي طلب بعد.",
+    "currency": "JOD",
+    "orderStatus": {
+      "pending": "قيد الانتظار",
+      "confirmed": "مؤكد",
+      "processing": "قيد التجهيز",
+      "shipped": "تم الشحن",
+      "delivered": "تم التسليم",
+      "cancelled": "ملغى",
+      "returned": "مرتجع"
+    },
+    "returnStatusLabel": "الإرجاع",
+    "returnStatus": {
+      "pending": "بانتظار المراجعة",
+      "approved": "تمت الموافقة",
+      "rejected": "مرفوض",
+      "completed": "مكتمل"
+    },
+    "requestReturn": "طلب إرجاع",
+    "returnReason": "السبب",
+    "returnReasons": {
+      "changed_mind": "غيّرت رأيي",
+      "differs_from_description": "المنتج مختلف عن الوصف",
+      "size_unsuitable": "المقاس/المواصفات غير مناسبة",
+      "damaged": "وصل المنتج تالفًا",
+      "wrong_order": "استلمت منتجًا خاطئًا",
+      "not_received": "لم يصل الطلب",
+      "other": "أخرى"
+    },
+    "returnNotes": "تفاصيل إضافية (اختياري)",
+    "submitReturn": "إرسال الطلب",
+    "submitting": "جارٍ الإرسال…",
+    "cancel": "إلغاء",
+    "not_authorized": "يرجى تسجيل الدخول مرة أخرى.",
+    "invalid_input": "يرجى اختيار سبب.",
+    "order_not_eligible_for_return": "هذا الطلب غير مؤهل للإرجاع.",
+    "return_already_open": "يوجد طلب إرجاع مفتوح بالفعل لهذا الطلب.",
+    "save_failed": "تعذّر إرسال طلب الإرجاع. حاول مرة أخرى."
   },
   "admin": {
     "signIn": "دخول لوحة التحكم",
@@ -179,7 +218,8 @@
       "payments": "المدفوعات",
       "discounts": "الخصومات",
       "customers": "العملاء",
-      "inventory": "المخزون"
+      "inventory": "المخزون",
+      "returns": "المرتجعات"
     }
   },
   "adminCategories": {
@@ -508,5 +548,42 @@
     "not_authorized": "ليس لديك صلاحية لإدارة المخزون.",
     "invalid_input": "يرجى مراجعة الحقول المحددة.",
     "save_failed": "تعذّر حفظ تحديث المخزون. حاول مرة أخرى."
+  },
+  "adminReturns": {
+    "title": "المرتجعات",
+    "hint": "طلبات الإرجاع من العملاء. الموافقة على الإرجاع وإكماله يعيد المخزون تلقائيًا ويحدّث حالة الدفع.",
+    "allReturns": "الكل",
+    "empty": "لا توجد طلبات إرجاع.",
+    "reason": "السبب",
+    "reasonNotes": "ملاحظات العميل",
+    "returnFor": "إرجاع للطلب",
+    "returnDetails": "تفاصيل الإرجاع",
+    "viewOrder": "عرض الطلب",
+    "status": {
+      "label": "الحالة",
+      "pending": "قيد الانتظار",
+      "approved": "تمت الموافقة",
+      "rejected": "مرفوض",
+      "completed": "مكتمل"
+    },
+    "actions": {
+      "approved": "موافقة",
+      "rejected": "رفض",
+      "completed": "تعليم كمكتمل"
+    },
+    "confirmTransition": "تغيير حالة هذا الإرجاع إلى {status}؟",
+    "not_authorized": "ليس لديك صلاحية لإدارة المرتجعات.",
+    "invalid_transition": "هذا التغيير في الحالة غير مسموح من الحالة الحالية للإرجاع.",
+    "stale_or_unauthorized": "تغيّرت حالة هذا الإرجاع منذ تحميل الصفحة — أعد التحميل وحاول مجددًا.",
+    "update_failed": "تعذّر تحديث الإرجاع. حاول مرة أخرى.",
+    "reasonLabels": {
+      "changed_mind": "غيّر العميل رأيه",
+      "differs_from_description": "المنتج مختلف عن الوصف",
+      "size_unsuitable": "المقاس/المواصفات غير مناسبة",
+      "damaged": "وصل المنتج تالفًا",
+      "wrong_order": "استلم منتجًا خاطئًا",
+      "not_received": "لم يصل الطلب",
+      "other": "أخرى"
+    }
   }
 }

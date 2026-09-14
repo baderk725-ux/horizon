@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { redirect } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 import { SignOutButton } from "@/components/auth/sign-out-button";
+import { Link } from "@/i18n/navigation";
 import { getCurrentUser } from "@/lib/data/auth";
 
 export default async function AccountPage(props: {
@@ -49,7 +50,14 @@ export default async function AccountPage(props: {
         )}
       </dl>
 
-      <SignOutButton className="mt-8 inline-block text-sm font-medium uppercase tracking-wider text-brand-700 underline hover:text-brand-900" />
+      <Link
+        href="/account/orders"
+        className="mt-8 inline-block text-sm font-medium uppercase tracking-wider text-brand-700 underline hover:text-brand-900"
+      >
+        {t("myOrders")}
+      </Link>
+
+      <SignOutButton className="mt-4 block text-sm font-medium uppercase tracking-wider text-brand-700 underline hover:text-brand-900" />
     </Container>
   );
 }

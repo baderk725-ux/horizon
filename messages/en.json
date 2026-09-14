@@ -160,7 +160,46 @@
       "customer": "Customer",
       "wholesale_customer": "Wholesale customer",
       "admin": "Administrator"
-    }
+    },
+    "myOrders": "My orders",
+    "noOrdersYet": "You haven't placed any orders yet.",
+    "currency": "JOD",
+    "orderStatus": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "returned": "Returned"
+    },
+    "returnStatusLabel": "Return",
+    "returnStatus": {
+      "pending": "Requested",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "completed": "Completed"
+    },
+    "requestReturn": "Request a return",
+    "returnReason": "Reason",
+    "returnReasons": {
+      "changed_mind": "Changed my mind",
+      "differs_from_description": "Item differs from description",
+      "size_unsuitable": "Size/fit not suitable",
+      "damaged": "Item arrived damaged",
+      "wrong_order": "Received the wrong item",
+      "not_received": "Never received the order",
+      "other": "Other"
+    },
+    "returnNotes": "Additional details (optional)",
+    "submitReturn": "Submit request",
+    "submitting": "Submitting…",
+    "cancel": "Cancel",
+    "not_authorized": "Please sign in again.",
+    "invalid_input": "Please choose a reason.",
+    "order_not_eligible_for_return": "This order isn't eligible for a return.",
+    "return_already_open": "A return request is already open for this order.",
+    "save_failed": "Couldn't submit your return request. Please try again."
   },
   "admin": {
     "signIn": "Admin sign in",
@@ -179,7 +218,8 @@
       "payments": "Payments",
       "discounts": "Discounts",
       "customers": "Customers",
-      "inventory": "Inventory"
+      "inventory": "Inventory",
+      "returns": "Returns"
     }
   },
   "adminCategories": {
@@ -508,5 +548,42 @@
     "not_authorized": "You don't have permission to manage inventory.",
     "invalid_input": "Please check the highlighted fields.",
     "save_failed": "Couldn't save the stock update. Please try again."
+  },
+  "adminReturns": {
+    "title": "Returns",
+    "hint": "Return requests from customers. Approving and completing a return automatically restores stock and reflects payment status.",
+    "allReturns": "All",
+    "empty": "No return requests.",
+    "reason": "Reason",
+    "reasonNotes": "Customer notes",
+    "returnFor": "Return for",
+    "returnDetails": "Return details",
+    "viewOrder": "View order",
+    "status": {
+      "label": "Status",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "completed": "Completed"
+    },
+    "actions": {
+      "approved": "Approve",
+      "rejected": "Reject",
+      "completed": "Mark completed"
+    },
+    "confirmTransition": "Change this return's status to {status}?",
+    "not_authorized": "You don't have permission to manage returns.",
+    "invalid_transition": "That status change isn't allowed from the return's current state.",
+    "stale_or_unauthorized": "This return's status changed since you loaded the page — refresh and try again.",
+    "update_failed": "Couldn't update the return. Please try again.",
+    "reasonLabels": {
+      "changed_mind": "Changed their mind",
+      "differs_from_description": "Item differs from description",
+      "size_unsuitable": "Size/fit not suitable",
+      "damaged": "Item arrived damaged",
+      "wrong_order": "Received the wrong item",
+      "not_received": "Never received the order",
+      "other": "Other"
+    }
   }
 }

@@ -1390,7 +1390,9 @@ export type Database = {
           order_id: string
           reason: Database["public"]["Enums"]["return_reason"]
           reason_notes: string | null
+          resolved_by_admin_id: string | null
           status: string
+          updated_at: string
         }
         Insert: {
           created_at?: string
@@ -1398,7 +1400,9 @@ export type Database = {
           order_id: string
           reason: Database["public"]["Enums"]["return_reason"]
           reason_notes?: string | null
+          resolved_by_admin_id?: string | null
           status?: string
+          updated_at?: string
         }
         Update: {
           created_at?: string
@@ -1406,7 +1410,9 @@ export type Database = {
           order_id?: string
           reason?: Database["public"]["Enums"]["return_reason"]
           reason_notes?: string | null
+          resolved_by_admin_id?: string | null
           status?: string
+          updated_at?: string
         }
         Relationships: [
           {
@@ -1414,6 +1420,13 @@ export type Database = {
             columns: ["order_id"]
             isOneToOne: false
             referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "returns_resolved_by_admin_id_fkey"
+            columns: ["resolved_by_admin_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
