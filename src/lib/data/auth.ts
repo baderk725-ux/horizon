@@ -32,3 +32,10 @@ export async function getCurrentUser(): Promise<{
 export function isAdmin(profile: Profile | null): boolean {
   return profile?.role === "admin";
 }
+
+/** super_admin is the only staff_role admin_has() grants every area to
+ * (including 'admin_users', which every other role is hard-denied) — the
+ * one role allowed to manage staff accounts at all. */
+export function isSuperAdmin(profile: Profile | null): boolean {
+  return profile?.role === "admin" && profile?.staff_role === "super_admin";
+}

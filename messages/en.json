@@ -220,7 +220,8 @@
       "customers": "Customers",
       "inventory": "Inventory",
       "returns": "Returns",
-      "notifications": "Notifications"
+      "notifications": "Notifications",
+      "staff": "Staff"
     }
   },
   "adminCategories": {
@@ -593,5 +594,35 @@
     "empty": "No notifications yet.",
     "markRead": "Mark read",
     "markAllRead": "Mark all as read"
+  },
+  "adminStaff": {
+    "title": "Staff & Roles",
+    "hint": "Manage who has admin access and what each staff member can do.",
+    "superAdminOnly": "Only a Super Admin can manage staff accounts.",
+    "grantStaffAccess": "Grant staff access",
+    "grantStaffAccessHint": "Search for an existing customer account to promote to staff.",
+    "searchCustomers": "Search by name or email…",
+    "searching": "Searching…",
+    "promoting": "Granting staff access to",
+    "grantAccess": "Grant access",
+    "currentStaff": "Current staff",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "removeStaffAccess": "Remove staff access",
+    "confirmDemote": "Remove this person's staff access? They'll become a regular customer account.",
+    "roles": {
+      "super_admin": "Super Admin — full access",
+      "manager": "Manager — full operational access",
+      "sales": "Sales — orders & customers",
+      "warehouse": "Warehouse — orders, inventory & delivery"
+    },
+    "not_authorized": "You don't have permission to manage staff.",
+    "invalid_input": "Please choose a role.",
+    "save_failed": "Couldn't save this change. Please try again.",
+    "last_super_admin": "This is the last Super Admin — remove or change someone else's role first, or promote another Super Admin before changing this one."
   }
 }

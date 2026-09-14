@@ -49,6 +49,7 @@ export default async function AdminProtectedLayout(props: {
     { href: "/admin/products", label: t("nav.products") },
     { href: "/admin/categories", label: t("nav.categories") },
     { href: "/admin/shipping", label: t("nav.shipping") },
+    { href: "/admin/staff", label: t("nav.staff") },
   ];
 
   const unreadCount = await getUnreadNotificationCount();
