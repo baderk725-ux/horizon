@@ -28,6 +28,18 @@ export async function getTopCategories(): Promise<CategoryRow[]> {
   return data ?? [];
 }
 
+/** A single category by slug — used to give /shop?category=slug its own
+ * title/heading (this is where category browsing actually lives; there is
+ * no separate /category/[slug] route, see getShopProducts). Returns null
+ * for an unknown slug rather than throwing, matching getCollectionBySlug's
+ * not-found convention. */
+export async function getCategoryBySlug(slug: string): Promise<CategoryRow | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("categories").select("*").eq("slug", slug).maybeSingle();
+  if (error) throw error;
+  return data ?? null;
+}
+
 /** Collections placed on the homepage, in admin-defined order. */
 export async function getHomeCollections(): Promise<CollectionRow[]> {
   const supabase = await createClient();
@@ -62,27 +74,30 @@ export type CollectionWithProducts = CollectionRow & { products: ProductCard[] }
  * thrown error, so the page can render a clean 404. */
 export async function getCollectionBySlug(slug: string): Promise<CollectionWithProducts | null> {
   const supabase = await createClient();
-  const { data: collection } = await supabase
+  const { data: collection, error: collectionError } = await supabase
     .from("collections")
     .select("*")
     .eq("slug", slug)
     .eq("is_active", true)
     .maybeSingle();
+  if (collectionError) throw collectionError;
   if (!collection) return null;
 
-  const { data: links } = await supabase
+  const { data: links, error: linksError } = await supabase
     .from("collection_products")
     .select("product_id, sort_order")
     .eq("collection_id", collection.id)
     .order("sort_order", { ascending: true });
+  if (linksError) throw linksError;
 
   const productIds = (links ?? []).map((l) => l.product_id);
   if (productIds.length === 0) return { ...collection, products: [] };
 
-  const { data: products } = await supabase
+  const { data: products, error: productsError } = await supabase
     .from("products_storefront")
     .select("*")
     .in("id", productIds);
+  if (productsError) throw productsError;
 
   const byId = new Map((products ?? []).map((p) => [p.id, p]));
   const ordered = productIds.map((id) => byId.get(id)).filter((p): p is NonNullable<typeof p> => !!p);

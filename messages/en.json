@@ -68,7 +68,9 @@
     "sortPriceDesc": "Price: high to low",
     "resultCount": "{count, plural, =0 {No products} one {# product} other {# products}}",
     "noResults": "No products match these filters.",
-    "pagination": "Pagination"
+    "pagination": "Pagination",
+    "categoryTitle": "{category}",
+    "categoryMetaDescription": "Shop {category} at NOVEL Household."
   },
   "cart": {
     "title": "Your cart",

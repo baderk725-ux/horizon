@@ -4,13 +4,36 @@ import { Container } from "@/components/ui/container";
 import { ProductCard } from "@/components/storefront/product-card";
 import { ShopFilters } from "@/components/storefront/shop-filters";
 import { getShopProducts, type ShopSort } from "@/lib/data/shop";
-import { getTopCategories } from "@/lib/data/storefront";
+import { getTopCategories, getCategoryBySlug, type CategoryRow } from "@/lib/data/storefront";
 
+/**
+ * `?category=slug` renders genuinely different content from the
+ * unfiltered listing (this is where /category/[slug] browsing actually
+ * lives — see lib/data/storefront.ts), so it needs its own title and a
+ * canonical that includes the query string. Reusing generic shop
+ * metadata for every category would make search engines see many
+ * different pages as duplicates of one canonical URL.
+ */
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ category?: string }>;
 }): Promise<Metadata> {
   const { locale } = await props.params;
+  const { category: categorySlug } = await props.searchParams;
   const t = await getTranslations({ locale, namespace: "shop" });
+
+  if (categorySlug) {
+    const category = await getCategoryBySlug(categorySlug);
+    if (category) {
+      const name = locale === "ar" ? category.name_ar : category.name_en;
+      return {
+        title: t("categoryTitle", { category: name }),
+        description: t("categoryMetaDescription", { category: name }),
+        alternates: { canonical: `/${locale}/shop?category=${categorySlug}` },
+      };
+    }
+  }
+
   return {
     title: t("title"),
     description: t("metaDescription"),
@@ -31,7 +54,7 @@ export default async function ShopPage(props: {
     ? (searchParams.sort as ShopSort)
     : "newest";
 
-  const [{ products, total, page, pageCount }, categories] = await Promise.all([
+  const [{ products, total, page, pageCount }, categories, activeCategory] = await Promise.all([
     getShopProducts({
       categorySlug: searchParams.category,
       search: searchParams.q,
@@ -39,11 +62,13 @@ export default async function ShopPage(props: {
       page: searchParams.page ? Number(searchParams.page) : 1,
     }),
     getTopCategories(),
+    searchParams.category ? getCategoryBySlug(searchParams.category) : Promise.resolve<CategoryRow | null>(null),
   ]);
+  const heading = activeCategory ? (locale === "ar" ? activeCategory.name_ar : activeCategory.name_en) : t("title");
 
   return (
     <Container className="py-(--spacing-section)">
-      <h1 className="text-center font-display text-display-sm text-brand-900">{t("title")}</h1>
+      <h1 className="text-center font-display text-display-sm text-brand-900">{heading}</h1>
 
       <ShopFilters
         categories={categories}

@@ -68,7 +68,9 @@
     "sortPriceDesc": "السعر: من الأعلى للأقل",
     "resultCount": "{count, plural, =0 {لا توجد منتجات} one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجًا} other {# منتج}}",
     "noResults": "لا توجد منتجات مطابقة لهذه الفلاتر.",
-    "pagination": "الصفحات"
+    "pagination": "الصفحات",
+    "categoryTitle": "{category}",
+    "categoryMetaDescription": "تسوّق {category} من نوفِل."
   },
   "cart": {
     "title": "سلة التسوق",
