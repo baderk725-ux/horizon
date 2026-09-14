@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/supabase/database.types";
 import type { ProductCardData } from "@/components/storefront/product-card";
 import { attachImagesToProducts } from "@/lib/data/product-listing";
+import { getCurrentUser } from "@/lib/data/auth";
 
 type CategoryRow = Database["public"]["Tables"]["categories"]["Row"];
 
@@ -78,6 +79,7 @@ export type ProductDetail = ShopProduct & {
   reviews: { rating: number; comment: string | null; created_at: string }[];
   averageRating: number | null;
   reviewCount: number;
+  hasReviewed: boolean;
   related: ShopProduct[];
 };
 
@@ -130,6 +132,22 @@ export async function getProductBySlug(slug: string): Promise<ProductDetail | nu
       ? reviewList.reduce((sum, r) => sum + r.rating, 0) / reviewList.length
       : null;
 
+  // reviews_select_own RLS lets a customer see their own review regardless
+  // of approval status — used here only to decide whether to still offer
+  // the submission form, never merged into the public `reviews` list above
+  // (which stays approved-only).
+  const current = await getCurrentUser();
+  let hasReviewed = false;
+  if (current) {
+    const { data: own } = await supabase
+      .from("product_reviews")
+      .select("id")
+      .eq("product_id", product.id!)
+      .eq("customer_id", current.userId)
+      .maybeSingle();
+    hasReviewed = !!own;
+  }
+
   return {
     ...card,
     description_en: product.description_en,
@@ -144,6 +162,7 @@ export async function getProductBySlug(slug: string): Promise<ProductDetail | nu
     reviews: reviewList,
     averageRating,
     reviewCount: reviewList.length,
+    hasReviewed,
     related,
   };
 }

@@ -41,7 +41,17 @@
     "dimensions": "الأبعاد",
     "packageContents": "محتويات العبوة",
     "reviews": "التقييمات",
-    "relatedProducts": "قد يعجبك أيضًا"
+    "relatedProducts": "قد يعجبك أيضًا",
+    "leaveReview": "أضف تقييمًا",
+    "rating": "التقييم",
+    "comment": "تعليق (اختياري)",
+    "submitReview": "إرسال التقييم",
+    "submitting": "جارٍ الإرسال…",
+    "reviewSubmitted": "شكرًا — تقييمك بانتظار الموافقة.",
+    "alreadyReviewed": "لقد قيّمت هذا المنتج من قبل.",
+    "not_authorized": "يرجى تسجيل الدخول لإضافة تقييم.",
+    "invalid_input": "يرجى اختيار تقييم.",
+    "already_reviewed": "لقد قيّمت هذا المنتج من قبل."
   },
   "shop": {
     "title": "المتجر",
@@ -247,7 +257,9 @@
       "purchaseOrders": "أوامر الشراء",
       "finance": "المالية",
       "payroll": "الرواتب",
-      "reports": "التقارير"
+      "reports": "التقارير",
+      "analytics": "التحليلات",
+      "reviews": "التقييمات"
     }
   },
   "adminCategories": {
@@ -905,5 +917,34 @@
     "topProducts": "أفضل المنتجات",
     "unitsSold": "الوحدات المباعة",
     "noData": "لا توجد بيانات لهذه الفترة."
+  },
+  "adminReviews": {
+    "title": "التقييمات",
+    "hint": "راجع تقييمات العملاء قبل ظهورها في المتجر.",
+    "pending": "قيد الانتظار",
+    "all": "الكل",
+    "empty": "لا توجد تقييمات لعرضها.",
+    "product": "المنتج",
+    "rating": "التقييم",
+    "comment": "التعليق",
+    "status": "الحالة",
+    "actions": "إجراءات",
+    "approved": "معتمد",
+    "pendingStatus": "قيد الانتظار",
+    "approve": "اعتماد",
+    "reject": "رفض",
+    "deleteConfirm": "حذف هذا التقييم؟ لا يمكن التراجع عن هذا الإجراء."
+  },
+  "adminAnalytics": {
+    "title": "التحليلات",
+    "hint": "اتجاهات بصرية لبيانات حقيقية للطلبات والإيرادات والتقييمات.",
+    "revenueTrend": "اتجاه الإيرادات",
+    "last30Days": "آخر 30 يومًا",
+    "orderStatusBreakdown": "توزيع حالات الطلبات",
+    "noOrders": "لا توجد طلبات بعد.",
+    "reviewStats": "التقييمات",
+    "averageRating": "متوسط التقييم",
+    "approvedReviews": "تقييمات معتمدة",
+    "pendingReviews": "تقييمات قيد الانتظار"
   }
 }

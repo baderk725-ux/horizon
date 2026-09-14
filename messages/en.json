@@ -41,7 +41,17 @@
     "dimensions": "Dimensions",
     "packageContents": "What's in the box",
     "reviews": "Reviews",
-    "relatedProducts": "You may also like"
+    "relatedProducts": "You may also like",
+    "leaveReview": "Leave a review",
+    "rating": "Rating",
+    "comment": "Comment (optional)",
+    "submitReview": "Submit review",
+    "submitting": "Submitting…",
+    "reviewSubmitted": "Thanks — your review is awaiting approval.",
+    "alreadyReviewed": "You've already reviewed this product.",
+    "not_authorized": "Please sign in to leave a review.",
+    "invalid_input": "Please choose a rating.",
+    "already_reviewed": "You've already reviewed this product."
   },
   "shop": {
     "title": "Shop",
@@ -247,7 +257,9 @@
       "purchaseOrders": "Purchase Orders",
       "finance": "Finance",
       "payroll": "Payroll",
-      "reports": "Reports"
+      "reports": "Reports",
+      "analytics": "Analytics",
+      "reviews": "Reviews"
     }
   },
   "adminCategories": {
@@ -905,5 +917,34 @@
     "topProducts": "Top products",
     "unitsSold": "Units sold",
     "noData": "No data for this range."
+  },
+  "adminReviews": {
+    "title": "Reviews",
+    "hint": "Moderate customer product reviews before they appear on the storefront.",
+    "pending": "Pending",
+    "all": "All",
+    "empty": "No reviews to show.",
+    "product": "Product",
+    "rating": "Rating",
+    "comment": "Comment",
+    "status": "Status",
+    "actions": "Actions",
+    "approved": "Approved",
+    "pendingStatus": "Pending",
+    "approve": "Approve",
+    "reject": "Reject",
+    "deleteConfirm": "Delete this review? This can't be undone."
+  },
+  "adminAnalytics": {
+    "title": "Analytics",
+    "hint": "Visual trends over real order, revenue, and review data.",
+    "revenueTrend": "Revenue trend",
+    "last30Days": "Last 30 days",
+    "orderStatusBreakdown": "Order status breakdown",
+    "noOrders": "No orders yet.",
+    "reviewStats": "Reviews",
+    "averageRating": "Average rating",
+    "approvedReviews": "Approved reviews",
+    "pendingReviews": "Pending reviews"
   }
 }

@@ -5,7 +5,9 @@ import { Container } from "@/components/ui/container";
 import { ProductCard } from "@/components/storefront/product-card";
 import { ProductGallery } from "@/components/storefront/product-gallery";
 import { AddToCartButton } from "@/components/storefront/add-to-cart-button";
+import { ReviewForm } from "@/components/storefront/review-form";
 import { getProductBySlug } from "@/lib/data/shop";
+import { getCurrentUser } from "@/lib/data/auth";
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string; slug: string }>;
@@ -40,6 +42,8 @@ export default async function ProductPage(props: {
   if (!product) notFound();
 
   const t = await getTranslations("product");
+  const current = await getCurrentUser();
+  const canReview = !!current && current.profile?.role !== "admin" && !product.hasReviewed;
   const name = locale === "ar" ? product.name_ar : product.name_en;
   const description = locale === "ar" ? product.description_ar : product.description_en;
   const packageContents =
@@ -160,22 +164,28 @@ export default async function ProductPage(props: {
         </div>
       </div>
 
-      {product.reviews.length > 0 && (
+      {(product.reviews.length > 0 || canReview || (current && product.hasReviewed)) && (
         <section className="mt-16 max-w-2xl">
           <h2 className="font-display text-lg text-brand-900">{t("reviews")}</h2>
-          <ul className="mt-4 space-y-4">
-            {product.reviews.map((review, i) => (
-              <li key={i} className="border-b border-brand-200 pb-4">
-                <p className="text-sm text-brand-600">
-                  {"★".repeat(review.rating)}
-                  {"☆".repeat(5 - review.rating)}
-                </p>
-                {review.comment && (
-                  <p className="mt-1 text-sm text-brand-700">{review.comment}</p>
-                )}
-              </li>
-            ))}
-          </ul>
+          {product.reviews.length > 0 && (
+            <ul className="mt-4 space-y-4">
+              {product.reviews.map((review, i) => (
+                <li key={i} className="border-b border-brand-200 pb-4">
+                  <p className="text-sm text-brand-600">
+                    {"★".repeat(review.rating)}
+                    {"☆".repeat(5 - review.rating)}
+                  </p>
+                  {review.comment && (
+                    <p className="mt-1 text-sm text-brand-700">{review.comment}</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+          {canReview && <ReviewForm productId={product.id} productSlug={slug} />}
+          {current && product.hasReviewed && (
+            <p className="mt-6 text-sm text-brand-500">{t("alreadyReviewed")}</p>
+          )}
         </section>
       )}
 
