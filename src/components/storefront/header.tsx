@@ -1,12 +1,18 @@
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 import { LocaleSwitcher } from "@/components/storefront/locale-switcher";
+import { SignOutButton } from "@/components/auth/sign-out-button";
+import type { getCurrentUser } from "@/lib/data/auth";
 
-export function Header() {
-  const t = useTranslations("nav");
-  const b = useTranslations("brand");
-  const locale = useLocale();
+export async function Header({
+  current,
+}: {
+  current: Awaited<ReturnType<typeof getCurrentUser>>;
+}) {
+  const t = await getTranslations("nav");
+  const b = await getTranslations("brand");
+  const locale = await getLocale();
 
   const links = [
     { href: "/shop", label: t("shop") },
@@ -43,9 +49,18 @@ export function Header() {
 
         <div className="flex items-center gap-4 text-sm text-brand-800">
           <LocaleSwitcher />
-          <Link href="/account" aria-label={t("account")} className="hover:text-accent-600">
-            {t("account")}
-          </Link>
+          {current ? (
+            <>
+              <Link href="/account" className="hover:text-accent-600">
+                {current.profile?.full_name?.split(" ")[0] ?? t("account")}
+              </Link>
+              <SignOutButton />
+            </>
+          ) : (
+            <Link href="/sign-in" className="hover:text-accent-600">
+              {t("account")}
+            </Link>
+          )}
           <Link href="/wishlist" aria-label={t("wishlist")} className="hover:text-accent-600">
             {t("wishlist")}
           </Link>

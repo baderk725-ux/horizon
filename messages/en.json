@@ -34,5 +34,47 @@
   },
   "footer": {
     "rights": "All rights reserved"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "signOut": "Sign out",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full name",
+    "phone": "Phone number",
+    "submit": "Continue",
+    "submitting": "Please wait…",
+    "createAccount": "Create an account",
+    "alreadyHaveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "signUpSuccess": "Account created. Check your email to confirm it before signing in.",
+    "invalid_input": "Please check the highlighted fields.",
+    "invalid_credentials": "Incorrect email or password.",
+    "sign_in_failed": "Couldn't sign in. Please try again.",
+    "sign_up_failed": "Couldn't create the account. Please try again.",
+    "email_taken": "An account with this email already exists.",
+    "invalid_phone": "Enter a valid Jordanian mobile number (e.g. 079xxxxxxx)."
+  },
+  "account": {
+    "title": "My account",
+    "signedInAs": "Signed in as",
+    "role": "Role",
+    "memberSince": "Customer since",
+    "notSignedIn": "You're not signed in.",
+    "roles": {
+      "customer": "Customer",
+      "wholesale_customer": "Wholesale customer",
+      "admin": "Administrator"
+    }
+  },
+  "admin": {
+    "signIn": "Admin sign in",
+    "dashboard": "Dashboard",
+    "forbiddenTitle": "You don't have access to this area",
+    "forbiddenBody": "This account isn't an administrator on NOVEL Household. Sign in with an admin account, or go back to the store.",
+    "backToStore": "Back to the store",
+    "signedInAs": "Signed in as",
+    "staffRole": "Staff role"
   }
 }

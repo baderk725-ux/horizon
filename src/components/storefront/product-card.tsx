@@ -7,12 +7,10 @@ export function ProductCard({ product }: { product: ProductCardType }) {
   const t = useTranslations("product");
   const locale = useLocale();
   const name = locale === "ar" ? product.name_ar : product.name_en;
-  const image = [...product.product_images].sort(
+  const image = [...product.images].sort(
     (a, b) => a.sort_order - b.sort_order,
   )[0];
   const outOfStock = product.stock_quantity <= 0;
-  const lowStock =
-    !outOfStock && product.stock_quantity <= product.low_stock_threshold;
   const onSale =
     product.original_price !== null &&
     product.original_price > product.retail_price;
@@ -38,7 +36,7 @@ export function ProductCard({ product }: { product: ProductCardType }) {
         )}
         {onSale && (
           <span className="absolute start-3 top-3 rounded-(--radius-pill) bg-accent-500 px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-paper">
-            {t("currency") === "JOD" ? "Sale" : "تخفيض"}
+            {locale === "ar" ? "تخفيض" : "Sale"}
           </span>
         )}
         {outOfStock && (
@@ -61,9 +59,6 @@ export function ProductCard({ product }: { product: ProductCardType }) {
             </span>
           )}
         </div>
-        {lowStock && (
-          <p className="text-xs text-accent-600">{t("lowStock")}</p>
-        )}
       </div>
     </Link>
   );
