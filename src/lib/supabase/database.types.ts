@@ -1452,6 +1452,39 @@ export type Database = {
         }
         Relationships: []
       }
+      store_settings: {
+        Row: {
+          facebook_url: string | null
+          id: boolean
+          instagram_url: string | null
+          support_email: string | null
+          support_phone: string | null
+          tiktok_url: string | null
+          updated_at: string
+          whatsapp_number: string | null
+        }
+        Insert: {
+          facebook_url?: string | null
+          id?: boolean
+          instagram_url?: string | null
+          support_email?: string | null
+          support_phone?: string | null
+          tiktok_url?: string | null
+          updated_at?: string
+          whatsapp_number?: string | null
+        }
+        Update: {
+          facebook_url?: string | null
+          id?: boolean
+          instagram_url?: string | null
+          support_email?: string | null
+          support_phone?: string | null
+          tiktok_url?: string | null
+          updated_at?: string
+          whatsapp_number?: string | null
+        }
+        Relationships: []
+      }
       suppliers: {
         Row: {
           address: string | null

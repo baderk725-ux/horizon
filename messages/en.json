@@ -127,7 +127,8 @@
     "discount": "Discount"
   },
   "footer": {
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "whatsapp": "WhatsApp"
   },
   "auth": {
     "signIn": "Sign in",
@@ -221,7 +222,8 @@
       "inventory": "Inventory",
       "returns": "Returns",
       "notifications": "Notifications",
-      "staff": "Staff"
+      "staff": "Staff",
+      "settings": "Settings"
     }
   },
   "adminCategories": {
@@ -624,5 +626,21 @@
     "invalid_input": "Please choose a role.",
     "save_failed": "Couldn't save this change. Please try again.",
     "last_super_admin": "This is the last Super Admin — remove or change someone else's role first, or promote another Super Admin before changing this one."
+  },
+  "adminSettings": {
+    "title": "Settings",
+    "hint": "Store contact info and social links shown on the storefront.",
+    "supportEmail": "Support email",
+    "supportPhone": "Support phone",
+    "whatsappNumber": "WhatsApp number",
+    "whatsappPlaceholder": "e.g. 962790000000",
+    "instagramUrl": "Instagram URL",
+    "facebookUrl": "Facebook URL",
+    "tiktokUrl": "TikTok URL",
+    "save": "Save",
+    "saving": "Saving…",
+    "not_authorized": "You don't have permission to manage settings.",
+    "invalid_input": "Please check the highlighted fields.",
+    "save_failed": "Couldn't save settings. Please try again."
   }
 }
