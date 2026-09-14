@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/supabase/database.types";
+import { buildIlikeOrFilter } from "@/lib/supabase/search";
 
 export type StaffProfile = Database["public"]["Tables"]["profiles"]["Row"];
 export type StaffRole = Database["public"]["Enums"]["staff_role"];
@@ -25,7 +26,7 @@ export async function searchPromotableCustomers(term: string): Promise<StaffProf
     .from("profiles")
     .select("*")
     .eq("role", "customer")
-    .or(`full_name.ilike.%${term.trim()}%,email.ilike.%${term.trim()}%`)
+    .or(buildIlikeOrFilter(["full_name", "email"], term.trim()))
     .limit(10);
   if (error) throw error;
   return data ?? [];

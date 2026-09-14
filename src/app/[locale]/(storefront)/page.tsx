@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import { ProductCard } from "@/components/storefront/product-card";
 import {
   getHomeCollections,
@@ -8,6 +10,23 @@ import {
   getTopCategories,
 } from "@/lib/data/storefront";
 import { getSiteContentMap, pickContent } from "@/lib/data/cms";
+
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await props.params;
+  const t = await getTranslations({ locale, namespace: "home" });
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: { canonical: `/${locale}` },
+    openGraph: {
+      title: t("metaTitle"),
+      description: t("metaDescription"),
+      type: "website",
+    },
+  };
+}
 
 export default async function HomePage(props: {
   params: Promise<{ locale: string }>;
@@ -64,15 +83,15 @@ export default async function HomePage(props: {
           ) : (
             <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
               {categories.map((category) => (
-                <a
+                <Link
                   key={category.id}
-                  href={`/${locale}/category/${category.slug}`}
+                  href={{ pathname: "/shop", query: { category: category.slug } }}
                   className="group relative flex aspect-[4/5] items-end overflow-hidden rounded-(--radius-card) bg-brand-100 p-5"
                 >
                   <span className="font-display text-lg text-brand-900 transition-colors group-hover:text-accent-600">
                     {locale === "ar" ? category.name_ar : category.name_en}
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
           )}
@@ -88,9 +107,9 @@ export default async function HomePage(props: {
             </h2>
             <div className="mt-10 grid gap-6 sm:grid-cols-3">
               {collections.map((collection) => (
-                <a
+                <Link
                   key={collection.id}
-                  href={`/${locale}/collection/${collection.slug}`}
+                  href={`/collection/${collection.slug}`}
                   className={`group relative overflow-hidden rounded-(--radius-card) bg-brand-200 ${
                     collection.card_size === "large"
                       ? "sm:col-span-3 aspect-[16/7]"
@@ -102,7 +121,7 @@ export default async function HomePage(props: {
                       {locale === "ar" ? collection.name_ar : collection.name_en}
                     </span>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </Container>

@@ -3,6 +3,7 @@ import type { Database } from "@/lib/supabase/database.types";
 import type { ProductCardData } from "@/components/storefront/product-card";
 import { attachImagesToProducts } from "@/lib/data/product-listing";
 import { getCurrentUser } from "@/lib/data/auth";
+import { buildIlikeOrFilter } from "@/lib/supabase/search";
 
 type CategoryRow = Database["public"]["Tables"]["categories"]["Row"];
 
@@ -18,7 +19,7 @@ export async function getShopProducts(params: {
   page?: number;
 }): Promise<{ products: ShopProduct[]; total: number; page: number; pageCount: number }> {
   const supabase = await createClient();
-  const page = Math.max(1, params.page ?? 1);
+  const page = Math.max(1, Math.floor(Number(params.page) || 1));
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
@@ -37,8 +38,7 @@ export async function getShopProducts(params: {
 
   if (categoryId) query = query.eq("category_id", categoryId);
   if (params.search?.trim()) {
-    const term = params.search.trim();
-    query = query.or(`name_en.ilike.%${term}%,name_ar.ilike.%${term}%`);
+    query = query.or(buildIlikeOrFilter(["name_en", "name_ar"], params.search.trim()));
   }
 
   switch (params.sort) {

@@ -27,7 +27,9 @@
     "collections": "Our collections",
     "emptyProducts": "No products published yet",
     "emptyCategories": "No categories yet",
-    "emptyCollections": "No collections yet"
+    "emptyCollections": "No collections yet",
+    "metaTitle": "NOVEL Household — Homeware, considered",
+    "metaDescription": "Curated home essentials delivered across Jordan, cash on delivery."
   },
   "product": {
     "addToCart": "Add to cart",
@@ -95,7 +97,8 @@
     "coupon_max_uses_reached": "This coupon has reached its usage limit.",
     "coupon_below_minimum": "Your order doesn't meet this coupon's minimum amount.",
     "coupon_code_required": "Enter a coupon code.",
-    "coupon_empty_cart": "Your cart is empty."
+    "coupon_empty_cart": "Your cart is empty.",
+    "couponLabel": "Coupon code"
   },
   "checkout": {
     "title": "Checkout",
@@ -162,7 +165,18 @@
     "sign_in_failed": "Couldn't sign in. Please try again.",
     "sign_up_failed": "Couldn't create the account. Please try again.",
     "email_taken": "An account with this email already exists.",
-    "invalid_phone": "Enter a valid Jordanian mobile number (e.g. 079xxxxxxx)."
+    "invalid_phone": "Enter a valid Jordanian mobile number (e.g. 079xxxxxxx).",
+    "forgotPassword": "Forgot password?",
+    "forgotPasswordHint": "Enter your email and we'll send you a link to reset your password.",
+    "sendResetLink": "Send reset link",
+    "resetEmailSent": "If an account exists for this email, a reset link has been sent.",
+    "backToSignIn": "Back to sign in",
+    "resetPassword": "Reset password",
+    "newPassword": "New password",
+    "updatePassword": "Update password",
+    "resetLinkInvalid": "This reset link is invalid or has expired.",
+    "requestNewLink": "Request a new link",
+    "reset_failed": "Could not update your password. Please try again."
   },
   "account": {
     "title": "My account",
@@ -264,7 +278,8 @@
       "analytics": "Analytics",
       "reviews": "Reviews",
       "content": "Content",
-      "theme": "Theme"
+      "theme": "Theme",
+      "collections": "Collections"
     }
   },
   "adminCategories": {
@@ -636,7 +651,9 @@
     "hint": "New orders, low/out-of-stock alerts, and return requests.",
     "empty": "No notifications yet.",
     "markRead": "Mark read",
-    "markAllRead": "Mark all as read"
+    "markAllRead": "Mark all as read",
+    "all": "All",
+    "unreadOnly": "Unread only"
   },
   "adminStaff": {
     "title": "Staff & Roles",
@@ -666,7 +683,8 @@
     "not_authorized": "You don't have permission to manage staff.",
     "invalid_input": "Please choose a role.",
     "save_failed": "Couldn't save this change. Please try again.",
-    "last_super_admin": "This is the last Super Admin — remove or change someone else's role first, or promote another Super Admin before changing this one."
+    "last_super_admin": "This is the last Super Admin — remove or change someone else's role first, or promote another Super Admin before changing this one.",
+    "confirmSelfRoleChange": "You are changing your own role. If you lower your access, you may lose the ability to undo this. Continue?"
   },
   "adminSettings": {
     "title": "Settings",
@@ -901,7 +919,8 @@
     },
     "not_authorized": "You don't have permission to manage payroll.",
     "invalid_input": "Please check the highlighted fields.",
-    "save_failed": "Couldn't save. Please try again."
+    "save_failed": "Couldn't save. Please try again.",
+    "empty": "No staff on payroll yet."
   },
   "adminReports": {
     "title": "Reports",
@@ -1016,5 +1035,75 @@
     "invalid_input": "Please pick a valid color.",
     "contrast_too_low": "This primary color is too light — text would not stay readable. Please pick a darker shade.",
     "save_failed": "Could not save. Please try again."
+  },
+  "categories": {
+    "title": "Shop by category",
+    "metaDescription": "Browse all product categories.",
+    "empty": "No categories yet."
+  },
+  "collectionsPage": {
+    "title": "Collections",
+    "metaDescription": "Browse curated product collections.",
+    "empty": "No collections yet.",
+    "emptyCollection": "No products in this collection yet."
+  },
+  "contact": {
+    "title": "Contact us",
+    "metaDescription": "Get in touch with NOVEL Household.",
+    "empty": "Contact details are not available right now.",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "email": "Email"
+  },
+  "errors": {
+    "title": "Something went wrong",
+    "body": "An unexpected error occurred. Please try again.",
+    "retry": "Try again",
+    "backHome": "Back to home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist or has moved.",
+    "backHome": "Back to home"
+  },
+  "adminCollections": {
+    "pageTitle": "Collections",
+    "hint": "Curated product groups shown on the homepage and storefront.",
+    "title": "All collections",
+    "newCollection": "New collection",
+    "cancel": "Cancel",
+    "nameEn": "Name (English)",
+    "nameAr": "Name (Arabic)",
+    "slug": "Slug",
+    "placement": "Placement",
+    "placementHome": "Homepage",
+    "placementShopTop": "Top of shop page",
+    "placementHidden": "Hidden",
+    "cardSize": "Card size",
+    "cardSizeNormal": "Normal",
+    "cardSizeLarge": "Large",
+    "sortOrder": "Sort order",
+    "isActive": "Active",
+    "addProduct": "Add a product",
+    "remove": "Remove",
+    "save": "Save",
+    "create": "Create",
+    "saving": "Saving...",
+    "name": "Name",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "edit": "Edit",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "delete": "Delete",
+    "deleteConfirm": "Delete the collection \"{name}\"? This cannot be undone.",
+    "actions": "Actions",
+    "empty": "No collections yet.",
+    "loading": "Loading...",
+    "not_authorized": "You are not authorized to do this.",
+    "invalid_input": "Please check the fields and try again.",
+    "save_failed": "Could not save. Please try again.",
+    "duplicate_slug": "This slug is already used by another collection."
   }
 }

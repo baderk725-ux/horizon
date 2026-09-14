@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/supabase/database.types";
+import { buildIlikeOrFilter } from "@/lib/supabase/search";
 
 export type ManualCustomerRow = Database["public"]["Tables"]["manual_customers"]["Row"];
 export type ProfileRow = Database["public"]["Tables"]["profiles"]["Row"];
@@ -30,7 +31,7 @@ export async function getAdminCustomers(params: {
   page?: number;
 }): Promise<{ customers: AdminCustomer[]; total: number; page: number; pageCount: number }> {
   const supabase = await createClient();
-  const page = Math.max(1, params.page ?? 1);
+  const page = Math.max(1, Math.floor(Number(params.page) || 1));
   const term = params.search?.trim();
 
   let profileQuery = supabase
@@ -42,8 +43,9 @@ export async function getAdminCustomers(params: {
     .select("id, full_name, phone, email, created_at");
 
   if (term) {
-    profileQuery = profileQuery.or(`full_name.ilike.%${term}%,phone.ilike.%${term}%,email.ilike.%${term}%`);
-    manualQuery = manualQuery.or(`full_name.ilike.%${term}%,phone.ilike.%${term}%,email.ilike.%${term}%`);
+    const filter = buildIlikeOrFilter(["full_name", "phone", "email"], term);
+    profileQuery = profileQuery.or(filter);
+    manualQuery = manualQuery.or(filter);
   }
 
   const [{ data: profiles, error: profileError }, { data: manual, error: manualError }] =

@@ -70,7 +70,11 @@ export function CouponForm({
   return (
     <form action={formAction} className="mt-4 flex items-start gap-2">
       <div className="flex-1">
+        <label htmlFor="coupon-code" className="sr-only">
+          {t("couponLabel")}
+        </label>
         <input
+          id="coupon-code"
           type="text"
           name="code"
           placeholder={t("couponPlaceholder")}

@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentUser, isAdmin } from "@/lib/data/auth";
+import { buildIlikeOrFilter } from "@/lib/supabase/search";
 
 export type AdminProductSearchResult = {
   id: string;
@@ -28,7 +29,7 @@ export async function searchProductsForPurchaseOrderAction(query: string): Promi
     .limit(20);
 
   if (term) {
-    request = request.or(`name_en.ilike.%${term}%,name_ar.ilike.%${term}%`);
+    request = request.or(buildIlikeOrFilter(["name_en", "name_ar"], term));
   }
 
   const { data, error } = await request;

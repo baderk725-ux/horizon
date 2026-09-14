@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/supabase/database.types";
 import type { PaymentStatus } from "@/lib/payments/status";
+import { buildIlikeOrFilter } from "@/lib/supabase/search";
 
 export type { PaymentStatus, PaymentMethod } from "@/lib/payments/status";
 export { PAYMENT_STATUSES, NEXT_PAYMENT_STATUSES } from "@/lib/payments/status";
@@ -24,7 +25,7 @@ export async function getAdminPayments(params: {
   page?: number;
 }): Promise<{ payments: AdminPaymentListItem[]; total: number; page: number; pageCount: number }> {
   const supabase = await createClient();
-  const page = Math.max(1, params.page ?? 1);
+  const page = Math.max(1, Math.floor(Number(params.page) || 1));
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
@@ -43,7 +44,7 @@ export async function getAdminPayments(params: {
     const { data: matchingOrders } = await supabase
       .from("orders")
       .select("id")
-      .or(`order_number.ilike.%${term}%,guest_name.ilike.%${term}%,guest_phone.ilike.%${term}%`);
+      .or(buildIlikeOrFilter(["order_number", "guest_name", "guest_phone"], term));
     const orderIds = (matchingOrders ?? []).map((o) => o.id);
     if (orderIds.length === 0) {
       return { payments: [], total: 0, page, pageCount: 1 };

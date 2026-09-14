@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/supabase/database.types";
 import type { OrderStatus } from "@/lib/orders/status";
+import { buildIlikeOrFilter } from "@/lib/supabase/search";
 
 export type { OrderStatus } from "@/lib/orders/status";
 export { ORDER_STATUSES, NEXT_STATUSES } from "@/lib/orders/status";
@@ -20,7 +21,7 @@ export async function getAdminOrders(params: {
   page?: number;
 }): Promise<{ orders: AdminOrderListItem[]; total: number; page: number; pageCount: number }> {
   const supabase = await createClient();
-  const page = Math.max(1, params.page ?? 1);
+  const page = Math.max(1, Math.floor(Number(params.page) || 1));
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
@@ -31,10 +32,7 @@ export async function getAdminOrders(params: {
 
   if (params.status) query = query.eq("status", params.status);
   if (params.search?.trim()) {
-    const term = params.search.trim();
-    query = query.or(
-      `order_number.ilike.%${term}%,guest_name.ilike.%${term}%,guest_phone.ilike.%${term}%`,
-    );
+    query = query.or(buildIlikeOrFilter(["order_number", "guest_name", "guest_phone"], params.search.trim()));
   }
 
   const { data, count, error } = await query.range(from, to);

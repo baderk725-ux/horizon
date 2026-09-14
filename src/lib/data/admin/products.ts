@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/supabase/database.types";
+import { buildIlikeOrFilter } from "@/lib/supabase/search";
 
 export type AdminProductRow = Database["public"]["Tables"]["products"]["Row"];
 export type ProductImageRow =
@@ -26,10 +27,7 @@ export async function getAdminProducts(search?: string): Promise<AdminProductLis
     .order("created_at", { ascending: false });
 
   if (search && search.trim()) {
-    const term = search.trim();
-    query = query.or(
-      `name_en.ilike.%${term}%,name_ar.ilike.%${term}%,slug.ilike.%${term}%`,
-    );
+    query = query.or(buildIlikeOrFilter(["name_en", "name_ar", "slug"], search.trim()));
   }
 
   const { data, error } = await query;

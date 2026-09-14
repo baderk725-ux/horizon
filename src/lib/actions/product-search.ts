@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { buildIlikeOrFilter } from "@/lib/supabase/search";
 
 export type ProductSearchResult = {
   id: string;
@@ -26,7 +27,7 @@ export async function searchProductsAction(query: string): Promise<ProductSearch
     .limit(20);
 
   if (term) {
-    request = request.or(`name_en.ilike.%${term}%,name_ar.ilike.%${term}%`);
+    request = request.or(buildIlikeOrFilter(["name_en", "name_ar"], term));
   }
 
   const { data, error } = await request;

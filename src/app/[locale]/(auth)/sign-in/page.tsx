@@ -23,6 +23,11 @@ export default async function SignInPage(props: {
       <div className="mt-6">
         <SignInForm onSuccessRedirect={`/${locale}/account`} />
       </div>
+      <p className="mt-4 text-center text-sm">
+        <Link href="/forgot-password" className="font-medium text-brand-700 underline">
+          {t("forgotPassword")}
+        </Link>
+      </p>
       <p className="mt-6 text-center text-sm text-brand-600">
         {t("noAccount")}{" "}
         <Link href="/sign-up" className="font-medium text-brand-900 underline">

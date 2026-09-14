@@ -68,7 +68,7 @@ export function ProductImageManager({
           name="file"
           accept="image/jpeg,image/png,image/webp,image/avif"
           required
-          className="text-sm text-brand-700 file:mr-3 file:rounded-(--radius-button) file:border-0 file:bg-brand-900 file:px-4 file:py-2 file:text-xs file:font-medium file:uppercase file:tracking-wider file:text-paper"
+          className="text-sm text-brand-700 file:me-3 file:rounded-(--radius-button) file:border-0 file:bg-brand-900 file:px-4 file:py-2 file:text-xs file:font-medium file:uppercase file:tracking-wider file:text-paper"
         />
         <Button type="submit" size="sm" variant="secondary" disabled={pending}>
           {pending ? t("uploading") : t("uploadImage")}

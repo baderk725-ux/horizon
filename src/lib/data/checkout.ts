@@ -28,8 +28,10 @@ export async function getGovernoratesWithAreas(): Promise<GovernorateWithAreas[]
   if (govError) throw govError;
   if (areaError) throw areaError;
 
-  return (governorates ?? []).map((g) => ({
-    ...g,
-    areas: (areas ?? []).filter((a) => a.governorate_id === g.id),
-  }));
+  return (governorates ?? [])
+    .map((g) => ({
+      ...g,
+      areas: (areas ?? []).filter((a) => a.governorate_id === g.id),
+    }))
+    .filter((g) => g.areas.length > 0);
 }

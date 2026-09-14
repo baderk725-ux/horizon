@@ -22,6 +22,7 @@ export function StaffRoleSelect({
   const router = useRouter();
   const [demoting, startDemoteTransition] = useTransition();
   const [demoteError, setDemoteError] = useState<string | null>(null);
+  const [selectedRole, setSelectedRole] = useState(currentStaffRole);
 
   const action = updateStaffRoleAction.bind(null, profileId, currentStaffRole);
   const [state, formAction, pending] = useActionState(
@@ -45,10 +46,19 @@ export function StaffRoleSelect({
 
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <form action={formAction} className="flex items-center gap-2">
+      <form
+        action={formAction}
+        onSubmit={(e) => {
+          if (isSelf && selectedRole !== currentStaffRole && !window.confirm(t("confirmSelfRoleChange"))) {
+            e.preventDefault();
+          }
+        }}
+        className="flex items-center gap-2"
+      >
         <select
           name="staffRole"
           defaultValue={currentStaffRole}
+          onChange={(e) => setSelectedRole(e.target.value)}
           className="rounded-(--radius-button) border border-brand-300 bg-paper px-3 py-1.5 text-sm text-brand-900 focus:outline-none focus:ring-2 focus:ring-accent-500"
         >
           {STAFF_ROLES.map((role) => (

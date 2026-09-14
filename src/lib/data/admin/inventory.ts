@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/lib/supabase/database.types";
+import { buildIlikeOrFilter } from "@/lib/supabase/search";
 
 export type InventoryProductRow = Database["public"]["Tables"]["products"]["Row"] & {
   category: { name_en: string; name_ar: string } | null;
@@ -26,8 +27,7 @@ export async function getInventoryProducts(params: {
     .order("stock_quantity", { ascending: true });
 
   if (params.search?.trim()) {
-    const term = params.search.trim();
-    query = query.or(`name_en.ilike.%${term}%,name_ar.ilike.%${term}%,slug.ilike.%${term}%`);
+    query = query.or(buildIlikeOrFilter(["name_en", "name_ar", "slug"], params.search.trim()));
   }
 
   const { data, error } = await query;

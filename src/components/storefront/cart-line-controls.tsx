@@ -43,7 +43,9 @@ export function CartLineControls({
         >
           −
         </button>
-        <span className="min-w-8 text-center text-sm text-brand-900">{quantity}</span>
+        <span className="min-w-8 text-center text-sm text-brand-900" aria-live="polite">
+          {quantity}
+        </span>
         <button
           type="button"
           disabled={pending || quantity >= maxQuantity}
