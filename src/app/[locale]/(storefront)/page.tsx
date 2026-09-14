@@ -7,6 +7,7 @@ import {
   getPublishedProducts,
   getTopCategories,
 } from "@/lib/data/storefront";
+import { getSiteContentMap, pickContent } from "@/lib/data/cms";
 
 export default async function HomePage(props: {
   params: Promise<{ locale: string }>;
@@ -15,11 +16,14 @@ export default async function HomePage(props: {
   setRequestLocale(locale);
 
   const t = await getTranslations("home");
-  const [categories, collections, products] = await Promise.all([
+  const [categories, collections, products, contentMap] = await Promise.all([
     getTopCategories(),
     getHomeCollections(),
     getPublishedProducts(8),
+    getSiteContentMap(),
   ]);
+  const heroTitle = pickContent(contentMap, "hero_title", locale, t("heroTitle"));
+  const heroSubtitle = pickContent(contentMap, "hero_sub", locale, t("heroSubtitle"));
 
   return (
     <>
@@ -31,10 +35,10 @@ export default async function HomePage(props: {
             NOVEL Household
           </p>
           <h1 className="mt-6 font-display text-display-md text-paper sm:text-display-lg lg:text-display-xl">
-            {t("heroTitle")}
+            {heroTitle}
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-balance font-sans text-base text-brand-100">
-            {t("heroSubtitle")}
+            {heroSubtitle}
           </p>
           <ButtonLink
             href="/shop"

@@ -54,6 +54,7 @@ export default async function AdminProtectedLayout(props: {
     { href: "/admin/reports", label: t("nav.reports") },
     { href: "/admin/analytics", label: t("nav.analytics") },
     { href: "/admin/reviews", label: t("nav.reviews") },
+    { href: "/admin/content", label: t("nav.content") },
     { href: "/admin/returns", label: t("nav.returns") },
     { href: "/admin/products", label: t("nav.products") },
     { href: "/admin/categories", label: t("nav.categories") },

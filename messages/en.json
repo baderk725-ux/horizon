@@ -12,7 +12,10 @@
     "search": "Search",
     "cart": "Cart",
     "account": "Account",
-    "wishlist": "Wishlist"
+    "wishlist": "Wishlist",
+    "help": "Help",
+    "faq": "FAQ",
+    "policies": "Policies"
   },
   "home": {
     "heroTitle": "Pieces made to last",
@@ -259,7 +262,8 @@
       "payroll": "Payroll",
       "reports": "Reports",
       "analytics": "Analytics",
-      "reviews": "Reviews"
+      "reviews": "Reviews",
+      "content": "Content"
     }
   },
   "adminCategories": {
@@ -946,5 +950,57 @@
     "averageRating": "Average rating",
     "approvedReviews": "Approved reviews",
     "pendingReviews": "Pending reviews"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "metaDescription": "Answers to common questions about ordering, delivery, and returns.",
+    "empty": "No questions are published yet."
+  },
+  "policies": {
+    "title": "Policies",
+    "metaDescription": "Our delivery, payment, and return policies.",
+    "fallback": "Policy details are not available right now."
+  },
+  "adminContent": {
+    "title": "Content",
+    "hint": "Edit homepage/footer text and manage frequently asked questions.",
+    "siteContent": "Site content",
+    "emptyContent": "No content rows found.",
+    "valueEn": "English",
+    "valueAr": "Arabic",
+    "saving": "Saving...",
+    "save": "Save",
+    "faqs": "FAQs",
+    "addFaq": "Add FAQ",
+    "questionEn": "Question (English)",
+    "questionAr": "Question (Arabic)",
+    "answerEn": "Answer (English)",
+    "answerAr": "Answer (Arabic)",
+    "sortOrder": "Sort order",
+    "active": "Active",
+    "inactive": "Inactive",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this FAQ? This cannot be undone.",
+    "cancel": "Cancel",
+    "not_authorized": "You are not authorized to do this.",
+    "invalid_input": "Please check the fields and try again.",
+    "save_failed": "Could not save. Please try again.",
+    "delete_failed": "Could not delete. Please try again.",
+    "fields": {
+      "contact_email": "Contact email",
+      "contact_phone": "Contact phone",
+      "footer_rights": "Footer copyright line",
+      "hero_eyebrow": "Hero eyebrow (unused)",
+      "hero_sub": "Hero subtitle",
+      "hero_title": "Hero title",
+      "policies_text": "Policies page text",
+      "trust_cod_desc": "Trust badge — COD description (unused)",
+      "trust_cod_title": "Trust badge — COD title (unused)",
+      "trust_return_desc": "Trust badge — returns description (unused)",
+      "trust_return_title": "Trust badge — returns title (unused)",
+      "trust_ship_desc": "Trust badge — shipping description (unused)",
+      "trust_ship_title": "Trust badge — shipping title (unused)"
+    }
   }
 }
