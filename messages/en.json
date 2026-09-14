@@ -70,7 +70,19 @@
     "invalid_quantity": "Please choose a valid quantity.",
     "not_found": "This item is no longer in your cart.",
     "out_of_stock": "Only a limited quantity is available.",
-    "save_failed": "Couldn't update your cart. Please try again."
+    "save_failed": "Couldn't update your cart. Please try again.",
+    "discount": "Discount",
+    "couponPlaceholder": "Coupon code",
+    "apply": "Apply",
+    "applying": "Applying…",
+    "removeCoupon": "Remove",
+    "couponApplied": "Coupon applied: -{amount} JOD",
+    "coupon_not_found": "This coupon code isn't valid.",
+    "coupon_expired": "This coupon has expired.",
+    "coupon_max_uses_reached": "This coupon has reached its usage limit.",
+    "coupon_below_minimum": "Your order doesn't meet this coupon's minimum amount.",
+    "coupon_code_required": "Enter a coupon code.",
+    "coupon_empty_cart": "Your cart is empty."
   },
   "checkout": {
     "title": "Checkout",
@@ -111,7 +123,8 @@
     "orderConfirmed": "Your order is confirmed",
     "confirmationNotice": "We'll call you shortly to confirm delivery details.",
     "orderNumber": "Order number",
-    "continueShopping": "Continue shopping"
+    "continueShopping": "Continue shopping",
+    "discount": "Discount"
   },
   "footer": {
     "rights": "All rights reserved"
@@ -163,7 +176,8 @@
       "categories": "Categories",
       "products": "Products",
       "shipping": "Shipping",
-      "payments": "Payments"
+      "payments": "Payments",
+      "discounts": "Discounts"
     }
   },
   "adminCategories": {
@@ -396,5 +410,44 @@
       "cod": "Cash on Delivery"
     },
     "amount": "Amount"
+  },
+  "adminDiscounts": {
+    "pageTitle": "Discounts",
+    "hint": "Manage coupon codes. Usage and the actual discount charged are always validated server-side at checkout.",
+    "title": "Coupons",
+    "newCoupon": "New coupon",
+    "cancel": "Cancel",
+    "empty": "No coupons yet.",
+    "code": "Code",
+    "codePlaceholder": "e.g. WELCOME10",
+    "discountType": "Type",
+    "percent": "Percentage",
+    "fixed": "Fixed amount",
+    "value": "Value",
+    "minOrderAmount": "Minimum order amount (optional)",
+    "maxUses": "Maximum uses (optional)",
+    "expiresAt": "Expires on (optional)",
+    "isActive": "Active",
+    "discount": "Discount",
+    "usage": "Usage",
+    "status": "Status",
+    "actions": "Actions",
+    "active": "Active",
+    "inactive": "Inactive",
+    "edit": "Edit",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "delete": "Delete",
+    "save": "Save",
+    "saving": "Saving…",
+    "create": "Create",
+    "currency": "JOD",
+    "usedCount": "Used {count, plural, one {# time} other {# times}} — deactivate instead of deleting to preserve order history.",
+    "deleteConfirm": "Delete coupon {code}? This can't be undone.",
+    "not_authorized": "You don't have permission to manage discounts.",
+    "invalid_input": "Please check the highlighted fields.",
+    "code_taken": "A coupon with this code already exists.",
+    "save_failed": "Couldn't save the coupon. Please try again.",
+    "delete_failed": "Couldn't delete the coupon. Please try again."
   }
 }

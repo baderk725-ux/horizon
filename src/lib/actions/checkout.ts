@@ -83,7 +83,7 @@ export async function submitOrderAction(
     p_area_id: parsed.data.areaId,
     p_full_address: parsed.data.fullAddress,
     p_notes: parsed.data.notes || null,
-    p_coupon_code: null,
+    p_coupon_code: cart.couponCode,
     p_items: items,
     p_idempotency_key: idempotencyKey,
   } as unknown as Database["public"]["Functions"]["create_order"]["Args"];

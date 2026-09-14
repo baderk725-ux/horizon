@@ -204,6 +204,7 @@ export type Database = {
       carts: {
         Row: {
           converted_order_id: string | null
+          coupon_code: string | null
           created_at: string
           id: string
           status: string
@@ -212,6 +213,7 @@ export type Database = {
         }
         Insert: {
           converted_order_id?: string | null
+          coupon_code?: string | null
           created_at?: string
           id?: string
           status?: string
@@ -220,6 +222,7 @@ export type Database = {
         }
         Update: {
           converted_order_id?: string | null
+          coupon_code?: string | null
           created_at?: string
           id?: string
           status?: string

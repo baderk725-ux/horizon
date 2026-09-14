@@ -14,14 +14,49 @@ export type CartLine = {
   lineTotal: number;
 };
 
+export type CouponPreview =
+  | { valid: true; code: string; discountAmount: number }
+  | { valid: false; reason: string };
+
 export type CartSummary = {
   cartId: string | null;
   lines: CartLine[];
   itemCount: number;
   subtotal: number;
+  couponCode: string | null;
+  couponPreview: CouponPreview | null;
 };
 
-const EMPTY_CART: CartSummary = { cartId: null, lines: [], itemCount: 0, subtotal: 0 };
+const EMPTY_CART: CartSummary = {
+  cartId: null,
+  lines: [],
+  itemCount: 0,
+  subtotal: 0,
+  couponCode: null,
+  couponPreview: null,
+};
+
+/**
+ * Read-only estimate shown to the customer before checkout — never
+ * authoritative. redeem_coupon() is a pure validation function with no
+ * side effects (fixed in the Discounts phase to remove a used_count
+ * mutation that made it unsafe to call for a preview). The real,
+ * *charged* discount is always recomputed independently and atomically by
+ * recompute_order_totals() at order-creation time, regardless of what
+ * this preview showed.
+ */
+async function loadCouponPreview(couponCode: string | null, subtotal: number): Promise<CouponPreview | null> {
+  if (!couponCode || subtotal <= 0) return null;
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("redeem_coupon", {
+    p_code: couponCode,
+    p_subtotal: subtotal,
+  });
+  if (error || !data) return { valid: false, reason: "not_found" };
+  const result = data as { valid: boolean; discount_amount?: number; code?: string; reason?: string };
+  if (!result.valid) return { valid: false, reason: result.reason ?? "not_found" };
+  return { valid: true, code: result.code ?? couponCode, discountAmount: result.discount_amount ?? 0 };
+}
 
 /**
  * Priced live from `products_storefront` (never from anything stored on
@@ -29,7 +64,9 @@ const EMPTY_CART: CartSummary = { cartId: null, lines: [], itemCount: 0, subtota
  * quantity). Shared by getCart() (display, active carts only) and
  * getCartByCartId() (checkout retries, any status — see there for why).
  */
-async function loadCartLines(cartId: string): Promise<Omit<CartSummary, "cartId">> {
+async function loadCartLines(
+  cartId: string,
+): Promise<{ lines: CartLine[]; itemCount: number; subtotal: number }> {
   const supabase = await createClient();
   const { data: items, error } = await supabase
     .from("cart_items")
@@ -92,7 +129,18 @@ async function loadCartLines(cartId: string): Promise<Omit<CartSummary, "cartId"
 export async function getCart(): Promise<CartSummary> {
   const cartId = await resolveActiveCartId();
   if (!cartId) return EMPTY_CART;
-  return { cartId, ...(await loadCartLines(cartId)) };
+  const supabase = await createClient();
+  const [lines, { data: cartRow }] = await Promise.all([
+    loadCartLines(cartId),
+    supabase.from("carts").select("coupon_code").eq("id", cartId).maybeSingle(),
+  ]);
+  const couponCode = cartRow?.coupon_code ?? null;
+  return {
+    cartId,
+    ...lines,
+    couponCode,
+    couponPreview: await loadCouponPreview(couponCode, lines.subtotal),
+  };
 }
 
 /**
@@ -105,5 +153,15 @@ export async function getCart(): Promise<CartSummary> {
  * own idempotency check.
  */
 export async function getCartByCartId(cartId: string): Promise<CartSummary> {
-  return { cartId, ...(await loadCartLines(cartId)) };
+  const supabase = await createClient();
+  const [lines, { data: cartRow }] = await Promise.all([
+    loadCartLines(cartId),
+    supabase.from("carts").select("coupon_code").eq("id", cartId).maybeSingle(),
+  ]);
+  return {
+    cartId,
+    ...lines,
+    couponCode: cartRow?.coupon_code ?? null,
+    couponPreview: null,
+  };
 }

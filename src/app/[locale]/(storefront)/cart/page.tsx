@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button";
 import { CartLineControls } from "@/components/storefront/cart-line-controls";
+import { CouponForm } from "@/components/storefront/coupon-form";
 import { getCart } from "@/lib/data/cart";
 
 export default async function CartPage() {
@@ -66,7 +67,16 @@ export default async function CartPage() {
                 {cart.subtotal.toFixed(2)} {t("currency")}
               </span>
             </div>
-            <p className="mt-2 text-xs text-brand-500">{t("shippingCalculatedAtCheckout")}</p>
+            {cart.couponPreview?.valid && (
+              <div className="mt-1 flex items-center justify-between text-sm text-green-700">
+                <span>{t("discount")}</span>
+                <span>
+                  -{cart.couponPreview.discountAmount.toFixed(2)} {t("currency")}
+                </span>
+              </div>
+            )}
+            <CouponForm couponCode={cart.couponCode} couponPreview={cart.couponPreview} />
+            <p className="mt-4 text-xs text-brand-500">{t("shippingCalculatedAtCheckout")}</p>
             <ButtonLink href="/checkout" size="lg" className="mt-6 w-full">
               {t("checkout")}
             </ButtonLink>

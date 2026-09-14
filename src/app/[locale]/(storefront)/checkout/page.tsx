@@ -48,6 +48,14 @@ export default async function CheckoutPage() {
             <span className="text-brand-600">{t("subtotal")}</span>
             <span className="font-medium text-brand-900">{cart.subtotal.toFixed(2)} {t("currency")}</span>
           </div>
+          {cart.couponPreview?.valid && (
+            <div className="mt-1 flex items-center justify-between text-sm text-green-700">
+              <span>
+                {t("discount")} ({cart.couponCode})
+              </span>
+              <span>-{cart.couponPreview.discountAmount.toFixed(2)} {t("currency")}</span>
+            </div>
+          )}
           <p className="mt-2 text-xs text-brand-500">{t("shippingNote")}</p>
         </div>
       </div>

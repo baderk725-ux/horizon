@@ -70,7 +70,19 @@
     "invalid_quantity": "يرجى اختيار كمية صحيحة.",
     "not_found": "هذا المنتج لم يعد في سلتك.",
     "out_of_stock": "الكمية المتوفرة محدودة فقط.",
-    "save_failed": "تعذّر تحديث السلة. يرجى المحاولة مرة أخرى."
+    "save_failed": "تعذّر تحديث السلة. يرجى المحاولة مرة أخرى.",
+    "discount": "الخصم",
+    "couponPlaceholder": "كود الخصم",
+    "apply": "تطبيق",
+    "applying": "جارٍ التطبيق…",
+    "removeCoupon": "إزالة",
+    "couponApplied": "تم تطبيق الكوبون: -{amount} دينار",
+    "coupon_not_found": "كود الخصم غير صالح.",
+    "coupon_expired": "انتهت صلاحية هذا الكوبون.",
+    "coupon_max_uses_reached": "وصل هذا الكوبون للحد الأقصى من الاستخدام.",
+    "coupon_below_minimum": "طلبك لا يصل للحد الأدنى المطلوب لهذا الكوبون.",
+    "coupon_code_required": "أدخل كود الخصم.",
+    "coupon_empty_cart": "سلتك فارغة."
   },
   "checkout": {
     "title": "إتمام الطلب",
@@ -111,7 +123,8 @@
     "orderConfirmed": "تم تأكيد طلبك",
     "confirmationNotice": "سنتصل بك قريبًا لتأكيد تفاصيل التوصيل.",
     "orderNumber": "رقم الطلب",
-    "continueShopping": "متابعة التسوق"
+    "continueShopping": "متابعة التسوق",
+    "discount": "الخصم"
   },
   "footer": {
     "rights": "جميع الحقوق محفوظة"
@@ -163,7 +176,8 @@
       "categories": "الفئات",
       "products": "المنتجات",
       "shipping": "الشحن",
-      "payments": "المدفوعات"
+      "payments": "المدفوعات",
+      "discounts": "الخصومات"
     }
   },
   "adminCategories": {
@@ -396,5 +410,44 @@
     "invalid_transition": "هذا التغيير في الحالة غير مسموح من الحالة الحالية للدفعة.",
     "stale_or_unauthorized": "تغيّرت حالة هذه الدفعة منذ تحميل الصفحة — أعد التحميل وحاول مجددًا.",
     "update_failed": "تعذّر تحديث الدفعة. حاول مرة أخرى."
+  },
+  "adminDiscounts": {
+    "pageTitle": "الخصومات",
+    "hint": "إدارة أكواد الخصم. الاستخدام والخصم الفعلي المطبّق يتم التحقق منهما دائمًا من طرف الخادم عند إتمام الطلب.",
+    "title": "الكوبونات",
+    "newCoupon": "كوبون جديد",
+    "cancel": "إلغاء",
+    "empty": "لا توجد كوبونات بعد.",
+    "code": "الكود",
+    "codePlaceholder": "مثال: WELCOME10",
+    "discountType": "النوع",
+    "percent": "نسبة مئوية",
+    "fixed": "مبلغ ثابت",
+    "value": "القيمة",
+    "minOrderAmount": "الحد الأدنى لقيمة الطلب (اختياري)",
+    "maxUses": "الحد الأقصى للاستخدام (اختياري)",
+    "expiresAt": "تاريخ الانتهاء (اختياري)",
+    "isActive": "مفعّل",
+    "discount": "الخصم",
+    "usage": "الاستخدام",
+    "status": "الحالة",
+    "actions": "إجراءات",
+    "active": "مفعّل",
+    "inactive": "غير مفعّل",
+    "edit": "تعديل",
+    "activate": "تفعيل",
+    "deactivate": "إيقاف",
+    "delete": "حذف",
+    "save": "حفظ",
+    "saving": "جارٍ الحفظ…",
+    "create": "إنشاء",
+    "currency": "JOD",
+    "usedCount": "استُخدم {count, plural, one {# مرة} two {مرتان} few {# مرات} many {# مرة} other {# مرة}} — يُفضّل الإيقاف بدل الحذف للحفاظ على سجل الطلبات.",
+    "deleteConfirm": "حذف الكوبون {code}؟ لا يمكن التراجع عن هذا الإجراء.",
+    "not_authorized": "ليس لديك صلاحية لإدارة الخصومات.",
+    "invalid_input": "يرجى مراجعة الحقول المحددة.",
+    "code_taken": "يوجد كوبون بهذا الكود مسبقًا.",
+    "save_failed": "تعذّر حفظ الكوبون. حاول مرة أخرى.",
+    "delete_failed": "تعذّر حذف الكوبون. حاول مرة أخرى."
   }
 }
