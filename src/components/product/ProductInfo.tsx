@@ -24,7 +24,19 @@ export function ProductInfo({ product }: { product: Product }) {
   }, [product.review]);
 
   function handleAddToCart() {
-    addItem(product.id, variantId, quantity);
+    addItem(
+      {
+        productId: product.id,
+        variantId: variant?.id,
+        variantLabel: variant?.label,
+        name: product.name,
+        slug: product.slug,
+        price,
+        currency: product.currency,
+        image: product.images[0],
+      },
+      quantity
+    );
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   }

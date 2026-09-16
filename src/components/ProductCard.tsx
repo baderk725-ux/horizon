@@ -24,6 +24,7 @@ export function ProductCard({ product }: { product: Product }) {
           <EditorialImage
             icon={product.images[0].icon}
             tone={product.images[0].tone}
+            url={product.images[0].url}
             alt={product.images[0].alt}
             className="h-full w-full"
           />
@@ -32,6 +33,7 @@ export function ProductCard({ product }: { product: Product }) {
           <EditorialImage
             icon={secondImage.icon}
             tone={secondImage.tone}
+            url={secondImage.url}
             alt={secondImage.alt}
             className="h-full w-full"
           />
@@ -49,7 +51,20 @@ export function ProductCard({ product }: { product: Product }) {
           type="button"
           onClick={(e) => {
             e.preventDefault();
-            addItem(product.id, product.variants?.[0]?.id, 1);
+            const variant = product.variants?.[0];
+            addItem(
+              {
+                productId: product.id,
+                variantId: variant?.id,
+                variantLabel: variant?.label,
+                name: product.name,
+                slug: product.slug,
+                price: product.price + (variant?.priceModifier ?? 0),
+                currency: product.currency,
+                image: product.images[0],
+              },
+              1
+            );
           }}
           className={`absolute inset-x-3 bottom-3 bg-charcoal py-3 text-xs uppercase tracking-[0.14em] text-ivory transition-all duration-300 hover:bg-espresso ${
             hovered ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"

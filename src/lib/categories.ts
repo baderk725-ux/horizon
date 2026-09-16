@@ -1,57 +1,47 @@
+import { createClient } from "./supabase/server";
 import type { Category } from "./types";
 
-export const categories: Category[] = [
-  {
-    slug: "kitchen",
-    name: "Kitchen",
-    description:
-      "Considered tools for the everyday ritual of cooking — cast iron, olive wood, and hand-glazed stoneware.",
-    image: "kitchen",
-  },
-  {
-    slug: "macrame",
-    name: "Macramé",
-    description:
-      "Hand-knotted cotton and jute, each piece carrying the texture of the hands that made it.",
-    image: "macrame",
-  },
-  {
-    slug: "rugs",
-    name: "Rugs",
-    description:
-      "Natural fibre rugs woven in small batches — the quiet foundation of a considered room.",
-    image: "rugs",
-  },
-  {
-    slug: "home-decor",
-    name: "Home Decor",
-    description:
-      "Sculptural objects and vessels that give a room its character, one surface at a time.",
-    image: "home-decor",
-  },
-  {
-    slug: "tableware",
-    name: "Tableware",
-    description:
-      "Stoneware, glass and linen for a table set with intention, from breakfast to the last course.",
-    image: "tableware",
-  },
-  {
-    slug: "textiles",
-    name: "Textiles",
-    description:
-      "Washed linen and brushed cotton — throws, cushions and bedding made to soften with time.",
-    image: "textiles",
-  },
-  {
-    slug: "gifts",
-    name: "Gifts",
-    description:
-      "Thoughtfully wrapped pieces for the people who notice the details.",
-    image: "gifts",
-  },
-];
+interface CategoryRow {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  placeholder_icon: string;
+  placeholder_tone: string;
+  image_url: string | null;
+  sort_order: number;
+}
 
-export function getCategory(slug: string) {
-  return categories.find((c) => c.slug === slug);
+function mapCategory(row: CategoryRow): Category {
+  return {
+    id: row.id,
+    slug: row.slug,
+    name: row.name,
+    description: row.description,
+    placeholderIcon: row.placeholder_icon as Category["placeholderIcon"],
+    placeholderTone: row.placeholder_tone as Category["placeholderTone"],
+    imageUrl: row.image_url,
+    sortOrder: row.sort_order,
+  };
+}
+
+export async function getCategories(): Promise<Category[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("categories")
+    .select("*")
+    .order("sort_order", { ascending: true });
+  if (error) throw error;
+  return (data ?? []).map(mapCategory);
+}
+
+export async function getCategory(slug: string): Promise<Category | undefined> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("categories")
+    .select("*")
+    .eq("slug", slug)
+    .maybeSingle();
+  if (error) throw error;
+  return data ? mapCategory(data) : undefined;
 }

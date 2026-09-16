@@ -1,14 +1,14 @@
 "use client";
 
 import { useWishlist } from "@/context/WishlistContext";
-import { products } from "@/lib/products";
+import type { Product } from "@/lib/types";
 import { ProductGrid } from "@/components/ProductGrid";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/Button";
 
-export function WishlistPageClient() {
+export function WishlistPageClient({ allProducts }: { allProducts: Product[] }) {
   const { productIds } = useWishlist();
-  const savedProducts = products.filter((p) => productIds.includes(p.id));
+  const savedProducts = allProducts.filter((p) => productIds.includes(p.id));
 
   return (
     <div className="container-editorial py-10 md:py-14">

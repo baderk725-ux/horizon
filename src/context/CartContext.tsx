@@ -9,15 +9,14 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { products } from "@/lib/products";
-import type { CartLine } from "@/lib/types";
+import type { CartItem } from "@/lib/types";
 
 interface CartContextValue {
-  lines: CartLine[];
+  lines: CartItem[];
   isDrawerOpen: boolean;
   openDrawer: () => void;
   closeDrawer: () => void;
-  addItem: (productId: string, variantId: string | undefined, quantity?: number) => void;
+  addItem: (item: Omit<CartItem, "quantity">, quantity?: number) => void;
   removeItem: (productId: string, variantId?: string) => void;
   updateQuantity: (productId: string, variantId: string | undefined, quantity: number) => void;
   clearCart: () => void;
@@ -33,7 +32,7 @@ function lineKey(productId: string, variantId?: string) {
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [lines, setLines] = useState<CartLine[]>([]);
+  const [lines, setLines] = useState<CartItem[]>([]);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
@@ -59,24 +58,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, [lines, hydrated]);
 
-  const addItem = useCallback(
-    (productId: string, variantId: string | undefined, quantity = 1) => {
-      setLines((prev) => {
-        const key = lineKey(productId, variantId);
-        const existing = prev.find((l) => lineKey(l.productId, l.variantId) === key);
-        if (existing) {
-          return prev.map((l) =>
-            lineKey(l.productId, l.variantId) === key
-              ? { ...l, quantity: l.quantity + quantity }
-              : l
-          );
-        }
-        return [...prev, { productId, variantId, quantity }];
-      });
-      setDrawerOpen(true);
-    },
-    []
-  );
+  const addItem = useCallback((item: Omit<CartItem, "quantity">, quantity = 1) => {
+    setLines((prev) => {
+      const key = lineKey(item.productId, item.variantId);
+      const existing = prev.find((l) => lineKey(l.productId, l.variantId) === key);
+      if (existing) {
+        return prev.map((l) =>
+          lineKey(l.productId, l.variantId) === key
+            ? { ...l, quantity: l.quantity + quantity }
+            : l
+        );
+      }
+      return [...prev, { ...item, quantity }];
+    });
+    setDrawerOpen(true);
+  }, []);
 
   const removeItem = useCallback((productId: string, variantId?: string) => {
     const key = lineKey(productId, variantId);
@@ -105,12 +101,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     let count = 0;
     let total = 0;
     for (const line of lines) {
-      const product = products.find((p) => p.id === line.productId);
-      if (!product) continue;
-      const variant = product.variants?.find((v) => v.id === line.variantId);
-      const price = product.price + (variant?.priceModifier ?? 0);
       count += line.quantity;
-      total += price * line.quantity;
+      total += line.price * line.quantity;
     }
     return { itemCount: count, subtotal: total };
   }, [lines]);

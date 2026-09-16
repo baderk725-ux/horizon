@@ -7,6 +7,7 @@ import { Logo } from "./Logo";
 import { SearchOverlay } from "./SearchOverlay";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
+import type { Category, Product } from "@/lib/types";
 
 const NAV_LINKS = [
   { label: "Shop", href: "/shop" },
@@ -16,7 +17,13 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
-export function Header() {
+export function Header({
+  searchProducts,
+  searchCategories,
+}: {
+  searchProducts: Product[];
+  searchCategories: Category[];
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -142,7 +149,12 @@ export function Header() {
         </div>
       </header>
 
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <SearchOverlay
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        products={searchProducts}
+        categories={searchCategories}
+      />
 
       <div
         className={`fixed inset-0 z-50 bg-charcoal/40 transition-opacity duration-300 md:hidden ${

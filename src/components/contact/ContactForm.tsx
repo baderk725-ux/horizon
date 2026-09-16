@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/Button";
+import { useActionState } from "react";
+import { submitContactAction, type FormState } from "@/app/actions";
+
+const initialState: FormState = { status: "idle" };
 
 export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [state, formAction, pending] = useActionState(submitContactAction, initialState);
 
-  if (submitted) {
+  if (state.status === "success") {
     return (
       <div className="border border-line p-8 text-center">
         <h3 className="font-serif text-xl">Message sent.</h3>
@@ -18,13 +20,7 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      className="flex flex-col gap-5"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSubmitted(true);
-      }}
-    >
+    <form action={formAction} className="flex flex-col gap-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <FormField label="Name" name="name" required />
         <FormField label="Email" type="email" name="email" required />
@@ -42,9 +38,14 @@ export function ContactForm() {
           className="border border-line bg-ivory px-4 py-3 text-sm text-charcoal focus:outline-none"
         />
       </div>
-      <Button type="submit" className="w-full sm:w-auto">
-        Send Message
-      </Button>
+      {state.status === "error" ? <p className="text-sm text-red-700">{state.message}</p> : null}
+      <button
+        type="submit"
+        disabled={pending}
+        className="inline-flex w-full items-center justify-center gap-2 bg-charcoal px-8 py-4 text-xs font-medium uppercase tracking-[0.14em] text-ivory transition-colors duration-300 hover:bg-espresso disabled:opacity-50 sm:w-auto"
+      >
+        {pending ? "Sending…" : "Send Message"}
+      </button>
     </form>
   );
 }

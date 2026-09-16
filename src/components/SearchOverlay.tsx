@@ -2,13 +2,19 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { products } from "@/lib/products";
-import { categories } from "@/lib/categories";
+import type { Category, Product } from "@/lib/types";
 import { formatPrice } from "@/lib/format";
 
 const RECENT_SEARCHES = ["Linen throw", "Macramé wall hanging", "Stoneware jug"];
 
-export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
+interface SearchOverlayProps {
+  open: boolean;
+  onClose: () => void;
+  products: Product[];
+  categories: Category[];
+}
+
+export function SearchOverlay({ open, onClose, products, categories }: SearchOverlayProps) {
   const [query, setQuery] = useState("");
   const [wasOpen, setWasOpen] = useState(open);
 
@@ -34,7 +40,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
     if (query.trim().length < 2) return [];
     const q = query.toLowerCase();
     return products.filter((p) => p.name.toLowerCase().includes(q) || p.category.includes(q)).slice(0, 6);
-  }, [query]);
+  }, [query, products]);
 
   if (!open) return null;
 

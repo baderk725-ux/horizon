@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
-import { products } from "@/lib/products";
 import { formatPrice } from "@/lib/format";
 import { EditorialImage } from "./EditorialImage";
 import { QuantitySelector } from "./QuantitySelector";
@@ -25,16 +24,6 @@ export function CartDrawer() {
     };
   }, [isDrawerOpen, closeDrawer]);
 
-  const detailedLines = lines
-    .map((line) => {
-      const product = products.find((p) => p.id === line.productId);
-      if (!product) return null;
-      const variant = product.variants?.find((v) => v.id === line.variantId);
-      const price = product.price + (variant?.priceModifier ?? 0);
-      return { line, product, variant, price };
-    })
-    .filter((x): x is NonNullable<typeof x> => x !== null);
-
   return (
     <>
       <div
@@ -53,7 +42,7 @@ export function CartDrawer() {
         }`}
       >
         <div className="flex items-center justify-between border-b border-line px-6 py-5">
-          <h2 className="font-serif text-xl">Your Bag ({detailedLines.length})</h2>
+          <h2 className="font-serif text-xl">Your Bag ({lines.length})</h2>
           <button
             type="button"
             onClick={closeDrawer}
@@ -67,7 +56,7 @@ export function CartDrawer() {
         </div>
 
         <div className="flex-1 overflow-y-auto px-6">
-          {detailedLines.length === 0 ? (
+          {lines.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
               <p className="text-stone">Your bag is empty.</p>
               <Button href="/shop" variant="secondary" onClick={closeDrawer}>
@@ -76,24 +65,25 @@ export function CartDrawer() {
             </div>
           ) : (
             <ul className="divide-y divide-line">
-              {detailedLines.map(({ line, product, variant, price }) => (
+              {lines.map((line) => (
                 <li key={`${line.productId}-${line.variantId ?? "default"}`} className="flex gap-4 py-6">
-                  <Link href={`/product/${product.slug}`} onClick={closeDrawer} className="h-24 w-20 shrink-0 bg-cream">
+                  <Link href={`/product/${line.slug}`} onClick={closeDrawer} className="h-24 w-20 shrink-0 bg-cream">
                     <EditorialImage
-                      icon={product.images[0].icon}
-                      tone={product.images[0].tone}
-                      alt={product.images[0].alt}
+                      icon={line.image.icon}
+                      tone={line.image.tone}
+                      url={line.image.url}
+                      alt={line.image.alt}
                       className="h-full w-full"
                     />
                   </Link>
                   <div className="flex flex-1 flex-col gap-1">
                     <div className="flex items-start justify-between gap-2">
-                      <Link href={`/product/${product.slug}`} onClick={closeDrawer} className="font-serif text-base leading-snug hover:text-espresso">
-                        {product.name}
+                      <Link href={`/product/${line.slug}`} onClick={closeDrawer} className="font-serif text-base leading-snug hover:text-espresso">
+                        {line.name}
                       </Link>
-                      <span className="whitespace-nowrap text-sm text-stone">{formatPrice(price, product.currency)}</span>
+                      <span className="whitespace-nowrap text-sm text-stone">{formatPrice(line.price, line.currency)}</span>
                     </div>
-                    {variant ? <span className="text-xs text-stone">{variant.label}</span> : null}
+                    {line.variantLabel ? <span className="text-xs text-stone">{line.variantLabel}</span> : null}
                     <div className="mt-2 flex items-center justify-between">
                       <QuantitySelector
                         quantity={line.quantity}
@@ -114,7 +104,7 @@ export function CartDrawer() {
           )}
         </div>
 
-        {detailedLines.length > 0 ? (
+        {lines.length > 0 ? (
           <div className="border-t border-line px-6 py-6">
             <div className="mb-4 flex items-center justify-between text-sm">
               <span className="text-stone">Subtotal</span>

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { EditorialImage } from "@/components/EditorialImage";
+import type { HeroContent } from "@/lib/types";
 
-export function Hero() {
+export function Hero({ content }: { content: HeroContent }) {
   return (
     <section className="relative flex h-[92vh] min-h-[560px] w-full items-end overflow-hidden bg-charcoal">
       <EditorialImage
@@ -14,23 +15,23 @@ export function Hero() {
 
       <div className="container-editorial relative z-10 flex w-full flex-col items-start gap-6 pb-20 md:pb-28">
         <span className="animate-fade-in text-xs uppercase tracking-[0.3em] text-ivory/80">
-          Autumn Collection
+          {content.eyebrow}
         </span>
         <h1 className="animate-reveal max-w-2xl font-serif text-5xl leading-[1.05] text-ivory md:text-7xl">
-          Objects for a considered home.
+          {content.heading}
         </h1>
         <div className="flex flex-col gap-4 pt-4 sm:flex-row">
           <Link
-            href="/shop"
+            href={content.primaryHref}
             className="bg-ivory px-8 py-4 text-xs uppercase tracking-[0.14em] text-charcoal transition-colors hover:bg-cream"
           >
-            Shop Collection
+            {content.primaryCta}
           </Link>
           <Link
-            href="/about"
+            href={content.secondaryHref}
             className="border border-ivory/60 px-8 py-4 text-xs uppercase tracking-[0.14em] text-ivory transition-colors hover:bg-ivory/10"
           >
-            Explore NOVEL
+            {content.secondaryCta}
           </Link>
         </div>
       </div>

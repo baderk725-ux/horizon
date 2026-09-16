@@ -1,26 +1,4 @@
-export type CategorySlug =
-  | "kitchen"
-  | "macrame"
-  | "rugs"
-  | "home-decor"
-  | "tableware"
-  | "textiles"
-  | "gifts";
-
-export interface Category {
-  slug: CategorySlug;
-  name: string;
-  description: string;
-  image: string;
-}
-
-export interface ProductVariant {
-  id: string;
-  label: string;
-  swatch?: string;
-  priceModifier?: number;
-  inStock: boolean;
-}
+export type CategorySlug = string;
 
 export type PlaceholderIcon =
   | "kitchen"
@@ -33,7 +11,28 @@ export type PlaceholderIcon =
 
 export type PlaceholderTone = "ivory" | "sand" | "taupe" | "charcoal";
 
+export interface Category {
+  id: string;
+  slug: CategorySlug;
+  name: string;
+  description: string;
+  placeholderIcon: PlaceholderIcon;
+  placeholderTone: PlaceholderTone;
+  imageUrl?: string | null;
+  sortOrder: number;
+}
+
+export interface ProductVariant {
+  id: string;
+  label: string;
+  swatch?: string | null;
+  priceModifier?: number;
+  inStock: boolean;
+}
+
 export interface ProductImage {
+  id?: string;
+  url?: string | null;
   alt: string;
   icon: PlaceholderIcon;
   tone: PlaceholderTone;
@@ -49,8 +48,9 @@ export interface Product {
   slug: string;
   name: string;
   category: CategorySlug;
+  categoryId?: string;
   price: number;
-  compareAtPrice?: number;
+  compareAtPrice?: number | null;
   currency: string;
   shortDescription: string;
   description: string;
@@ -60,14 +60,19 @@ export interface Product {
   dimensions: string;
   care: string[];
   shipping: string;
-  badge?: "New" | "Best Seller" | "Limited";
+  badge?: "New" | "Best Seller" | "Limited" | null;
   isNewArrival?: boolean;
   isBestSeller?: boolean;
+  isFeatured?: boolean;
+  isPublished?: boolean;
   inStock: boolean;
   review?: Review;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
 }
 
 export interface JournalPost {
+  id?: string;
   slug: string;
   title: string;
   excerpt: string;
@@ -75,10 +80,71 @@ export interface JournalPost {
   date: string;
   image: PlaceholderIcon;
   content: string[];
+  isPublished?: boolean;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
 }
 
-export interface CartLine {
+export interface CartItem {
   productId: string;
   variantId?: string;
   quantity: number;
+  name: string;
+  slug: string;
+  price: number;
+  currency: string;
+  variantLabel?: string;
+  image: ProductImage;
+}
+
+export interface HeroContent {
+  eyebrow: string;
+  heading: string;
+  primaryCta: string;
+  primaryHref: string;
+  secondaryCta: string;
+  secondaryHref: string;
+}
+
+export interface EditorialSectionContent {
+  eyebrow: string;
+  heading: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+export interface HomepageContent {
+  hero: HeroContent;
+  featured_collection: EditorialSectionContent;
+  brand_story: EditorialSectionContent;
+  editorial: EditorialSectionContent;
+}
+
+export interface SiteSettings {
+  siteName: string;
+  seoTitle: string;
+  seoDescription: string;
+  contactEmail: string;
+  contactPhone: string;
+  address: string;
+  instagramUrl: string;
+  facebookUrl: string;
+  tiktokUrl: string;
+}
+
+export interface ContactSubmission {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  isRead: boolean;
+  createdAt: string;
+}
+
+export interface NewsletterSubscriber {
+  id: string;
+  email: string;
+  createdAt: string;
 }

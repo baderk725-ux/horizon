@@ -1,8 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { CategorySlug, Product } from "@/lib/types";
-import { categories } from "@/lib/categories";
+import type { Category, CategorySlug, Product } from "@/lib/types";
 import { ProductGrid } from "@/components/ProductGrid";
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc";
@@ -16,9 +15,11 @@ const SORT_LABELS: Record<SortOption, string> = {
 
 export function ShopClient({
   products,
+  categories,
   lockedCategory,
 }: {
   products: Product[];
+  categories: Category[];
   lockedCategory?: CategorySlug;
 }) {
   const [activeCategories, setActiveCategories] = useState<CategorySlug[]>(

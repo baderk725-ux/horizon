@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
-import { products } from "@/lib/products";
 import { formatPrice } from "@/lib/format";
 import { EditorialImage } from "@/components/EditorialImage";
 import { Button } from "@/components/Button";
@@ -18,16 +17,6 @@ export function CheckoutClient() {
   const { lines, subtotal, clearCart } = useCart();
   const [shippingOption, setShippingOption] = useState(SHIPPING_OPTIONS[0].id);
   const [placed, setPlaced] = useState(false);
-
-  const detailedLines = lines
-    .map((line) => {
-      const product = products.find((p) => p.id === line.productId);
-      if (!product) return null;
-      const variant = product.variants?.find((v) => v.id === line.variantId);
-      const price = product.price + (variant?.priceModifier ?? 0);
-      return { line, product, variant, price };
-    })
-    .filter((x): x is NonNullable<typeof x> => x !== null);
 
   const shippingCost = SHIPPING_OPTIONS.find((o) => o.id === shippingOption)?.price ?? 0;
   const total = subtotal + shippingCost;
@@ -54,7 +43,7 @@ export function CheckoutClient() {
     );
   }
 
-  if (detailedLines.length === 0) {
+  if (lines.length === 0) {
     return (
       <div className="container-editorial flex flex-col items-center gap-6 py-24 text-center">
         <p className="text-stone">Your bag is empty — add something before checking out.</p>
@@ -141,13 +130,14 @@ export function CheckoutClient() {
         <div className="h-fit border border-line p-6">
           <h2 className="font-serif text-xl">Order Summary</h2>
           <ul className="mt-6 flex flex-col gap-4">
-            {detailedLines.map(({ line, product, variant, price }) => (
+            {lines.map((line) => (
               <li key={`${line.productId}-${line.variantId ?? "default"}`} className="flex gap-4">
                 <div className="relative h-16 w-14 shrink-0 bg-cream">
                   <EditorialImage
-                    icon={product.images[0].icon}
-                    tone={product.images[0].tone}
-                    alt={product.images[0].alt}
+                    icon={line.image.icon}
+                    tone={line.image.tone}
+                    url={line.image.url}
+                    alt={line.image.alt}
                     className="h-full w-full"
                   />
                   <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-charcoal text-[10px] text-ivory">
@@ -155,10 +145,10 @@ export function CheckoutClient() {
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col justify-center">
-                  <span className="text-sm text-charcoal">{product.name}</span>
-                  {variant ? <span className="text-xs text-stone">{variant.label}</span> : null}
+                  <span className="text-sm text-charcoal">{line.name}</span>
+                  {line.variantLabel ? <span className="text-xs text-stone">{line.variantLabel}</span> : null}
                 </div>
-                <span className="text-sm text-stone">{formatPrice(price * line.quantity)}</span>
+                <span className="text-sm text-stone">{formatPrice(line.price * line.quantity)}</span>
               </li>
             ))}
           </ul>

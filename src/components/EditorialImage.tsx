@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { PlaceholderIcon, PlaceholderTone } from "@/lib/types";
 
 const TONE_STYLES: Record<PlaceholderTone, { from: string; to: string; ink: string }> = {
@@ -28,13 +29,29 @@ interface EditorialImageProps {
   icon: PlaceholderIcon;
   tone: PlaceholderTone;
   alt: string;
+  url?: string | null;
   className?: string;
   priority?: boolean;
 }
 
-export function EditorialImage({ icon, tone, alt, className = "" }: EditorialImageProps) {
+export function EditorialImage({ icon, tone, alt, url, className = "", priority }: EditorialImageProps) {
   const palette = TONE_STYLES[tone];
   const gradientId = `grad-${icon}-${tone}`;
+
+  if (url) {
+    return (
+      <div className={`relative overflow-hidden ${className}`}>
+        <Image
+          src={url}
+          alt={alt}
+          fill
+          priority={priority}
+          sizes="(max-width: 768px) 50vw, 25vw"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
 
   return (
     <div
