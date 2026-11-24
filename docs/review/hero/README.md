@@ -1,54 +1,60 @@
-# Hero Review — Phase 4 (awaiting Khaled's approval)
+# Hero Review — awaiting Khaled's visual approval
 
-**Build:** `portfolio/` · Next.js 16.4 · production build · reviewed 2026-11-24
-**Recordings:** `hero-desktop.mp4` (1440×900, high tier) and `hero-mobile.mp4` (390×844, low tier). They're sent separately and not committed to git.
+**Status:** Phase 5 is **paused** until Khaled approves the Hero after reviewing it on real desktop and mobile devices. Nothing is published.
+**Build:** `portfolio/` production build · branch `claude/portfolio-skills-setup-rwlc89`
 
-> ⚠️ The recordings were made in a cloud container **without a GPU** (software WebGL), so playback is choppier than on any real device. Timing is real; smoothness isn't representative. Please also run it locally (see below).
+## How to preview
+
+See [`portfolio/README.md`](../../../portfolio/README.md). In short, with Node ≥ 20.9:
+
+```bash
+cd portfolio && npm install && npm run build && npm start
+# → http://localhost:3000   (new tab/window = first-visit opening again)
+```
+
+## Review material
+
+| File | What |
+|---|---|
+| `hero-desktop.mp4` | 1440×900, high tier: opening → cursor interaction → scroll-out *(sent directly, not in git)* |
+| `hero-mobile.mp4` | 390×844, mobile tier: opening → scroll-out *(sent directly, not in git)* |
+| `desktop-sequence.jpg`, `mobile-sequence.jpg` | Frame sequences of the recordings |
+| `screenshots/hero-desktop-1440.jpg`, `hero-desktop-1920.jpg` | Settled hero, desktop |
+| `screenshots/hero-tablet-768.jpg` | Settled hero, tablet portrait |
+| `screenshots/hero-mobile-390.jpg`, `hero-mobile-360.jpg` | Settled hero, phones |
+| `screenshots/hero-reduced-motion-1440.jpg` | Reduced-motion version |
+
+> ⚠️ All captures were made in a cloud container **without a GPU** (software WebGL). Timing is real, but motion is choppier than on a real device. Please judge smoothness on your own machine.
 
 ![Desktop sequence](desktop-sequence.jpg)
 ![Mobile sequence](mobile-sequence.jpg)
 
-## What to review
+## Decisions applied (2026-11-24)
 
-1. **The opening** (first visit): veil + counter → the scattered signal gathers into the Flow → KHALED rises letter by letter from its masks, *inside* the 3D space (the Flow passes behind K-H-A-L and in front of the D) → the offer and CTAs → the nav.
-2. **Business positioning:** the first viewport says what you sell and to whom, with **Start a project** as the primary action.
-3. **Interaction (desktop):** move the cursor across the Flow; particles part around it and the camera follows with a gentle parallax.
-4. **Scroll-out:** the wordmark lifts and drifts toward the camera while the Flow carries on into Scene 02.
-5. **Repeat visits:** no veil and no letter rise; the wordmark is already in place and only the particles gather.
-6. **Mobile:** the same story, re-staged vertically. 9k particles with no bloom (a brighter core instead), native scroll, and a legibility scrim behind the offer.
-7. **Reduced motion:** a still render of the Flow, everything visible immediately, no veil and no smooth scroll.
+1. **Mobile intro (approved):** the offer line is visible from the first frame, followed by the KHALED wordmark rise.
+2. **Opening veil (changed):** no forced waiting screen. The black screen exits the moment the scene is ready and is fully gone **≤ 1.0s** after navigation, fade included; a CSS failsafe enforces the cap even if JavaScript is slow. The counter only appears if initialisation takes > 300ms. Measured:
 
-## Verified
+| Scenario | Veil fully gone | Counter shown |
+|---|---|---|
+| Desktop, normal | 767 ms | briefly (software WebGL init > 300ms here) |
+| Mobile, 4× CPU throttle | 859 ms | briefly |
+| JavaScript disabled | never shown | — |
+| Repeat visit | never shown | — |
 
-| Check | Result |
-|---|---|
-| Production build, TypeScript 7 strict | ✅ |
-| QA sweep: 7 routes × 6 widths (360–1920) + reduced motion, axe-core | ✅ 0 blocking |
-| Lab LCP (local, no throttling) | 88–196 ms on every route; the first-visit intro does not delay LCP |
-| Keyboard | Skip link → logo → nav → CTAs, visible lime focus rings |
-| Inquiry form + API | Validation, honeypot, webhook delivery, mailto fallback, "unconfigured" state, all tested |
-| Console errors | None from our code (R3F 9.8 logs a known `THREE.Clock` deprecation notice) |
+On a device with a real GPU, initialisation is usually faster than 300ms, so most first visits won't see a counter at all.
 
-## Decisions you may want to weigh in on
+## Verified on this build
 
-- **Mobile intro:** the offer line is visible from the first frame, because it's the LCP element on phones and hiding it would cost up to ~2s of LCP on slow devices. On desktop it reveals after the wordmark, as storyboarded.
-- **Preloader:** shown once per session, capped at 2.0s, and it only covers real work (fonts + shader compile).
-- **The wordmark is rendered twice by design:** the DOM `h1` (SEO, accessibility, LCP, no-JS) and a pixel-matched WebGL copy that takes over invisibly so the Flow can pass through it.
+- QA, home: 0 blocking issues at 360 / 390 / 768 / 1024 / 1440 / 1920 + reduced motion, axe-core included. Previous full sweep: 7 routes, 0 blocking.
+- Lab LCP (local, unthrottled): 108–220 ms. The intro never delays LCP.
+- Tablet-portrait legibility fixed in this round: the hero scrim now follows orientation, not width.
 
-## Run it locally
+## Known issues (open)
 
-```bash
-cd portfolio && npm install && npm run build && npm start   # http://localhost:3000
-# QA overrides: ?tier=high | medium | low | static
-# First-visit intro again: open a new tab/window (it's per session)
-```
-
-## Phase 5 backlog (already identified, not started)
-
-- Scene 02: route the loop so it doesn't cross the bio text, and add kinetic width-flow on "digital".
-- Scene 03: align the Flow-built panels with the DOM capability cards; hover tilt; pin on desktop.
-- Scene 04: real captures of the four showcases (replacing the placeholder art), depth gallery and the card → case-study transition.
-- Scene 05: orbit nodes tied to the real tool list, plus the filter.
-- Scene 06: magnetic CTA, portal brightening on hover.
-- Global: custom cursor, magnetic buttons, View Transitions, OG images.
-- Inputs still needed from you: contact email, socials, availability line, and confirmation of the tool list.
+1. **Real-device performance is unverified.** All frame-rate testing ran on software WebGL. Smoothness on real desktops and phones, and the auto-downgrade threshold (< 42 fps), need checking on your devices.
+2. **Counter flash.** On slower devices the counter can appear for a fraction of a second before the veil exits. This is by design (it only shows when initialisation is genuinely slow), but it may read as a flicker; it can be removed entirely if you prefer a pure black screen.
+3. **Safari/WebKit and Firefox are untested.** Only Chromium is installed in this environment.
+4. **The wordmark scroll-out** lifts and drifts the letters toward the camera; it does not yet dissolve into particles as the storyboard describes (planned for Phase 5).
+5. **The Flow behind Scenes 02–05** is functional but not yet aligned with their content: the ribbon crosses the Scene 02 bio, the panels and frame don't sit over the cards, and the orbits sit behind the tool table (Phase 5).
+6. **Placeholders:** contact email, social links, availability line, OG/share images, real project captures; the tool list needs your confirmation.
+7. **Console:** React Three Fiber 9.8 logs a known `THREE.Clock` deprecation warning (library-side, harmless).

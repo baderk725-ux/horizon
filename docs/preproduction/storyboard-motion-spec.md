@@ -29,7 +29,7 @@
 
 | # | Element | Purpose | Trigger | Duration / ease | Exit state |
 |---|---|---|---|---|---|
-| 1.1 | Preloader veil (obsidian) + % counter (mono) | Masks shader compile and font load; first-visit only (session) | Page load | Until ready, **max 2.0s**; counter `snap 1` | Veil fades out over 0.6s; skipped on repeat visits |
+| 1.1 | Opening veil (obsidian) + % counter (mono) | Covers scene initialisation only; first visit only (session). **Never a forced wait** (decision 2026-11-24) | Page load | Exits the moment the scene is ready; fully gone **≤ 1.0s** after navigation incl. its 0.35s fade (CSS-enforced cap). The counter appears only if init takes > 300ms | Removed; skipped on repeat visits, or if JS arrives after the cap (seamless handoff instead) |
 | 1.2 | Particle gathering | Establish "signal → form" | Veil exit | 2.4s, per-particle delay 0–0.8s, `ease.flow` | Particles settled on the ribbon; the ribbon keeps flowing (idle) |
 | 1.3 | Wordmark reveal (WebGL, in-depth) | The name *inside* the light | t = 0.9s into 1.2 | 1.1s; letters rise from a mask, stagger 0.05, `ease.flow` | Visible; the Flow passes behind K-H-A and in front of E-D |
 | 1.4 | DOM crossfade | Swap the SSR `h1` for the WebGL wordmark seamlessly | WebGL wordmark ready | 0.3s | DOM `h1` at opacity 0 (stays in the accessibility tree) |
@@ -39,6 +39,7 @@
 | 1.8 | Scroll out | Hand off to Form | Scroll 0.6 → 1.2 vh (scrub) | — | Wordmark dissolves to particles that join the ribbon; text slides up 15% and fades |
 
 **Reduced motion:** a static poster of this exact composition (pre-rendered), all text visible immediately, and no preloader.
+**Mobile (approved 2026-11-24):** the offer line is visible from the first frame (it is the mobile LCP element), followed by the KHALED wordmark rise. Readability and performance take priority.
 
 ## SCENE 02 — FORM (identity) · 1.2 → 2.6 vh
 

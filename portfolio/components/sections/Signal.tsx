@@ -38,7 +38,7 @@ export function Signal() {
       {/* Legibility scrim: the Flow passes behind the offer, never through it */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[62%] bg-[linear-gradient(to_top,rgba(9,10,13,0.92)_0%,rgba(9,10,13,0.7)_45%,transparent_100%)] md:h-[42%] md:bg-[linear-gradient(to_top,rgba(9,10,13,0.85)_0%,rgba(9,10,13,0.4)_50%,transparent_100%)]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[62%] bg-[linear-gradient(to_top,rgba(9,10,13,0.92)_0%,rgba(9,10,13,0.7)_45%,transparent_100%)] md:landscape:h-[42%] md:landscape:bg-[linear-gradient(to_top,rgba(9,10,13,0.85)_0%,rgba(9,10,13,0.4)_50%,transparent_100%)]"
       />
       <div className="container-site relative grid gap-8 md:grid-cols-12 md:items-end" data-hero-out>
         <div className="md:col-span-7 lg:col-span-6">

@@ -125,8 +125,12 @@
    A CSS failsafe reveals everything after 4.5s if JS never runs.
    --------------------------------------------------------------- */
 .veil { display: none; }
-html.first-visit .veil { display: flex; animation: veil-failsafe 0s linear 4.5s forwards; }
+/* Veil cap: fully gone ≤ 1.0s after navigation even if JS is slow (0.65s hold + 0.35s fade). */
+html.first-visit .veil { display: flex; animation: veil-failsafe 0.35s cubic-bezier(0.65, 0, 0.35, 1) 0.65s forwards; }
 @keyframes veil-failsafe { to { opacity: 0; visibility: hidden; } }
+/* The counter is only shown if initialisation is genuinely taking time (> 300ms). */
+.veil-count { opacity: 0; animation: veil-count-in 0.2s linear 0.3s forwards; }
+@keyframes veil-count-in { to { opacity: 1; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
