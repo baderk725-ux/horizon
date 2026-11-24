@@ -38,7 +38,7 @@ This is Khaled's actual story told as a single visual journey: a person who turn
 |---|---|
 | Chrome chains + spiked star (heavy, physical, metal) | A particle ribbon of light (weightless, digital, luminous) |
 | Light grey hero descending to dark red | Obsidian throughout; light *emerges* from darkness |
-| Red + cyan two-tone | Silver + one acid-lime accent used only as light |
+| Red + cyan two-tone, red as surfaces and panels | Silver + one signal-red accent used **only as light** (no red fills, no cyan pairing) |
 | Extended wordmark cropped at the bottom | Centred wordmark *inside* the 3D space, crossed by the Flow |
 | Lanyard badge finale | A portal finale |
 
@@ -56,7 +56,7 @@ The site must say **what Khaled sells, to whom** within the first viewport, with
 
 - **Hero line (under the wordmark):** "Premium websites, cinematic digital experiences and AI-powered applications, designed and built for ambitious brands and founders."
 - **Service strip (hero, mono):** Premium websites · Cinematic experiences · AI applications
-- **Hero CTAs:** **Start a project** (primary, lime) · View work (secondary)
+- **Hero CTAs:** **Start a project** (primary, accent) · View work (secondary)
 - "I build digital experiences." stays the Scene 02 headline, as the identity statement that follows the offer.
 - The page `<title>` and meta description lead with the offer, not just the name.
 
@@ -84,20 +84,20 @@ One display family whose **width axis is the kinetic typography**. The letters l
 | Obsidian | `#090A0D` | Base (≈ 78% of pixels) | — |
 | Graphite | `#191D25` | Surfaces, panels (≈ 14%) | — |
 | Silver | `#E7EAF0` | Type, primary light (≈ 6%) | **16.4 : 1** |
-| Acid Lime | `#B8F34A` | Accent **as light** (≤ 2%) | **15.0 : 1** |
+| Signal Red | `#FF4436` | Accent **as light** (≤ 2%) — replaced Acid Lime `#B8F34A` on 2026-11-24 at Khaled's request | **5.78 : 1** (AA) |
 | Muted | `#8B93A3` | Secondary text | **6.4 : 1** (AA) |
 | Line | `#2A303B` | Hairlines, borders | decorative only |
 
-**The lime rule:** lime is *emitted light*. It appears in particles, the cursor dot, active states, the period that ends headlines, and the **one** primary button (obsidian text on lime = 15 : 1). Never use lime as a decorative fill, and never put lime on silver (1.09 : 1, fails).
+**The accent rule:** the accent is *emitted light*. It appears in particles, the cursor dot, active states, the period that ends headlines, and the **one** primary button (obsidian text on red = 5.78 : 1, AA). Never use it as a decorative fill or a large surface. In the Flow, red only reads as light with a **hot near-white core and a red halo**; mixing red toward silver turns it pink. Form errors use **amber `#F2B33D`** so they can never be mistaken for the accent. In code the token is `accent`, so a future colour change is one line.
 
-**Honest note:** black + acid lime is a popular 2025–26 developer aesthetic. What keeps it from feeling like a trend is the discipline: lime as light, not paint, at ≤ 2% of the screen, against silver type. Each concept project then gets its own colour field inside its card (cool steel NOVA, lime-dark ORBIT, warm bone VANTA, neutral stone AUREX), so the work doesn't look like the portfolio.
+**Honest note:** red on black was also the Weblove reference's base colour. What keeps this identity distinct is the same discipline: red as light (particles, a single CTA), never as red panels or surfaces, no cyan pairing, and silver type dominant. Each concept project keeps its own colour field (cool steel NOVA, ember-dark ORBIT, warm bone VANTA, neutral stone AUREX).
 
 All tokens ship as OKLCH in Tailwind v4 `@theme` (see the technical plan).
 
 ## 5. Logo
 
 - **Wordmark:** KHALED in Archivo 125% / 800, crossed by the Flow line, which ends in a **cursor dot**. The signal becomes the interface (the point of interaction).
-- **Monogram K:** a rigid stem + upper arm (structure, code), and a **lower arm drawn as the Flow** in lime (fluid, design). Used for the favicon, app icon, OG images and loader.
+- **Monogram K:** a rigid stem + upper arm (structure, code), and a **lower arm drawn as the Flow** in the accent red (fluid, design). Used for the favicon, app icon, OG images and loader.
 - **On the site:** the monogram + "KHALED" label sits top-left in the nav. In Scene 01 the 3D wordmark *is* the logo moment, with the live Flow passing through it.
 - These are proposals for direction approval; final vector refinement happens in Phase 3.
 
@@ -163,7 +163,7 @@ These references are from my knowledge of these sites. I haven't re-inspected th
 
 Mobile: ![m01](preproduction/frames/m01-signal.jpg) ![m03](preproduction/frames/m03-interface.jpg) ![m06](preproduction/frames/m06-beyond.jpg)
 
-*Project art in frame 04 is procedural placeholder, labelled as such. It will be replaced by real captures of the four builds.*
+*Concept frames were rendered with the original lime accent (pre 2026-11-24); live screenshots in `review/hero/screenshots/` show the current red. Project art in frame 04 is procedural placeholder, labelled as such. It will be replaced by real captures of the four builds.*
 
 ## 11. Risks
 
@@ -172,5 +172,5 @@ Mobile: ![m01](preproduction/frames/m01-signal.jpg) ![m03](preproduction/frames/
 | Spectacle overwhelms the work | Four signature moments only; projects get their own colour fields; the work is shown large |
 | Mobile performance | Particle tiers (30k → 8k → static poster), no postprocessing on mobile; see the technical plan |
 | Accessibility of a 3D-first site | Full DOM content layer, reduced-motion mode, keyboard-complete; the canvas is decorative |
-| Trend fatigue (black + lime) | The lime-as-light rule; silver dominant; per-project colour |
+| Similarity to the reference (red on black) | The accent-as-light rule; no red surfaces; silver dominant; per-project colour |
 | Content gaps | See the "Inputs needed" list; nothing is invented, and placeholders are explicit |

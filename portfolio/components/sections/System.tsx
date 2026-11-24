@@ -9,7 +9,7 @@ export function System() {
         <div className="md:col-span-5">
           <SectionLabel index="05">Technology</SectionLabel>
           <h2 id="system-title" className="display wdth-118 mt-8 text-display-m text-silver">
-            The system<span className="text-lime">.</span>
+            The system<span className="text-accent">.</span>
           </h2>
           <p className="mt-6 max-w-[40ch] text-muted">
             The tools behind the work, chosen for speed, craft and reliability.
@@ -19,7 +19,7 @@ export function System() {
           <dl className="grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2">
             {toolGroups.map((g) => (
               <div key={g} className="bg-obsidian p-6">
-                <dt className="label text-lime">{g}</dt>
+                <dt className="label text-accent">{g}</dt>
                 <dd className="mt-4">
                   <ul className="flex flex-col gap-3">
                     {tools

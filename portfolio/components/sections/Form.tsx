@@ -12,7 +12,7 @@ export function Form() {
             <span className="wdth-112 block text-display-l">I build</span>
             <span className="wdth-62 block text-[clamp(4.4rem,1.6rem+12vw,12rem)] font-bold leading-[0.86]">digital</span>
             <span className="wdth-125 block text-[clamp(2.1rem,0.4rem+5vw,5.25rem)] leading-[0.9]">
-              experiences<span className="text-lime">.</span>
+              experiences<span className="text-accent">.</span>
             </span>
           </h2>
         </div>

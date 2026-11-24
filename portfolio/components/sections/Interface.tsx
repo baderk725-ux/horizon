@@ -9,7 +9,7 @@ export function Interface() {
         <SectionLabel index="03">Capabilities</SectionLabel>
         <h2 id="interface-title" className="display wdth-118 mt-8 text-display-m text-silver">
           Four ways
-          <br />I work<span className="text-lime">.</span>
+          <br />I work<span className="text-accent">.</span>
         </h2>
 
         {/* Reserved stage for the Flow-built panels (3D layer). */}
@@ -18,7 +18,7 @@ export function Interface() {
         <ol className="grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
           {capabilities.map((c) => (
             <li key={c.index} className="flex flex-col gap-5 bg-obsidian p-6 md:p-8">
-              <span className="label text-lime">{c.index}</span>
+              <span className="label text-accent">{c.index}</span>
               <h3 className="text-title text-silver">{c.title}</h3>
               <p className="text-muted">{c.body}</p>
               <ul className="mt-auto flex flex-wrap gap-2 pt-2">

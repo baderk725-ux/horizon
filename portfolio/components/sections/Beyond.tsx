@@ -21,7 +21,7 @@ export function Beyond() {
         <h2 id="beyond-title" className="display wdth-118 mt-8 text-display-l text-silver">
           Let&apos;s build
           <br />
-          what&apos;s next<span className="text-lime">.</span>
+          what&apos;s next<span className="text-accent">.</span>
         </h2>
         <p className="mt-8 max-w-[44ch] text-muted">
           Have a website, an experience or an AI product in mind? Tell me about it. Every project starts with a conversation.

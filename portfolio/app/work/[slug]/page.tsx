@@ -43,7 +43,7 @@ export default async function CaseStudy({ params }: Params) {
         </p>
         <h1 className="display wdth-125 mt-4 text-display-xl text-silver">{p.name}</h1>
         <p className="mt-6 max-w-[52ch] text-title text-silver">{p.summary}</p>
-        <p className="label mt-6 inline-flex rounded-pill border border-lime/40 px-3 py-2 text-lime">{conceptLabel}</p>
+        <p className="label mt-6 inline-flex rounded-pill border border-accent/40 px-3 py-2 text-accent">{conceptLabel}</p>
 
         <dl className="mt-12 grid gap-6 border-t border-line pt-6 sm:grid-cols-3">
           <div>
@@ -95,14 +95,14 @@ export default async function CaseStudy({ params }: Params) {
           <p className="label text-muted">Showcase</p>
           <h2 id="demo" className="mt-4 text-title text-silver">{p.demo.title}</h2>
           <p className="mt-3 max-w-[60ch] text-muted">{p.demo.body}</p>
-          <p className="label mt-6 text-lime">In production. Arrives with the showcase phase.</p>
+          <p className="label mt-6 text-accent">In production. Arrives with the showcase phase.</p>
         </div>
       </section>
 
       <nav aria-label="Next project" className="container-site mt-32 border-t border-line py-16">
         <p className="label text-muted">Next concept</p>
         <Link href={`/work/${next.slug}`} className="group mt-4 flex items-end justify-between gap-6">
-          <span className="display wdth-125 text-display-l text-silver transition-colors group-hover:text-lime">{next.name}</span>
+          <span className="display wdth-125 text-display-l text-silver transition-colors group-hover:text-accent">{next.name}</span>
           <ArrowUpRight aria-hidden="true" size={40} className="mb-3 shrink-0 text-silver transition-transform duration-300 ease-flow group-hover:-translate-y-1 group-hover:translate-x-1" />
         </Link>
         <div className="mt-16">

@@ -31,6 +31,8 @@ cd portfolio && npm install && npm run build && npm start
 
 ## Decisions applied (2026-11-24)
 
+0. **Accent colour:** phosphor lime `#B8F34A` → **signal red `#FF4436`** (Khaled). The Flow uses a hot near-white core with a red halo so red still reads as light; form errors moved to amber; token renamed `accent` in code.
+
 1. **Mobile intro (approved):** the offer line is visible from the first frame, followed by the KHALED wordmark rise.
 2. **Opening veil (changed):** no forced waiting screen. The black screen exits the moment the scene is ready and is fully gone **≤ 1.0s** after navigation, fade included; a CSS failsafe enforces the cap even if JavaScript is slow. The counter only appears if initialisation takes > 300ms. Measured:
 

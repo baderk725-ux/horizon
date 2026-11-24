@@ -15,7 +15,7 @@ export default function StartPage() {
       {/* Quiet portal ring — the Flow's finale, without heavy 3D on a typing page */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-[-30vw] top-[-10vh] size-[90vw] max-w-[1100px] rounded-full border border-lime/15 shadow-[0_0_120px_10px_rgba(184,243,74,0.06)_inset] md:right-[-12vw] md:size-[60vw]"
+        className="pointer-events-none absolute right-[-30vw] top-[-10vh] size-[90vw] max-w-[1100px] rounded-full border border-accent/15 shadow-[0_0_120px_10px_rgba(255,68,54,0.06)_inset] md:right-[-12vw] md:size-[60vw]"
       />
       <div className="container-site relative grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-4">
@@ -23,7 +23,7 @@ export default function StartPage() {
           <h1 className="display wdth-118 mt-8 text-display-l text-silver">
             Let&apos;s build
             <br />
-            what&apos;s next<span className="text-lime">.</span>
+            what&apos;s next<span className="text-accent">.</span>
           </h1>
           <p className="mt-8 max-w-[38ch] text-muted">
             Premium websites, cinematic experiences and AI-powered applications. Share a few details and I&apos;ll get back to you
@@ -32,7 +32,7 @@ export default function StartPage() {
           <ol className="mt-10 flex flex-col gap-3 border-t border-line pt-6">
             {["Project", "Scope", "Details", "Contact"].map((s, i) => (
               <li key={s} className="label flex gap-4 text-muted">
-                <span className="text-lime">0{i + 1}</span>
+                <span className="text-accent">0{i + 1}</span>
                 {s}
               </li>
             ))}

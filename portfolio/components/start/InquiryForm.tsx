@@ -10,15 +10,15 @@ type Status = "idle" | "sending" | "sent" | "mailto" | "unconfigured" | "error";
 
 const chip =
   "label flex min-h-11 cursor-pointer items-center gap-2 rounded-pill border border-line px-4 py-2.5 text-silver transition-colors " +
-  "hover:border-silver has-[:checked]:border-lime has-[:checked]:bg-lime has-[:checked]:text-obsidian has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-lime";
+  "hover:border-silver has-[:checked]:border-accent has-[:checked]:bg-accent has-[:checked]:text-obsidian has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-accent";
 const field =
-  "w-full rounded-sm border border-line bg-graphite/40 px-4 py-3.5 text-silver placeholder:text-dim transition-colors focus:border-lime focus:outline-none aria-[invalid=true]:border-danger";
+  "w-full rounded-sm border border-line bg-graphite/40 px-4 py-3.5 text-silver placeholder:text-dim transition-colors focus:border-accent focus:outline-none aria-[invalid=true]:border-danger";
 
 function Group({ n, title, hint, children, error, id }: { n: string; title: string; hint?: string; children: React.ReactNode; error?: string; id: string }) {
   return (
     <fieldset className="border-t border-line pt-8" aria-describedby={error ? `${id}-err` : undefined}>
       <legend className="flex w-full items-baseline gap-4">
-        <span className="label text-lime">{n}</span>
+        <span className="label text-accent">{n}</span>
         <span className="text-title text-silver">{title}</span>
       </legend>
       {hint && <p className="mt-2 pl-10 text-sm text-muted">{hint}</p>}
@@ -102,7 +102,7 @@ export function InquiryForm() {
   if (status === "sent" || status === "mailto") {
     return (
       <div role="status" className="rounded-sm border border-line p-8 md:p-12">
-        <span className="grid size-12 place-items-center rounded-full bg-lime text-obsidian">
+        <span className="grid size-12 place-items-center rounded-full bg-accent text-obsidian">
           <Check aria-hidden="true" />
         </span>
         <h2 className="display wdth-118 mt-8 text-display-m text-silver">
@@ -129,7 +129,7 @@ export function InquiryForm() {
   return (
     <form ref={formRef} noValidate onSubmit={onSubmit} className="flex flex-col gap-12" aria-describedby={`${uid}-req`}>
       <p id={`${uid}-req`} className="text-sm text-muted">
-        Fields marked <span className="text-lime">*</span> are required.
+        Fields marked <span className="text-accent">*</span> are required.
       </p>
 
       <Group n="01" id={`${uid}-types`} title="What are we building? *" hint="Choose all that apply." error={err("projectTypes")}>
@@ -165,7 +165,7 @@ export function InquiryForm() {
 
       <Group n="03" id={`${uid}-details`} title="Tell me about the project">
         <label htmlFor={`${uid}-description`} className="label text-muted">
-          Description <span className="text-lime">*</span>
+          Description <span className="text-accent">*</span>
         </label>
         <textarea
           id={`${uid}-description`}
@@ -204,7 +204,7 @@ export function InquiryForm() {
           ).map(([k, label, type, auto, req]) => (
             <div key={k} className={k === "company" ? "md:col-span-2" : ""}>
               <label htmlFor={`${uid}-${k}`} className="label text-muted">
-                {label} {req && <span className="text-lime">*</span>}
+                {label} {req && <span className="text-accent">*</span>}
               </label>
               <input
                 id={`${uid}-${k}`}

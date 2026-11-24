@@ -8,9 +8,9 @@ const base =
   "group relative inline-flex min-h-11 items-center gap-3 rounded-pill px-6 py-3.5 text-[0.9375rem] font-medium leading-none transition-colors duration-300 ease-flow focus-visible:outline-offset-4";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-lime text-obsidian hover:bg-silver",
+  primary: "bg-accent text-obsidian hover:bg-silver",
   secondary: "border border-line text-silver hover:border-silver",
-  ghost: "px-0 text-silver underline decoration-line underline-offset-8 hover:decoration-lime",
+  ghost: "px-0 text-silver underline decoration-line underline-offset-8 hover:decoration-accent",
 };
 
 interface ButtonLinkProps extends Omit<ComponentProps<typeof Link>, "className"> {

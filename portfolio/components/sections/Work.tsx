@@ -15,7 +15,7 @@ export function Work() {
             <h2 id="work-title" className="display wdth-118 mt-8 text-display-m text-silver">
               Concepts
               <br />
-              in motion<span className="text-lime">.</span>
+              in motion<span className="text-accent">.</span>
             </h2>
           </div>
           <p className="label max-w-[38ch] text-muted">
@@ -35,11 +35,11 @@ export function Work() {
                     <p className="label text-muted">
                       {p.index} · {p.kind}
                     </p>
-                    <h3 className="display wdth-125 mt-2 text-display-m text-silver transition-colors group-hover:text-lime">
+                    <h3 className="display wdth-125 mt-2 text-display-m text-silver transition-colors group-hover:text-accent">
                       {p.name}
                     </h3>
                     <p className="mt-3 max-w-[48ch] text-muted">{p.summary}</p>
-                    <p className="label mt-4 text-lime">Independent concept</p>
+                    <p className="label mt-4 text-accent">Independent concept</p>
                   </div>
                   <ArrowUpRight
                     aria-hidden="true"

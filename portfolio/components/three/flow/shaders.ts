@@ -14,7 +14,7 @@ uniform float uFade;
 uniform vec2  uPointer;
 uniform float uPointerStrength;
 uniform float uAspect;
-uniform vec3  uLime;
+uniform vec3  uAccent;
 uniform vec3  uSilver;
 
 attribute vec2  aRef;
@@ -68,8 +68,14 @@ void main() {
   gl_PointSize = size * uSize * uPixelRatio * (34.0 / -mv.z);
 
   float fade = clamp((-mv.z - 4.0) / uFade, 0.0, 1.0);
-  vec3 col = mix(uLime, uSilver, clamp((1.0 - aCore) * 0.55 + fract(aSeed * 7.31) * 0.35, 0.0, 1.0));
-  col = mix(col, uLime, pulse * 0.6);
+  // Red reads as light only with a hot core: near-white centre, saturated red halo, few neutral motes.
+  // (Mixing red toward silver gives pink, so the neutral share is kept small.)
+  vec3 hot = mix(uAccent, vec3(1.0, 0.93, 0.9), 0.6);
+  float neutral = step(0.86, fract(aSeed * 7.31));                 // ~14% silver motes for depth
+  vec3 col = mix(uAccent, uSilver, neutral * (1.0 - aCore));
+  col = mix(col, hot, aCore * 0.65);
+  col = mix(col, hot, pulse * 0.7);
+  bright *= mix(1.25, 1.0, neutral);                                // red carries less luminance than lime did
   vColor = col * bright * (1.0 - fade * 0.7) * (1.0 + pulse * 0.55 + infl * 0.6);
 }
 `;

@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a
           href="#main"
-          className="label fixed left-4 top-4 z-[70] -translate-y-24 rounded-pill bg-lime px-4 py-3 text-obsidian transition-transform focus:translate-y-0"
+          className="label fixed left-4 top-4 z-[70] -translate-y-24 rounded-pill bg-accent px-4 py-3 text-obsidian transition-transform focus:translate-y-0"
         >
           Skip to content
         </a>

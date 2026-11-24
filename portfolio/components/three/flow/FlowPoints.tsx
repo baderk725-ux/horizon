@@ -59,7 +59,7 @@ export function FlowPoints({ data, animated, sizeScale }: Props) {
           uPointer: { value: new THREE.Vector2(9, 9) },
           uPointerStrength: { value: 0 },
           uAspect: { value: 1 },
-          uLime: { value: new THREE.Color("#B8F34A") },
+          uAccent: { value: new THREE.Color("#FF4436") },
           uSilver: { value: new THREE.Color("#E7EAF0") },
         },
       }),

@@ -7,7 +7,7 @@ export default function NotFound() {
       <h1 className="display wdth-118 mt-6 text-display-l text-silver">
         This signal
         <br />
-        got lost<span className="text-lime">.</span>
+        got lost<span className="text-accent">.</span>
       </h1>
       <p className="mt-6 max-w-[40ch] text-muted">The page you&apos;re looking for doesn&apos;t exist or has moved.</p>
       <div className="mt-10 flex flex-wrap gap-3">

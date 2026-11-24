@@ -1,7 +1,7 @@
 interface MonogramProps {
   size?: number;
   className?: string;
-  /** Colour of the rigid strokes; the flow arm is always lime unless `mono` */
+  /** Colour of the rigid strokes; the flow arm is always the accent unless `mono` */
   ink?: string;
   mono?: boolean;
 }
@@ -14,7 +14,7 @@ export function Monogram({ size = 26, className, ink = "currentColor", mono = fa
       <path d="M8 14 L19 2 H24 L12 14Z" fill={ink} />
       <path
         d="M10.5 13.2 C15 13.2 17 16 18.5 19.5 S21.5 24 24 24"
-        stroke={mono ? ink : "var(--color-lime)"}
+        stroke={mono ? ink : "var(--color-accent)"}
         strokeWidth="3.2"
         fill="none"
       />

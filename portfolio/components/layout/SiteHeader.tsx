@@ -71,7 +71,7 @@ export function SiteHeader() {
 
         <nav aria-label="Primary" className="hidden items-center gap-9 md:flex">
           {nav.map((item) => (
-            <Link key={item.href} href={item.href} className="label py-3 text-silver transition-colors hover:text-lime">
+            <Link key={item.href} href={item.href} className="label py-3 text-silver transition-colors hover:text-accent">
               {item.label}
             </Link>
           ))}

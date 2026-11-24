@@ -55,7 +55,7 @@ export function Signal() {
         <ul className="flex flex-wrap gap-x-6 gap-y-2 md:col-span-5 md:flex-col md:items-end lg:col-span-6" data-hero-line aria-label="Services">
           {site.services.map((s, i) => (
             <li key={s} className="label flex items-center gap-3 text-muted">
-              <span className="text-lime">0{i + 1}</span>
+              <span className="text-accent">0{i + 1}</span>
               <span className="text-silver">{s}</span>
             </li>
           ))}
