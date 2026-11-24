@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   KHALED — Beyond the Interface · design tokens (docs/art-direction.md)
+   --------------------------------------------------------------- */
+
+/* Fonts come from next/font/local variables set on <html> */
+@theme inline {
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@theme {
+  --color-*: initial;
+  /* Palette — approved hex values, expressed in OKLCH */
+  --color-obsidian: oklch(14.5% 0.0067 270.5);   /* #090A0D base */
+  --color-graphite: oklch(23.03% 0.0167 264.2);  /* #191D25 surfaces */
+  --color-silver: oklch(93.65% 0.0087 264.5);    /* #E7EAF0 type */
+  --color-lime: oklch(89.34% 0.2012 126.9);      /* #B8F34A accent = light */
+  --color-muted: oklch(66.2% 0.0255 264.4);      /* #8B93A3 secondary text (6.4:1) */
+  --color-line: oklch(30.81% 0.0216 262.5);      /* #2A303B hairlines */
+  --color-dim: oklch(50.22% 0.0239 264.3);       /* #5D6472 non-text only */
+  --color-danger: oklch(72% 0.17 25);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Fluid type scale (360 → 1600px) */
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.4;
+  --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.1875rem);
+  --text-body--line-height: 1.55;
+  --text-title: clamp(1.25rem, 1.1rem + 0.6vw, 1.75rem);
+  --text-title--line-height: 1.2;
+  --text-display-m: clamp(2.25rem, 1.4rem + 3.6vw, 4.5rem);
+  --text-display-m--line-height: 0.9;
+  --text-display-l: clamp(3rem, 1.2rem + 7.4vw, 8rem);
+  --text-display-l--line-height: 0.86;
+  --text-display-xl: clamp(3.4rem, 0.5rem + 13.5vw, 15rem);
+  --text-display-xl--line-height: 0.86;
+
+  --tracking-display: -0.035em;
+  --tracking-label: 0.08em;
+
+  /* Layout */
+  --spacing: 0.25rem;
+  --container-prose: 68ch;
+  --breakpoint-3xl: 120rem;
+
+  /* Motion tokens (mirror lib/motion-tokens.ts) */
+  --ease-flow: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cine: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --radius-pill: 999px;
+}
+
+@custom-variant pointer-fine (@media (hover: hover) and (pointer: fine));
+
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 120rem;
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+/* Width-axis control for the display face (the kinetic-typography lever) */
+@utility wdth-62 { font-stretch: 62%; }
+@utility wdth-100 { font-stretch: 100%; }
+@utility wdth-112 { font-stretch: 112%; }
+@utility wdth-118 { font-stretch: 118%; }
+@utility wdth-125 { font-stretch: 125%; }
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: 1.4;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+@layer base {
+  html {
+    background: var(--color-obsidian);
+    color: var(--color-silver);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scrollbar-color: var(--color-line) var(--color-obsidian);
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.55;
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+  ::selection { background: var(--color-lime); color: var(--color-obsidian); }
+  :focus-visible { outline: 2px solid var(--color-lime); outline-offset: 3px; border-radius: 2px; }
+  a { color: inherit; text-decoration: none; }
+  img, video { display: block; max-width: 100%; }
+}
+
+/* Film grain — keeps flat blacks from feeling digital (≤ 7%) */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------------------------------------------------------------
+   Intro states. `html.intro` is set by an inline head script only when
+   motion is allowed; content is visible by default (no-JS safe).
+   A CSS failsafe reveals everything after 4.5s if JS never runs.
+   --------------------------------------------------------------- */
+.veil { display: none; }
+html.first-visit .veil { display: flex; animation: veil-failsafe 0s linear 4.5s forwards; }
+html.intro [data-intro] { opacity: 0; animation: intro-failsafe 0s linear 4.5s forwards; }
+@keyframes veil-failsafe { to { opacity: 0; visibility: hidden; } }
+@keyframes intro-failsafe { to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }

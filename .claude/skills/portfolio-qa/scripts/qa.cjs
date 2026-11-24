@@ -60,7 +60,7 @@ async function audit(browser, width, reducedMotion) {
     const q = (s) => document.querySelectorAll(s);
     const named = (el) => (el.getAttribute("aria-label") || el.getAttribute("aria-labelledby") || el.textContent.trim() || el.querySelector("img[alt]:not([alt=''])") || el.title);
     const smallTargets = [...q("a, button, [role=button], input, select, textarea")].filter((el) => {
-      const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.width < 24 || r.height < 24);
+      const r = el.getBoundingClientRect(); if (r.width <= 1 && r.height <= 1) return false; /* visually hidden (sr-only) control; its label is the target */ return r.width > 0 && r.height > 0 && (r.width < 24 || r.height < 24);
     }).length;
     return {
       horizontalOverflow: document.documentElement.scrollWidth > vw + 1, overflowing,
