@@ -28,6 +28,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/three": "^0.187.0",
+    "axe-core": "^4.14.1",
     "postcss": "^8",
     "tailwindcss": "4.3.5",
     "typescript": "7.0.2"

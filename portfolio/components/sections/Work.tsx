@@ -26,7 +26,7 @@ export function Work() {
         <ul className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8">
           {projects.map((p) => (
             <li key={p.slug}>
-              <Link href={`/work/${p.slug}`} className="group block" aria-label={`${p.name} — ${p.kind}. ${conceptLabel}`}>
+              <Link href={`/work/${p.slug}`} className="group block">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-line">
                   <ProjectArt project={p} />
                 </div>

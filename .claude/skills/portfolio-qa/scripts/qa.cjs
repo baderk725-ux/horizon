@@ -45,6 +45,9 @@ async function audit(browser, width, reducedMotion) {
     } catch {}
   });
   await page.goto(url, { waitUntil: "load", timeout: 60000 });
+  await page.waitForTimeout(1500);
+  // Read LCP BEFORE scrolling: programmatic scroll is not user input, so LCP would keep updating.
+  const lcpBeforeScroll = await page.evaluate(() => window.__cwv.lcp);
   // scroll through the page to trigger lazy content / scroll animations, then back to top
   await page.evaluate(async () => {
     const step = innerHeight * 0.8;
@@ -72,13 +75,13 @@ async function audit(browser, width, reducedMotion) {
       h1Count: q("h1").length, mainLandmark: q("main").length,
       imgMissingAlt: [...q("img")].filter((i) => !i.hasAttribute("alt")).length,
       unnamedLinksButtons: [...q("a[href], button")].filter((e) => !named(e)).length,
-      smallTargets, cwv: window.__cwv,
+      smallTargets, cwv: { ...window.__cwv },
     };
   });
   let axe = null;
   if (useAxe) {
     try {
-      await page.addScriptTag({ path: require.resolve("axe-core/axe.min.js") });
+      await page.addScriptTag({ path: require.resolve("axe-core/axe.min.js", { paths: [process.cwd(), __dirname] }) });
       const r = await page.evaluate(async () => await window.axe.run(document, { resultTypes: ["violations"] }));
       axe = r.violations.map((v) => ({ id: v.id, impact: v.impact, nodes: v.nodes.length, help: v.help }));
     } catch (e) { axe = `skipped: ${e.code === "MODULE_NOT_FOUND" ? "axe-core not installed (npm i -D axe-core)" : e.message}`; }
@@ -86,6 +89,7 @@ async function audit(browser, width, reducedMotion) {
   const shot = path.join(out, `${width}${reducedMotion ? "-reduced" : ""}.png`);
   await page.screenshot({ path: shot, fullPage: true });
   await ctx.close();
+  checks.cwv.lcp = lcpBeforeScroll;
   return { width, reducedMotion, screenshot: shot, consoleErrors, pageErrors, failedRequests, ...checks, axe };
 }
 

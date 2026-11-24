@@ -126,9 +126,7 @@
    --------------------------------------------------------------- */
 .veil { display: none; }
 html.first-visit .veil { display: flex; animation: veil-failsafe 0s linear 4.5s forwards; }
-html.intro [data-intro] { opacity: 0; animation: intro-failsafe 0s linear 4.5s forwards; }
 @keyframes veil-failsafe { to { opacity: 0; visibility: hidden; } }
-@keyframes intro-failsafe { to { opacity: 1; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }

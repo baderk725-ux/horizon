@@ -62,7 +62,7 @@ export function SiteHeader() {
   }, [open, close]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="fixed inset-x-0 top-0 z-50 bg-[linear-gradient(to_bottom,rgba(9,10,13,0.94)_0%,rgba(9,10,13,0.72)_55%,transparent_100%)]">
       <div className="container-site flex h-[4.5rem] items-center justify-between">
         <Link href="/" className="flex min-h-11 items-center gap-3" aria-label={`${site.name} — home`}>
           <Monogram />
