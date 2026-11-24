@@ -3,6 +3,8 @@
 
 ## Positioning
 One-liner: I design and build immersive digital experiences and AI-powered applications.
+Offer (hero): Premium websites, cinematic digital experiences and AI-powered applications, designed and built for ambitious brands and founders.
+Services: Premium websites · Cinematic / interactive experiences · AI-powered applications · Web design & UI/UX
 Headline statement: "I Build Digital Experiences."
 Category: Creative Developer · Web Designer · AI Builder
 Concept: Beyond the Interface — every interface begins as a signal.
@@ -23,7 +25,7 @@ Is: confident, precise, calm, visual, technical without jargon.
 Is not: hype, buzzwords ("cutting-edge", "seamless", "innovative"), exaggeration, fake humility.
 
 ## Conversion
-Primary CTA: Start a project → contact form.
+Primary CTA: Start a project → /start inquiry (project type, budget range, timeline, description, contact).
 Secondary: Copy email · View work.
 Availability line: [to be confirmed by Khaled]
 

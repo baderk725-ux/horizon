@@ -43,7 +43,11 @@
 
 **Stack (verified compatible):** Next.js 16.4 (App Router, static) · React 19.3 · TypeScript 7.0 (strict) · Tailwind CSS 4.3 · GSAP 3.15 + @gsap/react (ScrollTrigger, SplitText, ScrambleText, Flip, CustomEase) · Lenis 1.3 · Motion 14 (component/UI state) · three r187 + R3F 9.8 + drei 10.7 + @react-three/postprocessing · Lucide 1.78 · Zod 4 (content validation) · @anthropic-ai/sdk (ORBIT, server-side only) · Playwright 1.63 (pinned to the installed Chromium) · Vercel (deploy, after approval).
 
-**One Next.js app, four concept apps inside it:**
+> **Refinement 2 (approved):** the four projects ship first as **case studies with visual showcases and focused functional demos**, not four production-scale apps. The `(concepts)` route group below is the *expansion path* for later; at launch, the demos live inside `/work/[slug]` as isolated client components. The app lives in `portfolio/` so the existing Horizon prompt-library files at the repo root stay untouched.
+>
+> **Refinement 3:** `/start` inquiry page + `app/api/inquiry/route.ts` (zod validation, honeypot, best-effort rate limit, forwards to `INQUIRY_WEBHOOK_URL` when configured, otherwise returns a mailto fallback to `CONTACT_EMAIL`). No paid email service is connected without approval.
+
+**One Next.js app (planned expansion layout):**
 
 ```
 app/
@@ -122,7 +126,11 @@ components/
 - **Honesty labels:** "Independent concept — not a client project" is visible on every concept card, case study and concept app.
 - **Testing:** axe-core in `portfolio-qa`, keyboard walkthroughs via `playwright-cli`, and screen-reader spot checks of the home and case-study templates.
 
-## 8. Build phases after approval
+## 8. Build phases (approved 2026-11-24, supersedes the table below)
+
+1. Design system + static page structure → 2. Complete Digital Flow system → 3. Scene 01 to production quality → 4. **Hero review with Khaled (stop)** → 5. Remaining sections and interactions → 6. Full desktop + mobile QA. Publishing only with approval.
+
+### Original phase plan (kept for reference)
 
 | Phase | Deliverable | Gate |
 |---|---|---|

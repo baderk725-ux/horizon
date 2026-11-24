@@ -24,7 +24,8 @@
 
 **Story:** darkness, then signal. Scattered light gathers into a single ribbon, which threads through the name.
 **Camera:** z 14, a slow push to z 12.5 across the scene. Pointer parallax ±0.25 units (damped λ 4).
-**DOM (SSR, in the HTML):** `h1` "KHALED" (it becomes visually transparent once the WebGL wordmark takes over; still present for SEO, accessibility and LCP), the statement paragraph, and "Beyond the interface / Portfolio 2026".
+**DOM (SSR, in the HTML):** `h1` "KHALED" (it becomes visually transparent once the WebGL wordmark takes over; still present for SEO, accessibility and LCP), the **offer line** ("Premium websites, cinematic digital experiences and AI-powered applications…"), the **service strip**, the **Start a project / View work CTAs** (refinement 1), and "Beyond the interface".
+**Repeat visits:** no preloader and no letter rise. The wordmark is already in place (a 0.3s crossfade from DOM to WebGL) while the particles still gather, so there's no flash of content.
 
 | # | Element | Purpose | Trigger | Duration / ease | Exit state |
 |---|---|---|---|---|---|
@@ -120,12 +121,38 @@
 | 6.2 | Camera push into the portal | Anticipation | Scrub | Scrubbed z 12 → 7 | Holds |
 | 6.3 | "Let's build what's next." | The ask (copy to be finalised with Khaled) | 80% viewport | 0.9s line reveal, wdth 100 → 118 on enter | Static |
 | 6.4 | Radial scrim behind the CTA copy | Legibility over particles (found in mobile frame review) | With 6.3 | 0.6s | Static |
-| 6.5 | Primary CTA "Start a project" (magnetic) | Conversion | Visible | Magnetic; on hover the portal core brightens +30% | Click → contact form (in-page dialog on desktop, `/contact` on mobile) |
+| 6.5 | Primary CTA "Start a project" (magnetic) | Conversion | Visible | Magnetic; on hover the portal core brightens +30% | Click → the `/start` inquiry experience (refinement 3) |
 | 6.6 | Copy email | Zero-friction contact | Click | The label swaps to "Copied ✓" for 2s | Restores |
 | 6.7 | Availability line | Expectation | Static | — | Driven by one config value |
 | 6.8 | Footer (socials, © , back to top) | Utility | Static | — | — |
 
-**Form:** ≤ 4 fields (name, email, project type, message), inline validation, honeypot, a success state ("Thanks — I reply within 2 working days", to be confirmed), and a mailto fallback.
+## START A PROJECT — `/start` (refinement 3)
+
+A professional inquiry experience in the portal's visual language (the Flow as a quiet ring behind the form; no heavy 3D, so typing is never janky).
+
+| Step | Fields | Notes |
+|---|---|---|
+| 1 · Project | **Project type** (chips, multi-select): Premium website · Cinematic / interactive experience · AI-powered application · Web design & UI/UX · Something else | Required: at least one |
+| 2 · Scope | **Budget range** (radio): Under $3k · $3k–$7k · $7k–$15k · $15k–$30k · $30k+ · Not sure yet. **Timeline** (optional) | Ranges are editable in one config file |
+| 3 · Details | **Project description** (textarea, 20–4000 characters), existing website/links (optional) | Live character count |
+| 4 · Contact | **Name**, **email**, company/brand (optional), preferred contact method | Honeypot + server validation |
+
+One page with four numbered groups (not a multi-page wizard), so everything is visible and editable at once. Errors show inline, connected with `aria-describedby`. The success state says what happens next. **Delivery:** a server route validates everything and forwards it to the configured channel (a webhook or email provider, set via environment variable). Until one is configured, the form falls back to a pre-filled email, so no inquiry is silently lost.
+
+## Mobile cinematic adaptation (refinement 4)
+
+The mobile version keeps the **same story, identity and signature moments**, re-staged for a vertical screen rather than removed:
+
+| Scene | Mobile staging |
+|---|---|
+| 01 Signal | The full intro: gathering + wordmark rise (sized to fit 360px) + a vertical S-curve ribbon; 8k particles with a brighter core instead of bloom |
+| 02 Form | Kinetic width-flow type kept (it's typographic, so cheap); the ribbon becomes a vertical loop |
+| 03 Interface | The Flow still builds the four interfaces, in a 2×2 arrangement (frame m03), animated on enter rather than pinned |
+| 04 Work | Swipeable cards with a clip reveal; the Flow glows behind the active card |
+| 05 System | The orbits as a light ambient core; filterable tool chips as the primary UI |
+| 06 Beyond | A vertical oval portal + scrim; the CTA is thumb-reachable |
+| Navigation | A fullscreen menu (focus-trapped) with large chapter links + a persistent Start a project button; a compact chapter HUD |
+| Interaction | Tap and touch states replace hover. Device-tilt parallax is opt-in only (no permission prompts by default). Native momentum scroll. |
 
 ---
 

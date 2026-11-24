@@ -50,6 +50,16 @@ This is Khaled's actual story told as a single visual journey: a person who turn
 - **What they skim for:** can he make something *this* good for me? Can he actually build it, beyond just designing? Does he understand AI products? How do I contact him?
 - **The site's job:** prove craft in the first 5 seconds, prove range through the four concepts, and convert via one primary CTA, **Start a project**.
 
+### Business positioning (refinement 1, approved 2026-11-24)
+
+The site must say **what Khaled sells, to whom** within the first viewport, without waiting for the scroll story:
+
+- **Hero line (under the wordmark):** "Premium websites, cinematic digital experiences and AI-powered applications, designed and built for ambitious brands and founders."
+- **Service strip (hero, mono):** Premium websites · Cinematic experiences · AI applications
+- **Hero CTAs:** **Start a project** (primary, lime) · View work (secondary)
+- "I build digital experiences." stays the Scene 02 headline, as the identity statement that follows the offer.
+- The page `<title>` and meta description lead with the offer, not just the name.
+
 **Do:** cinematic, precise, luminous, confident, technical, calm.
 **Don't:** gamer/neon, cyberpunk clutter, "AI startup" gradients, glassmorphism, template-like, loud.
 
@@ -125,10 +135,9 @@ Scenes 02 and 05 are deliberately quieter. Restraint is what makes the four land
 | Page | Hero concept |
 |---|---|
 | `/` Home | The six chapters above |
-| `/work/[slug]` ×4 | Case study: the project's own colour field, the Flow as a thin light line, hero recording of the build |
-| `/concepts/aurex`, `/nova`, `/orbit`, `/vanta` | The **working** concept builds, each with its own identity, plus a persistent "Independent concept by Khaled" ribbon |
-| `/about` | Story, approach, 5 years web + 2 years AI (facts only) |
-| `/contact` | A standalone portal-lite page with the form |
+| `/work/[slug]` ×4 | Case study **+ showcase** (refinement 2): the project's own colour field, the Flow as a thin light line, visual showcase and **one focused functional demo where it fits** (NOVA live chart, ORBIT assistant demo, VANTA product viewer + bag, AUREX motion piece). These are not full production apps at this stage; they can be expanded later. |
+| `/start` | **Start a Project** (refinement 3): a guided inquiry covering project type, budget range, timeline, description and contact details, in the portal-lite visual language |
+| About | Lives in Scene 02 on the home page (story, approach, 5 years web + 2 years AI); a standalone page can come later |
 | `404` | The Flow scattered: "This signal got lost." |
 
 ## 10. Reference board — principles only
