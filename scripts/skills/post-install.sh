@@ -24,3 +24,7 @@ find "$S" -name '*.sh' -exec chmod 0755 {} +
 if [ -f "$S/build-threejs-scroll-worlds/SKILL.md" ]; then
   sed -i 's#\[Kage demo\](demo/index.html)#[Kage demo](https://github.com/MengTo/Skills/tree/409b4d04c98559bbd9d3344260e3a0878df30d43/agent-skills/web-design/build-threejs-scroll-worlds/demo) (not vendored locally; see upstream)#' "$S/build-threejs-scroll-worlds/SKILL.md"
 fi
+
+# 5. No skill may self-install other skills from unpinned branches. Replace any remaining
+#    "install it first if unavailable (`npx skills add <url>`)" directive with a manifest pointer.
+find "$S" -name SKILL.md -exec sed -i -E 's#install it first if unavailable \(`npx skills add [^`]+`\)#it is not installed in this project; ask the user before adding it via `scripts/skills/skills.manifest.tsv` (pinned commits only)#g' {} +

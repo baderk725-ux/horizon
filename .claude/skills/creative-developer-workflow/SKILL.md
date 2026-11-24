@@ -12,11 +12,12 @@ The operating system for building award-calibre portfolio sites here. It sets th
 | # | Phase | Output | Load these skills |
 |---|-------|--------|-------------------|
 | 0 | **Brief & brand** | `.agents/product-marketing.md` (brand context), audience, one-line positioning, primary CTA | `personal-brand-website` |
-| 1 | **Art direction** | Direction doc: concept, references, type, colour, grid, motion and 3D principles | `portfolio-art-direction`, `frontend-design`, `no-ai-design-slop` |
+| 1 | **Research & art direction** | Reference breakdowns, then a direction doc: concept, type, colour, grid, motion and 3D principles | `reference-video-analysis`, `portfolio-art-direction`, `frontend-design`, `no-ai-design-slop` |
 | 2 | **Architecture & content** | Sitemap, page outlines, case-study drafts, real copy (no lorem) | `site-architecture`, `portfolio-case-study`, `copywriting` |
-| 3 | **System** | Tokens, type scale, grid, components | `tailwind-v4-design-tokens`, `composition-patterns` |
-| 4 | **Static build** | Every page complete, responsive and accessible with **zero** motion | `nextjs`, `react-best-practices`, `accessibility` |
-| 5 | **Motion layer** | Smooth scroll, reveals, transitions, cursor | `cinematic-web-development`, `advanced-gsap-animation`, `motion`, `react-view-transitions`, `emil-design-eng` |
+| 3 | **System** | Tokens, type scale, grid, components | `tailwind-v4-design-tokens`, `vercel-composition-patterns` |
+| 4 | **Static build** | Every page complete, responsive and accessible with **zero** motion | `nextjs`, `vercel-react-best-practices`, `accessibility` |
+| 5 | **Motion layer** | Smooth scroll, reveals, transitions, cursor | `cinematic-web-development`, `advanced-gsap-animation`, `motion`, `vercel-react-view-transitions`, `emil-design-eng` |
+| 5b | **AI features** (e.g. an assistant demo) | Server-side route handler, streaming UI, key kept server-only | built-in `claude-api`, `nextjs` |
 | 6 | **3D layer** (only if the concept earns it) | Hero/world scene with fallbacks | `interactive-3d-portfolio`, `threejs-*` |
 | 7 | **SEO & performance** | Metadata, JSON-LD, sitemap, CWV budget met | `seo`, `schema`, `core-web-vitals`, `performance`, `next-bundle-optimizer` |
 | 8 | **QA & polish** | QA report, fixes, final review | `portfolio-qa`, `playwright-cli`, `review-animations`, `web-design-guidelines`, `web-quality-audit`, `copy-editing` |

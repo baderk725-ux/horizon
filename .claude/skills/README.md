@@ -1,6 +1,6 @@
 # Project skills — creative portfolio workspace
 
-There are 60 Claude Code skills here: 51 curated third-party skills, pinned to commits, and 9 custom ones. Claude Code discovers each `<name>/SKILL.md` automatically. The directory must stay flat, so the categories below are logical groupings, not folders.
+There are 61 Claude Code skills here: 51 curated third-party skills, pinned to commits, and 10 custom ones. Claude Code discovers each `<name>/SKILL.md` automatically. The directory must stay flat, so the categories below are logical groupings, not folders.
 
 - Provenance (repo, commit, path, license): [`SOURCES.lock.tsv`](SOURCES.lock.tsv)
 - Reinstall or upgrade: `scripts/skills/install-skills.sh [--force]` (manifest: `scripts/skills/skills.manifest.tsv`)
@@ -11,6 +11,8 @@ There are 60 Claude Code skills here: 51 curated third-party skills, pinned to c
 | Category | Skills |
 |---|---|
 | **Workflow (custom)** | `creative-developer-workflow` |
+| **Research** | `reference-video-analysis`★ (ffmpeg frame breakdown → techniques → originality guardrails) |
+| **AI application development** | `claude-api` (built into Claude Code, official Anthropic; deliberately *not* duplicated here) |
 | **Art direction & UI/UX** | `portfolio-art-direction`★, `frontend-design` (Anthropic), `no-ai-design-slop`, `web-design-guidelines` (Vercel), `emil-design-eng` |
 | **Frontend / React / Next.js** | `nextjs`, `vercel-react-best-practices`, `vercel-composition-patterns`, `next-bundle-optimizer`, `next-cache-components-optimizer` (official Next.js), `tailwind-v4-design-tokens`★ |
 | **Animation & motion** | `advanced-gsap-animation`★, `gsap-core`, `gsap-timeline`, `gsap-scrolltrigger`, `gsap-plugins`, `gsap-utils`, `gsap-react`, `gsap-performance` (official GreenSock), `motion`, `vercel-react-view-transitions`, `animate`, `choreograph`, `review-animations`, `animation-performance` |

@@ -106,7 +106,7 @@ heroSlot.appendChild(thumb);                 // change DOM / layout
 Flip.from(state, { duration: dur.scene, ease: ease.inOut, absolute: true, zIndex: 10,
   onComplete: () => router.push(href) });
 ```
-For cross-route morphs, prefer the native View Transitions API (`react-view-transitions`). Use Flip for same-page state changes, such as filtering or layout switching of the work index.
+For cross-route morphs, prefer the native View Transitions API (`vercel-react-view-transitions`). Use Flip for same-page state changes, such as filtering or layout switching of the work index.
 
 ### 6. Cursor-follow and hover preview
 

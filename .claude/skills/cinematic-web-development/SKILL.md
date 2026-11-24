@@ -5,7 +5,7 @@ description: Engineering cinematic, immersive portfolio experiences in Next.js/R
 
 # Cinematic Web Development
 
-Use this skill to architect the experience layer. For APIs, use the specialists: `gsap-*` (official GSAP), `motion`, `react-view-transitions`, and `cinematic-gsap-lenis-motion-system` (a deep reference system for Lenis+GSAP). For scroll stories, see `horizontal-scroll-scenes` and `editorial-portfolio-chapters`. For timing and feel, see `emil-design-eng` and `choreograph`.
+Use this skill to architect the experience layer. For APIs, use the specialists: `gsap-*` (official GSAP), `motion`, `vercel-react-view-transitions`, and `cinematic-gsap-lenis-motion-system` (a deep reference system for Lenis+GSAP). For scroll stories, see `horizontal-scroll-scenes` and `editorial-portfolio-chapters`. For timing and feel, see `emil-design-eng` and `choreograph`.
 
 ## Non-negotiables
 
@@ -70,7 +70,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 **Pinned storytelling**: `ScrollTrigger` `pin: true` plus a scrubbed timeline. Size the pin length to the content (`end: "+=" + n*100 + "%"`). Provide a non-pinned stacked layout under reduced motion and on short viewports. Horizontal sections: see `horizontal-scroll-scenes`.
 
 **Page transitions**
-- Preferred: the **View Transitions API** (`react-view-transitions` skill; Next.js `experimental.viewTransition`) for shared-element morphs such as a work thumbnail into a case-study hero. It has progressive enhancement built in.
+- Preferred: the **View Transitions API** (`vercel-react-view-transitions` skill; Next.js `experimental.viewTransition`) for shared-element morphs such as a work thumbnail into a case-study hero. It has progressive enhancement built in.
 - Alternative: an overlay curtain driven by GSAP, triggered via a custom `TransitionLink` that plays "out", calls `router.push`, then plays "in" on the new route's mount.
 - Transitions stay under 900ms total and are never on the critical path for back/forward. Respect reduced motion with a crossfade or no transition.
 - Manage focus after navigation (move focus to the new `h1` or main) and announce the route change.
